@@ -1,0 +1,21 @@
+2023-07-10T19:52:32+00:00 CRITICAL Uncaught Error: Class 'CUS_Users' not found in C:\xampp\htdocs\turismo\wp-content\themes\unitravel\includes\form-handlers\register.php:12
+Stack trace:
+#0 C:\xampp\htdocs\turismo\wp-content\themes\unitravel\includes\form-handlers\register.php(6): registerUser(Array, NULL)
+#1 C:\xampp\htdocs\turismo\wp-content\themes\unitravel\page-templates\t_page_signup.php(7): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\turismo\wp-includes\template-loader.php(106): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\turismo\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\turismo\index.php(17): require('C:\\xampp\\htdocs...')
+#5 {main}
+  thrown en C:\xampp\htdocs\turismo\wp-content\themes\unitravel\includes\form-handlers\register.php en la línea 12
+
+2023-07-10T20:44:00+00:00 CRITICAL Uncaught Error: Call to undefined method CUS_UserMeta::get_user_by_param() in C:\xampp\htdocs\turismo\wp-content\themes\unitravel\includes\form-handlers\register.php:43
+Stack trace:
+#0 C:\xampp\htdocs\turismo\wp-content\themes\unitravel\includes\form-handlers\register.php(19): validateNewUserCompany(Array, NULL)
+#1 C:\xampp\htdocs\turismo\wp-content\themes\unitravel\includes\form-handlers\register.php(12): registerUser(Array, NULL)
+#2 C:\xampp\htdocs\turismo\wp-content\themes\unitravel\page-templates\t_page_signup.php(7): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\turismo\wp-includes\template-loader.php(106): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\turismo\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\turismo\index.php(17): require('C:\\xampp\\htdocs...')
+#6 {main}
+  thrown en C:\xampp\htdocs\turismo\wp-content\themes\unitravel\includes\form-handlers\register.php en la línea 43
+
