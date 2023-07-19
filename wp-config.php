@@ -20,7 +20,7 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'turismo' );
+define( 'DB_NAME', 'u178461197_turismo' );
 
 /** Database username */
 define( 'DB_USER', 'u178461197_redesystem_db' );
