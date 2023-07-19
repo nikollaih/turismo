@@ -23,10 +23,10 @@
 define( 'DB_NAME', 'turismo' );
 
 /** Database username */
-define( 'DB_USER', 'root' );
+define( 'DB_USER', 'u178461197_redesystem_db' );
 
 /** Database password */
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', '@VMSgIt@YC5g' );
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
