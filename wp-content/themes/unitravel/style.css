@@ -7554,3 +7554,7 @@ button.mfp-close {
 	color: #eb7373;
     margin-left: 20px;
 }
+
+.top_panel_navi, .top_panel .sc_layouts_row_fixed {
+	box-shadow: rgba(0, 0, 0, 0.29) 0px 0px 13px;
+}
