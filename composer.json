@@ -1,0 +1,7 @@
+{
+    "name": "guru/upase",
+    "description": "This is the environment file.",
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
