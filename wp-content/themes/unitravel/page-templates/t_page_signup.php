@@ -13,13 +13,15 @@
             <div class="container py-5">
                <div class="row d-flex justify-content-center align-items-center">
                   <div class="col-12">
+                     <h6 class="text-center sc_item_subtitle sc_services_subtitle sc_align_left sc_item_title_style_default">Nuevo Usuario</h6>
+                     <h3 class="mb-5 text-center sc_item_title sc_services_title sc_align_left sc_item_title_style_default sc_item_title_tag">REGISTRO</h3>
                      <form action="" method="post">
                         <div class="card card-registration card-registration-2" style="border-radius: 15px;">
                            <div class="card-body p-0">
                               <div class="row g-0">
                                  <div class="col-lg-12">
                                     <div class="p-5">
-                                       <h3 class="fw-normal mb-5 no-top">Información personal</h3>
+                                       <h4 class="fw-normal mb-5 no-top">Información personal</h4>
                                        <div class="row">
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
@@ -66,7 +68,7 @@
                                  </div>
                                  <div class="col-lg-12 bg-indigo text-white">
                                     <div class="p-5">
-                                       <h3 class="fw-normal mb-5 no-top">Información del emprendimiento</h3>
+                                       <h4 class="fw-normal mb-5 no-top">Información del emprendimiento</h4>
                                        <div class="row">
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
