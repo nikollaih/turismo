@@ -20,7 +20,8 @@ if ($args['slider']) {
 	?><div class="<?php echo esc_attr(trx_addons_get_column_class(1, $args['columns'])); ?>"><?php
 }
 ?>
-<div class="sc_services_item<?php
+<div>
+<div style="background-color: #f6f7e6; border-radius: 0px 0px 30px 30px;" class="sc_services_item<?php
 	echo isset($args['hide_excerpt']) && (int)$args['hide_excerpt'] > 0 ? ' without_content' : ' with_content';
 	echo empty($args['featured']) || $args['featured']=='image' 
 					? ' with_image' 
@@ -56,14 +57,15 @@ if ($args['slider']) {
 		?></span><?php
 	}
 	?>	
+	<h4 class="sc_services_item_title"><a href="<?php echo esc_url($link); ?>"><?php the_title(); ?></a></h4>
+	</div>
 	<div class="sc_services_item_info">
 		<div class="sc_services_item_header">
-			<h4 class="sc_services_item_title"><a href="<?php echo esc_url($link); ?>"><?php the_title(); ?></a></h4>
 			<div class="sc_services_item_subtitle"><?php echo trim(trx_addons_get_post_terms(', ', get_the_ID(), TRX_ADDONS_CPT_SERVICES_TAXONOMY));?></div>
 		</div>
 		<?php if (!isset($args['hide_excerpt']) || (int)$args['hide_excerpt']==0) { ?>
 			<div class="sc_services_item_content"><?php the_excerpt(); ?></div>
-			<div class="sc_services_item_button sc_item_button"><a href="<?php echo esc_url($link); ?>" class="sc_button"><?php esc_html_e('Learn more', 'trx_addons'); ?></a></div>
+			<div class="sc_services_item_button sc_item_button"><a href="<?php echo esc_url($link); ?>" class="sc_button"><?php esc_html_e('CONOCE LA EXPERIENCIA', 'trx_addons'); ?></a></div>
 		<?php } ?>
 	</div>
 </div>

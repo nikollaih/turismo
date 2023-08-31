@@ -4,46 +4,6 @@ Template Name: My account enterprising
 */
 ?>
 <?php include get_theme_file_path("page-templates/utilities.php"); ?>
-<style>
-
-.img-perfil-routes {
-	margin-top: -95px;
-}
-.column-perfil-routes{
-    margin-top: -150px;
-    background-color: #f2f2f2;
-    z-index: 10000;
-}
-.text-my-perfil-route{
-    padding-left: 4rem;
-    padding-right: 3rem;
-
-}
-.text-area-route{
-    border-radius: 30px;
-}
-.h5-green{
-    color: #a8b504 !important;
-}
-.h5-orange{
-    color: #eb5d11 !important;
-}
-
-@media(max-width: 767px){
-    .img-perfil-routes {
-	margin-top: -90;    
-}   
-.column-perfil-routes{
-    margin-top: 0;
-    margin-bottom: 50px;
-}
-.content-profile-one{
-    flex-direction: column-reverse;
-
-}
-}
-
-</style>
 <div id="custom-page">
     <?php get_header() ?>
     <div id="primary" class="site-content">
@@ -52,7 +12,7 @@ Template Name: My account enterprising
                 <div class="container" style="position: relative;">
                     <div class="row content-profile-one">
                         <div class="col-md-8 col-sm-12">
-                            <h5 class="text-center mt-0 h5-orange">MI CUENTA</h5>
+                            <h3 class="text-center mt-0 h5-orange">MI CUENTA</h3>
                             <div>
                             <h5 class="mt-3">INFORMACIÓN PERSONAL</h5>
                             <form action="" method="post">
@@ -124,7 +84,7 @@ Template Name: My account enterprising
                                     </div>
         
                                     <div class="justify-content-center mt-5 pt-5">
-                                        <h5 class="my-0 mb-0 h5-green">MIS RUTAS</h5>
+                                        <h6 class="my-0 mb-0 h5-green">MIS RUTAS</h6>
         
                                         <table class="table  table-borderles">
                                             <tbody  style="background-color: #f2f2f2;">
@@ -139,14 +99,14 @@ Template Name: My account enterprising
                                         </table>
             
                                         <div class="justify-content-center mb-3">
-                                            <button type="button" class="btn btn-outline-primary ms-1">Crear rutas</button>
+                                            <a href="<?php echo get_template_directory_uri() . '/create-routes'; ?>" class="btn btn-routes-primary ms-1">CREAR RUTAS</a>
                                         </div>
                                    </div>
                                    <div class=" mt-3 pt-3">
                                   
                                    </div>
                                    <div class=" justify-content-center mt-5 mb-5 ">
-                                        <h5 class="my-0 mb-0 h5-green">GALERÍA</h5>
+                                        <h6 class="my-0 mb-0 h5-green">GALERÍA</h6>
                                         <div class="text-my-perfil-route">
                                         <p class="text-justify text-center mt-5 pt-3 ">Lorem ipsum dolor sit amet, con-
                                         sectetuer adipiscing elit, sed diam
