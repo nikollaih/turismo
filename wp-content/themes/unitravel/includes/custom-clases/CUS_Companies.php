@@ -8,19 +8,21 @@ class CUS_Companies {
     }
 
     public function insert_company($data) {
+    
         global $wpdb;
 
         $wpdb->insert(
             $this->table_name,
             $data,
             array(
-                '%d', // id_cus_company
                 '%d', // id_user
                 '%s', // cus_company_name
+                '%s', // cus_company_slug
                 '%s', // cus_company_web
-                '%s', // cus_company_facebook
-                '%s', // cus_company_instagram
+                '%d', // cus_company_city
+                '%s', // cus_company_whatsapp
                 '%s', // cus_company_address
+                '%f', // cus_company_phone
                 '%f', // cus_company_latitud
                 '%f', // cus_company_longitude
                 '%s'  // cus_company_description
@@ -30,11 +32,11 @@ class CUS_Companies {
         return $wpdb->insert_id;
     }
 
-    public function get_company_by_id($id) {
+    public function get_company_by_param($param, $value) {
         global $wpdb;
 
-        $query = $wpdb->prepare("SELECT * FROM $this->table_name WHERE id_cus_company = %d", $id);
-        return $wpdb->get_row($query, ARRAY_A);
+        $query = $wpdb->prepare("SELECT * FROM $this->table_name WHERE $param = '$value'");
+        return $wpdb->get_results($query, ARRAY_A);
     }
 
     public function get_companies_by_user($user_id) {
@@ -57,18 +59,7 @@ class CUS_Companies {
         $wpdb->update(
             $this->table_name,
             $data,
-            array('id_cus_company' => $id),
-            array(
-                '%s', // cus_company_name
-                '%s', // cus_company_web
-                '%s', // cus_company_facebook
-                '%s', // cus_company_instagram
-                '%s', // cus_company_address
-                '%f', // cus_company_latitud
-                '%f', // cus_company_longitude
-                '%s'  // cus_company_description
-            ),
-            array('%d') // id_cus_company data type
+            array('id_cus_company' => $id)
         );
     }
 
@@ -80,6 +71,16 @@ class CUS_Companies {
             array('id_cus_company' => $id),
             array('%d') // id_cus_company data type
         );
+    }
+
+    public function generateSlug($company_name){
+        $company_name = strtolower($company_name);
+        $company_name_slug = str_replace(" ", "_", $company_name);
+
+        $exists_company_slug = $this->get_company_by_param("cus_company_slug", $company_name_slug);
+        if(count($exists_company_slug) > 0) $company_name_slug.="_".count($exists_company_slug);
+        
+        return $company_name_slug;
     }
 }
 

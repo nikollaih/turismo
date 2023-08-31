@@ -3,13 +3,27 @@
    Template Name: Profile
    */
    ?>
-<?php include get_theme_file_path("page-templates/utilities.php"); ?>
+<?php 
+include get_theme_file_path("page-templates/utilities.php");
+require_once get_theme_file_path("includes/helpers/index.php");
+
+$current_user = cus_get_current_user();
+if(!$current_user){
+   wp_redirect(site_url());
+   exit;
+}
+
+$company = cus_get_company($current_user->ID);
+if(!$company){
+   wp_redirect(site_url());
+   exit;
+}
+
+?>
 <div id="custom-page">
    <?php get_header() ?>
    <div id="primary" class="site-content">
       <div id="content" role="main">
-         <h6 class="text-center sc_item_subtitle sc_services_subtitle sc_align_left sc_item_title_style_default">Usuario</h6>
-         <h3 class="mb-5 text-center sc_item_title sc_services_title sc_align_left sc_item_title_style_default sc_item_title_tag">PERFIL</h3>
          <section id="profile-container">
             <div class="container py-5">
                <div class="row">
@@ -18,9 +32,8 @@
                         <div class="card-body text-center">
                            <img src="https://img.freepik.com/vector-premium/diseno-ilustracion-vector-personaje-avatar-mujer-joven_24877-18536.jpg" alt="avatar"
                               class="rounded-circle img-fluid" style="width: 150px;">
-                           <h5 class="my-3">Pepita Perez</h5>
+                           <h5 class="my-3"><?= $current_user->display_name; ?></h5>
                            <p class="text-muted mb-1">Mujer Emprendedora</p>
-                           <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
                            <div class="d-flex justify-content-center mb-2">
                               <button type="button" class="btn btn-outline-primary ms-1">Modificar</button>
                            </div>
@@ -31,15 +44,11 @@
                            <ul class="list-group list-group-flush rounded-3">
                               <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                  <i class="fas fa-globe fa-lg text-warning"></i>
-                                 <p class="mb-0">https://mdbootstrap.com</p>
+                                 <p class="mb-0"><?= $company["cus_company_web"] ?></p>
                               </li>
                               <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                 <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                 <p class="mb-0">mdbootstrap</p>
-                              </li>
-                              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                 <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                                 <p class="mb-0">mdbootstrap</p>
+                                 <i class="fab fa-whatsapp fa-lg" style="color: #ac2bac;"></i>
+                                 <p class="mb-0"><?= $company["cus_company_whatsapp"] ?></p>
                               </li>
                            </ul>
                         </div>
@@ -53,7 +62,7 @@
                                  <p class="mb-0">Emprendimiento</p>
                               </div>
                               <div class="col-sm-9">
-                                 <p class="text-muted mb-0">Accesorios Pepita</p>
+                                 <p class="text-muted mb-0"><?= $company["cus_company_name"] ?></p>
                               </div>
                            </div>
                            <hr>
@@ -62,7 +71,7 @@
                                  <p class="mb-0">Correo electronico</p>
                               </div>
                               <div class="col-sm-9">
-                                 <p class="text-muted mb-0">example@example.com</p>
+                                 <p class="text-muted mb-0"><?= $current_user->user_email; ?></p>
                               </div>
                            </div>
                            <hr>
@@ -71,7 +80,7 @@
                                  <p class="mb-0">Teléfono</p>
                               </div>
                               <div class="col-sm-9">
-                                 <p class="text-muted mb-0">(097) 234-5678</p>
+                                 <p class="text-muted mb-0"><?= $company["cus_company_phone"] ?></p>
                               </div>
                            </div>
                            <hr>
@@ -80,7 +89,7 @@
                                  <p class="mb-0">Dirección</p>
                               </div>
                               <div class="col-sm-9">
-                                 <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                                 <p class="text-muted mb-0"><?= $company["cus_company_address"] ?></p>
                               </div>
                            </div>
                            <hr>
@@ -89,7 +98,7 @@
                                  <p class="mb-0">Descripción</p>
                               </div>
                               <div class="col-sm-9">
-                                 <p class="text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae augue non eros pharetra malesuada ut volutpat diam. Integer ex lorem, sollicitudin pretium sapien ut, imperdiet vestibulum sem. Pellentesque ut fermentum metus, id euismod orci. Curabitur quis sem id eros pellentesque consectetur. Donec mattis dapibus odio vitae hendrerit. Quisque enim est, blandit non viverra ac, lacinia a quam. Nullam vehicula semper tortor, eget vestibulum nunc. Donec lobortis diam vel pretium sollicitudin. Nulla hendrerit faucibus elit vel facilisis. Aliquam vestibulum urna ut aliquet tristique. Vestibulum sollicitudin nulla at ligula semper faucibus. Donec nec ipsum vehicula, faucibus nisi ultrices, mattis erat. Nam sed est tincidunt, varius massa semper, volutpat erat. Nullam scelerisque arcu posuere pharetra elementum. Nam sit amet pellentesque turpis.</p>
+                                 <p class="text-muted mb-0"><?= $company["cus_company_description"] ?></p>
                               </div>
                            </div>
                         </div>
