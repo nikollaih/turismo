@@ -61,6 +61,13 @@
   
 }
 
+.custom-image-profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
 @media(max-width: 767px){
     .img-perfil-routes {
 	margin-top: -90;    
