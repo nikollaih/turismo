@@ -6,6 +6,13 @@
  * @subpackage UNITRAVEL
  * @since UNITRAVEL 1.0
  */
+// CUSTOM FUNCTIONS AND IMPORTS
+require_once get_template_directory() . '/includes/helpers/index.php';
+
+function cargar_archivo_js_del_tema() {
+    wp_enqueue_script('register-page', get_template_directory_uri() . '/js/pages/register.js', array('jquery'), '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'cargar_archivo_js_del_tema');
 
 if (!defined("UNITRAVEL_THEME_DIR")) define("UNITRAVEL_THEME_DIR", trailingslashit( get_template_directory() ));
 if (!defined("UNITRAVEL_CHILD_DIR")) define("UNITRAVEL_CHILD_DIR", trailingslashit( get_stylesheet_directory() ));
