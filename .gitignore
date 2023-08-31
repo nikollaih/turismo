@@ -1,5 +1,7 @@
 .env
 .DS_Store
+composer.json
+composer.lock
 
 /vendor
 wp-content/uploads
