@@ -24,6 +24,7 @@
                                        <div class="row justify-content-center">
                                           <div class="col-md-12">
                                              <div class="form-group text-center">
+                                                   <label for=""><i class="fa-regular fa-pen-to-square"></i> Seleccionar foto de perfil</label><br>
                                                    <label for="profile-image" style="cursor: pointer;">
                                                       <img id="profile-preview" src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png" alt="Vista previa de la imagen" class="img-thumbnail custom-image-profile">
                                                    </label>
@@ -32,7 +33,7 @@
                                           </div>
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                                <label for="nameActivityRoute">Número de documento</label>
+                                                <label for="nameActivityRoute">Número de documento <b class="text-danger">*</b></label>
                                                 <input required placeholder="" name="user[document]" type="number" id="document" class="form-control form-control-lg" value="<?= (isset($FORM_DATA["user"]["document"]) ? $FORM_DATA["user"]["document"] : "") ?>"/>
                                                 <?php if(isset($RESPONSE_CREATE_USER_COMPANY["status"]) && $RESPONSE_CREATE_USER_COMPANY["status"] == false && $RESPONSE_CREATE_USER_COMPANY["field"] == "document"){
                                                    echo "<span class='cus_error_field'>".$RESPONSE_CREATE_USER_COMPANY["message"]."<span/>";
@@ -41,19 +42,13 @@
                                           </div>
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                                <label for="nameActivityRoute">Nombres y apellidos</label>
+                                                <label for="nameActivityRoute">Nombres y apellidos <b class="text-danger">*</b></label>
                                                 <input required placeholder="" name="user[fullname]" type="text" id="fullname" class="form-control form-control-lg" value="<?= (isset($FORM_DATA["user"]["fullname"]) ? $FORM_DATA["user"]["fullname"] : "") ?>" />
                                              </div>
                                           </div>
-                                          <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
+                                          <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                                <label for="nameActivityRoute">Teléfono</label>
-                                                <input required placeholder="" type="number" name="company[phone]" id="phone" class="form-control form-control-lg"  value="<?= (isset($FORM_DATA["company"]["phone"]) ? $FORM_DATA["company"]["phone"] : "") ?>"/>
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
-                                             <div class="form-outline form-white">
-                                                <label for="nameActivityRoute">Correo electrónico</label>
+                                                <label for="nameActivityRoute">Correo electrónico <b class="text-danger">*</b></label>
                                                 <input minlength="8" required placeholder="" name="user[email]" type="email" id="email" class="form-control form-control-lg" value="<?= (isset($FORM_DATA["user"]["email"]) ? $FORM_DATA["user"]["email"] : "") ?>" />
                                                 <?php if(isset($RESPONSE_CREATE_USER_COMPANY["status"]) && $RESPONSE_CREATE_USER_COMPANY["status"] == false && $RESPONSE_CREATE_USER_COMPANY["field"] == "email"){
                                                    echo "<span class='cus_error_field'>".$RESPONSE_CREATE_USER_COMPANY["message"]."<span/>";
@@ -62,7 +57,7 @@
                                           </div>
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                                <label for="nameActivityRoute">Contraseña</label>
+                                                <label for="nameActivityRoute">Contraseña <b class="text-danger">*</b></label>
                                                 <input minlength="8" required placeholder="" name="user[pass]" type="password" id="pass" class="form-control form-control-lg" value="<?= (isset($FORM_DATA["user"]["pass"]) ? $FORM_DATA["user"]["pass"] : "") ?>"/>
                                                 <?php if(isset($RESPONSE_CREATE_USER_COMPANY["status"]) && $RESPONSE_CREATE_USER_COMPANY["status"] == false && $RESPONSE_CREATE_USER_COMPANY["field"] == "pass"){
                                                    echo "<span class='cus_error_field'>".$RESPONSE_CREATE_USER_COMPANY["message"]."<span/>";
@@ -72,7 +67,7 @@
                                           </div>
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                                <label for="nameActivityRoute">Repetir contraseña</label>
+                                                <label for="nameActivityRoute">Repetir contraseña <b class="text-danger">*</b></label>
                                                 <input required placeholder="" name="user[r_pass]" type="password" id="r_pass" class="form-control form-control-lg" value="<?= (isset($FORM_DATA["user"]["r_pass"]) ? $FORM_DATA["user"]["r_pass"] : "") ?>"/>
                                              </div>
                                           </div>
@@ -92,26 +87,26 @@
                                              </div>
                                           </div>
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
-                                          <label for="nameActivityRoute">Nombre</label>
+                                          <label for="nameActivityRoute">Nombre <b class="text-danger">*</b></label>
                                              <div class="form-outline form-white">
                                                 <input required value="<?= (isset($FORM_DATA["company"]["name"]) ? $FORM_DATA["company"]["name"] : "") ?>" name="company[name]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
                                              </div>
                                           </div>
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                             <label for="nameActivityRoute">Sitio web</label>
+                                             <label for="nameActivityRoute">Facebook o Instagram</label>
                                                 <input value="<?= (isset($FORM_DATA["company"]["web"]) ? $FORM_DATA["company"]["web"] : "") ?>" name="company[web]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
                                              </div>
                                           </div>
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                             <label for="nameActivityRoute">Número de whatsapp</label>
-                                                <input required value="<?= (isset($FORM_DATA["company"]["whatsapp"]) ? $FORM_DATA["company"]["whatsapp"] : "") ?>" name="company[whatsapp]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
+                                             <label for="nameActivityRoute">Número de whatsapp <b class="text-danger">*</b></label>
+                                                <input minlength="10" required value="<?= (isset($FORM_DATA["company"]["whatsapp"]) ? $FORM_DATA["company"]["whatsapp"] : "") ?>" name="company[whatsapp]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
                                              </div>
                                           </div>
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                             <label for="nameActivityRoute">Municipio</label>
+                                             <label for="nameActivityRoute">Municipio <b class="text-danger">*</b></label>
                                                 <select name="company[city]" id="">
                                                    <option value="null">- Seleccionar municipio</option>
                                                    <?php
@@ -128,26 +123,26 @@
                                           </div>
                                           <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                             <label for="nameActivityRoute">Dirección</label>
+                                             <label for="nameActivityRoute">Dirección <b class="text-danger">*</b></label>
                                                 <input required value="<?= (isset($FORM_DATA["company"]["address"]) ? $FORM_DATA["company"]["address"] : "") ?>" name="company[address]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
                                              </div>
                                           </div>
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                             <label for="nameActivityRoute">Latitud</label>
+                                             <label for="nameActivityRoute">Latitud (opcional)</label>
                                                 <input value="<?= (isset($FORM_DATA["company"]["latitude"]) ? $FORM_DATA["company"]["latitude"] : "") ?>" name="company[latitude]" placeholder="" type="number" id="form3Examplea4" class="form-control form-control-lg" />
                                              </div>
                                           </div>
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                             <label for="nameActivityRoute">Longitud</label>
+                                             <label for="nameActivityRoute">Longitud (opcional)</label>
                                                 <input value="<?= (isset($FORM_DATA["company"]["longitude"]) ? $FORM_DATA["company"]["longitude"] : "") ?>" name="company[longitude]" placeholder="" type="number" id="form3Examplea4" class="form-control form-control-lg" />
                                              </div>
                                           </div>
                                           <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                             <label for="nameActivityRoute">Descripción</label>
-                                             <textarea required name="company[description]" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="" name="textarea-message"><?= (isset($FORM_DATA["company"]["description"]) ? $FORM_DATA["company"]["description"] : "") ?></textarea>
+                                             <label for="nameActivityRoute">Descripción <b class="text-danger">*</b></label>
+                                             <textarea minlength="20" required name="company[description]" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="" name="textarea-message"><?= (isset($FORM_DATA["company"]["description"]) ? $FORM_DATA["company"]["description"] : "") ?></textarea>
                                              </div>
                                           </div>
                                        </div>

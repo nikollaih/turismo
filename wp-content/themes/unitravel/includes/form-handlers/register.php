@@ -29,8 +29,9 @@ function registerUser($user, $company) {
                 $profile_image = load_profile_image($_FILES["profile"], $user_id);
                 $user["profile_image"] = $profile_image;
             }
-            registerUserMeta($user_id, $user);
-            registerCompany($user_id, $new_user, $company);
+            
+            $company_id = registerCompany($user_id, $company);
+            registerUserMeta($user_id, $user, $company_id);
         } else {
             echo 'Error al agregar el usuario.';
         }
@@ -40,18 +41,20 @@ function registerUser($user, $company) {
     }
 }
 
-function registerCompany($user_id, $user, $company) {
+function registerCompany($user_id, $company) {
     $company_class = new CUS_Companies();
     $new_company = getFormatedCompanyArray($user_id, $company);
     $company_id = $company_class->insert_company($new_company);
+
     if(isset($_FILES["logo"])){
         $new_data["cus_company_logo"] = load_company_image($_FILES["logo"], $company_id);
         $company_class->update_company($company_id, $new_data);
     }
-    do_login($user["user_login"], $user["user_pass"], "registro-exitoso");
+    
+    return $company_id;
 }
 
-function registerUserMeta($user_id, $user){
+function registerUserMeta($user_id, $user, $company_id){
     $user_meta = new CUS_UserMeta();
     $user_meta_capabilities = $user_meta->get_usermeta_by_key($user_id, "wp_capabilities");
 
@@ -63,6 +66,14 @@ function registerUserMeta($user_id, $user){
 
     $data_add = array("user_id" => $user_id, "meta_key" => "document_number", "meta_value" => $user["document"]);
     $saved_user_meta = $user_meta->insert_usermeta($data_add);
+
+    $data_add = array("user_id" => $user_id, "meta_key" => "user_company_id", "meta_value" => $company_id);
+    $saved_user_meta = $user_meta->insert_usermeta($data_add);
+
+    $data_add = array("user_id" => $user_id, "meta_key" => "user_company_permissions", "meta_value" => "admin");
+    $saved_user_meta = $user_meta->insert_usermeta($data_add);
+
+    do_login($user["email"], $user["pass"], "registro-exitoso");
 }
 
 function validateNewUserCompany($user, $company_data){
@@ -85,9 +96,9 @@ function getFormatedUserArray($user){
     // Datos del nuevo usuario
     return array(
         'user_login' => $user["email"],
-        'user_login' => $user["email"],
+        'user_login' => $user["document"],
         'user_pass' => $user["pass"],
-        'user_nicename' => $user["email"],
+        'user_nicename' => $user["fullname"],
         'user_email' => $user["email"],
         'user_url' => "",
         'user_activation_key' => '',
@@ -101,14 +112,12 @@ function getFormatedCompanyArray($id_user, $company){
 
     // Datos del nuevo emprendimiento
     return array(
-        'id_user' => $id_user,
         'cus_company_name' => $company["name"],
         'cus_company_slug' => $company_class->generateSlug($company["name"]),
         'cus_company_web' => $company["web"],
         'cus_company_city' => $company["city"],
         'cus_company_whatsapp' => $company["whatsapp"],
         'cus_company_address' => $company["address"],
-        'cus_company_phone' => $company["phone"],
         'cus_company_latitude' => $company["latitude"],
         'cus_company_longitude' => $company["longitude"],
         'cus_company_description' => $company["description"]

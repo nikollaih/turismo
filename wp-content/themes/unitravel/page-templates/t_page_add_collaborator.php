@@ -1,11 +1,10 @@
 <?php
 /*
-Template Name: Routes
+Template Name: Add Collaborator
 */
-?>
-<?php 
-include get_theme_file_path("page-templates/utilities.php");
 
+include get_theme_file_path("page-templates/utilities.php");
+include get_theme_file_path("page-templates/current_user_company_data.php"); 
 ?>
 
 <div id="custom-page">

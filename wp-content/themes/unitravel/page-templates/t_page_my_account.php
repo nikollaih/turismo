@@ -2,21 +2,11 @@
 /*
 Template Name: My account enterprising
 */
+
+    include get_theme_file_path("page-templates/utilities.php");
+    include get_theme_file_path("page-templates/current_user_company_data.php"); 
 ?>
-<?php 
-include get_theme_file_path("page-templates/utilities.php");
-require_once get_theme_file_path("includes/helpers/index.php");
 
-check_user_company_login();
-
-$current_user = cus_get_current_user();
-$company = cus_get_company($current_user->ID);
-
-$profile_image = get_profile_image($current_user->ID);
-$company_logo = get_company_logo($company["id_cus_company"], $company["cus_company_logo"]);
-$city = find_city($company["cus_company_city"]);
-$cities = get_all_cities();
-?>
 <div id="custom-page">
     <?php get_header() ?>
     <div id="primary" class="site-content">
@@ -31,20 +21,16 @@ $cities = get_all_cities();
                             <form action="" method="post">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
+                                        <label for="descriptionRoute">Documento</label>
+                                        <input type="text" class="form-control" id="nameRoute" name="route[name]" value="<?= isset($current_user->document_number) ? $current_user->document_number : "" ?>">
+                                    </div>
+                                    <div class="form-group col-md-6">
                                         <label for="nameRoute">Nombre</label>
                                         <input type="text" class="form-control" id="nameRoute" name="route[name]" value="<?= isset($current_user->display_name) ? $current_user->display_name : "" ?>">
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-12">
                                         <label for="descriptionRoute">Email</label>
                                         <input type="text" class="form-control" id="nameRoute" name="route[name]" value="<?= isset($current_user->user_email) ? $current_user->user_email : "" ?>">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="descriptionRoute">Teléfono</label>
-                                        <input type="text" class="form-control" id="nameRoute" name="route[name]">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="descriptionRoute">Contraseña</label>
-                                        <input type="text" class="form-control" id="nameRoute" name="route[name]">
                                     </div>
                                     <div class="col-md-12">
                                         <h5 class="mt-5">INFORMACIÓN DEL EMPRENDIMIENTO</h5>

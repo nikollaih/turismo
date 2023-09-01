@@ -17,11 +17,13 @@ function do_login($user, $password, $redirectTo = "perfil"){
 
 function cus_get_current_user() {
     $current_user = wp_get_current_user();
-    
     if ($current_user->ID === 0) {
         // No hay usuario logueado
         return false;
     } else {
+        $current_user->document_number = get_user_meta($current_user->ID, "document_number", true );
+        $current_user->company_id = get_user_meta($current_user->ID, "user_company_id", true );
+        $current_user->company_permissions = get_user_meta($current_user->ID, "user_company_permissions", true );
 
         // Usuario logueado
         return $current_user;
@@ -38,6 +40,6 @@ function check_user_company_login(){
     $company = cus_get_company($current_user->ID);
         if(!$company){
         wp_redirect(site_url());
-    exit;
+        exit;
     }
 }
