@@ -27,3 +27,17 @@ function cus_get_current_user() {
         return $current_user;
     }
 }
+
+function check_user_company_login(){
+    $current_user = cus_get_current_user();
+    if(!$current_user){
+        wp_redirect(site_url());
+        exit;
+    }
+
+    $company = cus_get_company($current_user->ID);
+        if(!$company){
+        wp_redirect(site_url());
+    exit;
+    }
+}

@@ -55,4 +55,25 @@ function company_file_exists($company_id, $file){
     $file_path = $upload_dir['basedir'] . '/companies/' . $company_id . '/' . $file;
     return file_exists($file_path);
 }
+
+function get_company_logo($company_id, $file){
+    $company_logo = "";
+    if(company_file_exists($company_id, $file)){
+        $upload_dir = wp_upload_dir();
+        $company_logo = $upload_dir['basedir'] . '/companies/' . $company_id . '/' . $file;
+    }
+
+    return $company_logo;
+}
+
+function get_profile_image($user_id){
+    $profile_image = "";
+    $file = get_user_meta($user_id, "wp_profile_image", true);
+    if(profile_file_exists($user_id, $file)){
+        $upload_dir = wp_upload_dir();
+        $profile_image = $upload_dir['baseurl'] . '/profiles/' . $user_id . '/' . $file;
+    }
+
+    return $profile_image;
+}
 ?>

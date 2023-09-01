@@ -13,4 +13,10 @@ class CUS_Cities {
         $query = $wpdb->prepare("SELECT * FROM $this->table_name");
         return $wpdb->get_results($query, ARRAY_A);
     }
+
+    public function find($id) {
+        global $wpdb;
+        $query = $wpdb->prepare("SELECT * FROM $this->table_name WHERE city_id = $id");
+        return $wpdb->get_row($query, ARRAY_A);
+    }
 }
