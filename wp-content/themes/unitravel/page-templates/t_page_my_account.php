@@ -3,7 +3,20 @@
 Template Name: My account enterprising
 */
 ?>
-<?php include get_theme_file_path("page-templates/utilities.php"); ?>
+<?php 
+include get_theme_file_path("page-templates/utilities.php");
+require_once get_theme_file_path("includes/helpers/index.php");
+
+check_user_company_login();
+
+$current_user = cus_get_current_user();
+$company = cus_get_company($current_user->ID);
+
+$profile_image = get_profile_image($current_user->ID);
+$company_logo = get_company_logo($company["id_cus_company"], $company["cus_company_logo"]);
+$city = find_city($company["cus_company_city"]);
+$cities = get_all_cities();
+?>
 <div id="custom-page">
     <?php get_header() ?>
     <div id="primary" class="site-content">
@@ -19,11 +32,11 @@ Template Name: My account enterprising
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="nameRoute">Nombre</label>
-                                        <input type="text" class="form-control" id="nameRoute" name="route[name]">
+                                        <input type="text" class="form-control" id="nameRoute" name="route[name]" value="<?= isset($current_user->display_name) ? $current_user->display_name : "" ?>">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="descriptionRoute">Email</label>
-                                        <input type="text" class="form-control" id="nameRoute" name="route[name]">
+                                        <input type="text" class="form-control" id="nameRoute" name="route[name]" value="<?= isset($current_user->user_email) ? $current_user->user_email : "" ?>">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="descriptionRoute">Teléfono</label>
@@ -38,35 +51,49 @@ Template Name: My account enterprising
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="nameActivityRoute">Nombre</label>
-                                        <input type="text" class="form-control" id="nameActivityRoute" name="route[activityName]">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="nameActivityRoute">Dirección</label>
-                                        <input type="text" class="form-control" id="nameActivityRoute" name="route[activityName]">
+                                        <input type="text" class="form-control" id="nameActivityRoute" name="route[activityName]" value="<?= isset($company["cus_company_name"]) ? $company["cus_company_name"] : "" ?>">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="nameActivityRoute">Sitio web</label>
-                                        <input type="text" class="form-control" id="nameActivityRoute" name="route[activityName]">
+                                        <input type="text" class="form-control" id="nameActivityRoute" name="route[activityName]" value="<?= isset($company["cus_company_web"]) ? $company["cus_company_web"] : "" ?>">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="nameActivityRoute">Instagram</label>
-                                        <input type="text" class="form-control" id="nameActivityRoute" name="route[activityName]">
+                                        <label for="nameActivityRoute">Número Whatsapp</label>
+                                        <input type="text" class="form-control" id="nameActivityRoute" name="route[activityName]" value="<?= isset($company["cus_company_whatsapp"]) ? $company["cus_company_whatsapp"] : "" ?>">
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="nameActivityRoute">Facebook</label>
-                                        <input type="text" class="form-control" id="nameActivityRoute" name="route[activityName]">
+                                    <div class="col-md-6 col-sm-6 form-group">
+                                    <label for="nameActivityRoute">Municipio</label>
+                                        <select name="company[city]" id="">
+                                            <option value="null">- Seleccionar municipio</option>
+                                            <?php
+                                                if(count($cities) > 0){
+                                                    for ($i=0; $i < count($cities); $i++) { 
+                                            ?>
+                                                <option <?= ($company["cus_company_city"] == $cities[$i]["city_id"]) ? "selected" : "" ?>  value="<?= $cities[$i]["city_id"] ?>"><?= $cities[$i]["city_name"] ?></option>
+                                            <?php
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
                                     </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="nameActivityRoute">Dirección</label>
+                                        <input type="text" class="form-control" id="nameActivityRoute" name="route[activityName]" value="<?= isset($company["cus_company_address"]) ? $company["cus_company_address"] : "" ?>">
+                                    </div>
+                                    
+                                   
+                                    
                                     <div class="form-group col-md-6">
                                         <label for="nameActivityRoute">Latitud</label>
-                                        <input type="text" class="form-control" id="nameActivityRoute" name="route[activityName]">
+                                        <input type="text" class="form-control" id="nameActivityRoute" name="route[activityName]" value="<?= isset($company["cus_company_latitude"]) ? $company["cus_company_latitude"] : "" ?>">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="nameActivityRoute">Longitud</label>
-                                        <input type="text" class="form-control" id="nameActivityRoute" name="route[activityName]">
+                                        <input type="text" class="form-control" id="nameActivityRoute" name="route[activityName]" value="<?= isset($company["cus_company_longitude"]) ? $company["cus_company_longitude"] : "" ?>">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="nameActivityRoute">Descripción</label>
-                                        <textarea  class="form-control text-area-route" id="nameActivityRoute" name="route[activityName]"></textarea>
+                                        <textarea  class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" id="nameActivityRoute" name="route[activityName]"><?= isset($company["cus_company_description"]) ? $company["cus_company_description"] : "" ?></textarea>
                                     </div>
                                   
                                     <button type="submit" class="btn btn-primary">Actualizar</button>
@@ -74,53 +101,7 @@ Template Name: My account enterprising
                              </form>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-12">
-                                <div class="text-center position-relative pb-5 column-perfil-routes" >
-                                    <img src="https://img.freepik.com/vector-premium/diseno-ilustracion-vector-personaje-avatar-mujer-joven_24877-18536.jpg" alt="avatar" class="img-perfil-routes rounded-circle img-fluid" style="width: 200px;">
-                                    
-                                    <div class="justify-content-center mt-5 mb-5">
-                                        <h5 class="my-0 mb-0 h5-green">FINCA LA <br> ESTRELLA</h5>
-                                        <p class="text-muted">Buenavista</p>
-                                    </div>
-        
-                                    <div class="justify-content-center mt-5 pt-5">
-                                        <h6 class="my-0 mb-0 h5-green">MIS RUTAS</h6>
-        
-                                        <table class="table  table-borderles">
-                                            <tbody  style="background-color: #f2f2f2;">
-                                                <tr>
-                                                    <p class="text-center mt-3"><i class="fa-solid fa-circle-check fa-lg" style="color:#cfd318;"></i>  Lorem ipsum dolor sit amet, con-</p>
-                                                    <p class="text-center mt-3"><i class="fa-solid fa-circle-check fa-lg" style="color:#cfd318;"></i>  Lorem ipsum dolor sit amet, con-</p>
-                                                    <p class="text-center mt-3"><i class="fa-solid fa-circle-check fa-lg" style="color:#cfd318;"></i>  Lorem ipsum dolor sit amet, con-</p>
-                                                    <p class="text-center mt-3"><i class="fa-solid fa-circle-check fa-lg" style="color:#cfd318;"></i>  Lorem ipsum dolor sit amet, con-</p>
-                                                    <p class="text-center mt-3"><i class="fa-solid fa-circle-check fa-lg" style="color:#cfd318;"></i>  Lorem ipsum dolor sit amet, con-</p>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-            
-                                        <div class="justify-content-center mb-3">
-                                            <a href="<?php echo get_template_directory_uri() . '/create-routes'; ?>" class="btn btn-routes-primary ms-1">CREAR RUTAS</a>
-                                        </div>
-                                   </div>
-                                   <div class=" mt-3 pt-3">
-                                  
-                                   </div>
-                                   <div class=" justify-content-center mt-5 mb-5 ">
-                                        <h6 class="my-0 mb-0 h5-green">GALERÍA</h6>
-                                        <div class="text-my-perfil-route">
-                                        <p class="text-justify text-center mt-5 pt-3 ">Lorem ipsum dolor sit amet, con-
-                                        sectetuer adipiscing elit, sed diam
-                                        nonummy nibh euismod tincidunt
-                                        ut laoreet dolore magna aliquam</p>
-                                        </div>
-
-                                        <div class="justify-content-center mb-3">
-                                            <button type="button" class="btn btn-outline-primary ms-1">Actualizar</button>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                        </div>
+                        <?php include(get_theme_file_path("templates/left-profile.php")); ?>
                     </div>  
                 </div>
             </section>
