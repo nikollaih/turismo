@@ -21,6 +21,7 @@
     border: 6px solid #f2f2f2;
     width: 180px;
     height: 180px;
+    background: #f2f2f2;
 }
 
 .text-my-perfil-route{
@@ -55,7 +56,7 @@
 .btn-routes-primary{
     color: #ffffff !important;
     background-color: #eb5d11;
-    border-color: #007bff;
+    border-color: #eb5d11;
     font-family: Yanone Kaffeesatz,sans-serif;
 }
 

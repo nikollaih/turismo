@@ -8,7 +8,7 @@
         </div>
 
         <div class="justify-content-center mb-3">
-            <a href="<?php echo get_template_directory_uri() . '/create-routes'; ?>" class="btn btn-routes-primary ms-1">VER</a>
+            <a href="<?php echo get_template_directory_uri() . '/create-routes'; ?>" class="btn btn-routes-primary ms-1">ADMINISTRAR</a>
         </div>
 
         <div class="justify-content-center mt-5 pt-5">
@@ -34,16 +34,10 @@
         
         </div>
         <div class=" justify-content-center mt-5 mb-5 ">
-            <h6 class="my-0 mb-0 h5-green">GALERÍA</h6>
-            <div class="text-my-perfil-route">
-            <p class="text-justify text-center mt-5 pt-3 ">Lorem ipsum dolor sit amet, con-
-            sectetuer adipiscing elit, sed diam
-            nonummy nibh euismod tincidunt
-            ut laoreet dolore magna aliquam</p>
-            </div>
+            <h6 class="my-0 mb-3 h5-green">COLABORADORAS</h6>
 
             <div class="justify-content-center mb-3">
-                <button type="button" class="btn btn-outline-primary ms-1">Actualizar</button>
+            <a href="<?php echo home_url() . '/colaboradoras'; ?>" class="btn btn-routes-primary ms-1">ADMINISTRAR</a>
             </div>
         </div>
         

@@ -15,14 +15,12 @@ class CUS_Companies {
             $this->table_name,
             $data,
             array(
-                '%d', // id_user
                 '%s', // cus_company_name
                 '%s', // cus_company_slug
                 '%s', // cus_company_web
                 '%d', // cus_company_city
                 '%s', // cus_company_whatsapp
                 '%s', // cus_company_address
-                '%f', // cus_company_phone
                 '%f', // cus_company_latitud
                 '%f', // cus_company_longitude
                 '%s'  // cus_company_description

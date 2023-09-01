@@ -18,7 +18,6 @@ if(!$current_user)
         <div id="content" role="main">
         <div class="d-flex justify-content-center align-items-center">
             <div class="col-md-6">
-                <div class="border border-3 border-success"></div>
                 <div class="card  bg-white shadow p-5">
                     <div class="mb-4 text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="text-success" width="75" height="75"
@@ -32,7 +31,7 @@ if(!$current_user)
                         <h1>Bienvenida!</h1>
                         <p style="font-size:20px;">Su cuenta ha sido creada exitosamente. </p>
                         <a href="<?= site_url("/mi-cuenta") ?>">
-                            <button style="font-size:23px;" class="btn btn-outline-success">Perfil</button>
+                            <button style="font-size:23px;" class="btn">Perfil</button>
                         </a>
                     </div>
                 </div>
