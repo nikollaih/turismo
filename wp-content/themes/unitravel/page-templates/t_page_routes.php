@@ -3,7 +3,20 @@
 Template Name: Routes
 */
 ?>
-<?php include get_theme_file_path("page-templates/utilities.php"); ?>
+<?php 
+include get_theme_file_path("page-templates/utilities.php");
+require_once get_theme_file_path("includes/helpers/index.php");
+
+check_user_company_login();
+
+$current_user = cus_get_current_user();
+$company = cus_get_company($current_user->ID);
+
+$profile_image = get_profile_image($current_user->ID);
+$company_logo = get_company_logo($company["id_cus_company"], $company["cus_company_logo"]);
+$city = find_city($company["cus_company_city"]);
+$cities = get_all_cities();
+?>
 
 <div id="custom-page">
     <?php get_header() ?>
@@ -79,34 +92,7 @@ Template Name: Routes
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-12">
-                                <div class="text-center position-relative pb-5 column-perfil-routes" >
-                                    <img src="https://img.freepik.com/vector-premium/diseno-ilustracion-vector-personaje-avatar-mujer-joven_24877-18536.jpg" alt="avatar" class="img-perfil-routes rounded-circle img-fluid" style="width: 200px;">
-                                    
-                                    <div class="justify-content-center mt-5 mb-5">
-                                        <h5 class="my-0 mb-0 h5-green">FINCA LA <br> ESTRELLA</h5>
-                                        <p class="text-muted">Buenavista</p>
-                                        <h6 class="my-0 mb-0 h5-green">Silvia Torres</h6>
-                                        <p class="text-muted">Guía</p>
-                                    </div>
-        
-                                    <div class="justify-content-center">
-                                        <h6 class="my-0 mb-0 h5-green">Latitud</h6>
-                                        <p class="text-muted">150</p>
-                                    </div>
-                                    <div class="justify-content-center">
-                                        <h6 class="my-0 mb-0 h5-green">Longitud</h6>
-                                        <p class="text-muted">130</p>
-                                    </div>
-                                    <div class="justify-content-center">
-                                        <h6 class="my-0 mb-0 h5-green">Contacto</h6>
-                                        <p class="text-muted">+57 3112223344</p>
-                                    </div>
-                                    <div class="justify-content-center mt-3 pt-3">
-                                         <a href="<?php echo get_template_directory_uri() . '/create-routes'; ?>" class="btn btn-routes-primary ms-1">Volver a crear rutas</a>
-                                    </div>
-                                </div>
-                        </div>
+                        <?php include(get_theme_file_path("templates/left-profile.php")); ?>
                     </div>  
                 </div>
             </section>
