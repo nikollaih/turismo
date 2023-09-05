@@ -72,6 +72,10 @@
     margin-bottom: 20px;
 }
 
+.btn-secondary {
+    background-color: #4b5664 !important;
+}
+
 @media(max-width: 767px){
     .img-perfil-routes {
 	margin-top: -90;    

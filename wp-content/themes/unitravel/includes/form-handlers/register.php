@@ -15,6 +15,8 @@ if($_POST){
 
 function registerUser($user, $company) {
     $user["profile_image"] = "";
+    $user["rol"] = "emprendedora";
+    $user["permissions"] = "admin";
     global $RESPONSE_CREATE_USER_COMPANY;
     // Crear una instancia de la clase
     $users = new CUS_Users();
@@ -54,28 +56,6 @@ function registerCompany($user_id, $company) {
     return $company_id;
 }
 
-function registerUserMeta($user_id, $user, $company_id){
-    $user_meta = new CUS_UserMeta();
-    $user_meta_capabilities = $user_meta->get_usermeta_by_key($user_id, "wp_capabilities");
-
-    $data_update = array("user_id" => $user_id, "meta_key" => "wp_capabilities", "meta_value" => serialize(["emprendedora"]));
-    $updated_user_meta = $user_meta->update_usermeta($data_update);
-
-    $data_update = array("user_id" => $user_id, "meta_key" => "wp_profile_image", "meta_value" => $user["profile_image"]);
-    $updated_user_meta = $user_meta->update_usermeta($data_update);
-
-    $data_add = array("user_id" => $user_id, "meta_key" => "document_number", "meta_value" => $user["document"]);
-    $saved_user_meta = $user_meta->insert_usermeta($data_add);
-
-    $data_add = array("user_id" => $user_id, "meta_key" => "user_company_id", "meta_value" => $company_id);
-    $saved_user_meta = $user_meta->insert_usermeta($data_add);
-
-    $data_add = array("user_id" => $user_id, "meta_key" => "user_company_permissions", "meta_value" => "admin");
-    $saved_user_meta = $user_meta->insert_usermeta($data_add);
-
-    do_login($user["email"], $user["pass"], "registro-exitoso");
-}
-
 function validateNewUserCompany($user, $company_data){
     $users = new CUS_Users();
     $user_meta = new CUS_UserMeta();
@@ -90,21 +70,6 @@ function validateNewUserCompany($user, $company_data){
     return array('field' => 'pass', 'message' => "Las contraseñas no coinciden.", "status" => false);
 
     return array("status" => true);
-}
-
-function getFormatedUserArray($user){
-    // Datos del nuevo usuario
-    return array(
-        'user_login' => $user["email"],
-        'user_login' => $user["document"],
-        'user_pass' => $user["pass"],
-        'user_nicename' => $user["fullname"],
-        'user_email' => $user["email"],
-        'user_url' => "",
-        'user_activation_key' => '',
-        'user_status' => 1,
-        'display_name' => $user["fullname"]
-    );
 }
 
 function getFormatedCompanyArray($id_user, $company){
