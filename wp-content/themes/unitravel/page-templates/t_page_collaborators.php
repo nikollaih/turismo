@@ -2,10 +2,13 @@
 /*
 Template Name: Collaborators
 */
+    include get_theme_file_path("page-templates/utilities.php");
+    include get_theme_file_path("page-templates/current_user_company_data.php");
 
-include get_theme_file_path("page-templates/utilities.php");
-include get_theme_file_path("page-templates/current_user_company_data.php");
-$collaborators = get_company_collaborators($company["id_cus_company"]);
+    // Obtiene la lista de colaboradoras del sitio
+    $collaborators = get_company_collaborators($company["id_cus_company"]);
+    // Obtiene la session falsh en caso de que se haya creado una nueva colaboradora
+    $success_message = get_flash_message('success_message');
 ?>
 
 <div id="custom-page">
@@ -18,6 +21,15 @@ $collaborators = get_company_collaborators($company["id_cus_company"]);
                         <div class="col-md-12 col-sm-12">
                             <h3 class="text-center mt-0 "><?= $company["cus_company_name"] ?></h3>
                             <h5 class="text-center mt-0 h5-orange-list-routes">colaboradoras</h5>
+                            <dic class="row">
+                                <div class="col-md-12">
+                                    <?php
+                                        if (!empty($success_message)) {
+                                            echo '<div class="alert alert-success" role="alert">' . esc_html($success_message) . '</div>';
+                                        }
+                                    ?>
+                                </div>
+                            </dic>
                             <div class="row">
                                 <div class="col">
                                     <a href="<?= home_url() ?>/mi-cuenta">
@@ -25,11 +37,17 @@ $collaborators = get_company_collaborators($company["id_cus_company"]);
                                     </a>
                                     
                                 </div>
-                                <div class="col text-right">
-                                    <a href="<?= home_url() ?>/agregar-colaboradora">
-                                        <button class="btn mb-2"><i class="fa-solid fa-plus mr-2"></i>Agregar Colaboradora</button>
-                                    </a>
-                                </div>
+                                <?php
+                                    if(check_is_admin($current_user)){
+                                        ?>
+                                        <div class="col text-right">
+                                            <a href="<?= home_url() ?>/agregar-colaboradora">
+                                                <button class="btn mb-2"><i class="fa-solid fa-plus mr-2"></i>Agregar Colaboradora</button>
+                                            </a>
+                                        </div>
+                                        <?php
+                                    }
+                                ?>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
@@ -38,6 +56,7 @@ $collaborators = get_company_collaborators($company["id_cus_company"]);
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
+                                            <th scope="col"></th>
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Correo electrónico</th>
                                             <th scope="col">Rol</th>
@@ -49,18 +68,29 @@ $collaborators = get_company_collaborators($company["id_cus_company"]);
                                                 for ($i=1; $i < count($collaborators) + 1; $i++) { 
                                                     $collaborator = $collaborators[$i-1];
                                                     ?>
-                                                        <tr>
+                                                        <tr id="<?= $collaborator["ID"] ?>">
                                                             <th scope="row"><?= $i ?></th>
+                                                            <td><img src="<?= get_profile_image($collaborator["ID"]) ?>" alt="" srcset="" style="width:50px;height:50px;border-radius:50%;"></td>
                                                             <td><?= $collaborator["display_name"] ?></td>
                                                             <td><?= $collaborator["user_email"] ?></td>
                                                             <td>
-                                                                <select name="" id="">
-                                                                    <option <?= ($collaborator["user_company_permissions"] == "admin") ? "selected" : ""  ?> value="admin">Administrador</option>
-                                                                    <?php
-                                                                        if(count($collaborators) > 1) { ?>
-                                                                    <option <?= ($collaborator["user_company_permissions"] == "collaborator") ? "selected" : ""  ?> value="collaborator">Colaboradora</option>
-                                                                        <?php } ?>
-                                                                </select>
+                                                                <?php
+                                                                    if(check_is_admin($current_user)){
+                                                                        ?>
+                                                                        <select name="" id="" class="collaborator-select">
+                                                                            <option <?= ($collaborator["user_company_permissions"] == "admin") ? "selected" : ""  ?> value="admin">Administradora</option>
+                                                                            <?php
+                                                                                if(count($collaborators) > 1) { ?>
+                                                                            <option <?= ($collaborator["user_company_permissions"] == "collaborator") ? "selected" : ""  ?> value="collaborator">Colaboradora</option>
+                                                                                <?php } ?>
+                                                                        </select>
+                                                                        <?php
+                                                                    }
+                                                                    else {
+                                                                        echo ($collaborator["user_company_permissions"] == "admin") ? "Administradora" : "Colaboradora";
+                                                                    }
+                                                                ?>
+                                                                
                                                             </td>
                                                         </tr>
                                                     <?php
