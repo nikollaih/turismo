@@ -74,8 +74,8 @@ include get_theme_file_path("includes/form-handlers/add_collaborator.php");
                                              </div>
                                           </div>
                                        </div>
-                                       <button type="button" class="btn btn-dark btn-lg"
-                                          data-mdb-ripple-color="dark">Cancelar</button>
+                                          <button onclick="window.history.back();" type="button" class="btn btn-dark btn-lg"
+                                             data-mdb-ripple-color="dark">Cancelar</button>
                                        <button type="submit" class="btn btn-light btn-lg"
                                           data-mdb-ripple-color="dark">Continuar</button>
                                     </div>

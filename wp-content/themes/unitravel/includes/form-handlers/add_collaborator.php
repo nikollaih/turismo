@@ -27,13 +27,16 @@ function registerUser($user) {
 
         // Insertar el nuevo usuario
         $user_id = $users->insert_user($new_user);
-        if ($user_id) {
+        if ($user_id) { 
             if(isset($_FILES["profile"])){
                 $profile_image = load_profile_image($_FILES["profile"], $user_id);
                 $user["profile_image"] = $profile_image;
             }
 
             registerUserMeta($user_id, $user, $user["company_id"], false);
+            // En el controlador del formulario o en el lugar donde procesas el formulario con éxito.
+            set_flash_message('success_message', '¡Colaboradora creada exitosamente!');
+            header("Location: ".home_url()."/colaboradoras");
         }
     }
     else {

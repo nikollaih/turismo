@@ -1,7 +1,7 @@
 <?php
 require_once(ABSPATH . 'wp-blog-header.php');
 
-function do_login($user, $password, $redirectTo = "perfil"){
+function do_login($user, $password, $redirectTo = "mi-cuenta"){
     $credentials = array(
         'user_login'    => $user,
         'user_password' => $password,
@@ -42,4 +42,8 @@ function check_user_company_login(){
         wp_redirect(site_url());
         exit;
     }
+}
+
+function check_is_admin($current_user){
+    return ($current_user->company_permissions == "admin");
 }
