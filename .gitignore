@@ -5,3 +5,4 @@ composer.lock
 
 /vendor
 wp-content/uploads
+wp-content/plugins

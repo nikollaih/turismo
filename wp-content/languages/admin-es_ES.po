@@ -5760,7 +5760,7 @@ msgstr "Enviar petición"
 
 #: wp-admin/erase-personal-data.php:119 wp-admin/export-personal-data.php:119
 msgid "Username or email address"
-msgstr "Nombre de usuario o correo electrónico"
+msgstr "Número de cedula o correo electrónico"
 
 #: wp-admin/export-personal-data.php:114
 msgid "Add Data Export Request"

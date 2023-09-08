@@ -16,13 +16,14 @@ if($current_user){
         // Determina si es posible actualizar un rol
         if($collaborators->check_if_possible_collaborator($_POST["user_id"])){
             // Actualizar el metadato del usuario
-            $updated = update_user_meta($_POST["user_id"], "user_company_permissions", $_POST["new_role"]);
+            update_user_meta($_POST["user_id"], "user_company_id", "0");
+            $updated = update_user_meta($_POST["user_id"], "user_company_permissions", "unassigned");
             if($updated)
-                echo json_encode(array("status" => true, "message" => "Rol actualizado correctamente!"));
+                echo json_encode(array("status" => true, "message" => "Colaborador eliminado exitosamente!"));
             else
-                echo json_encode(array("status" => false, "message" => "No ha sido posible actualizar el rol"));
+                echo json_encode(array("status" => false, "message" => "No ha sido posible eliminar el usuario"));
         }
-        else echo json_encode(array("status" => false, "message" => "No es posible cambiar el rol a este usuario, es necesario mantener por lo menos una persona con el rol de administrador."));
+        else echo json_encode(array("status" => false, "message" => "No es posible eliminar a este usuario, es necesario mantener por lo menos una persona con el rol de administrador."));
     }
     else echo json_encode(array("status" => false, "message" => "No se ha recibido ningún dato"));
 }

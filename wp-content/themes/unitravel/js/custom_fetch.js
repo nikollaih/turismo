@@ -14,7 +14,6 @@ function jsonToFormData(json) {
     const formData = new FormData();
   
     for (const key in json) {
-        console.log(key)
       if (json.hasOwnProperty(key)) {
         formData.append(key, json[key]);
       }

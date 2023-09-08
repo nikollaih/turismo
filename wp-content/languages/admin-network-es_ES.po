@@ -1428,7 +1428,7 @@ msgstr "Permitir nuevos registros"
 
 #: wp-admin/network/site-users.php:268
 msgid "Duplicated username or email address."
-msgstr "Nombre de usuario o correo electrónico duplicado."
+msgstr "Número de cedula o correo electrónico duplicado."
 
 #: wp-admin/network/user-new.php:41
 msgid "Cannot create an empty user."

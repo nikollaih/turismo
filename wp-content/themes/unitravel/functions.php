@@ -10,14 +10,25 @@
 require_once get_template_directory() . '/includes/helpers/index.php';
 
 function cargar_archivo_js_del_tema() {
+	wp_enqueue_style('sweetalert2-css', get_template_directory_uri() . '/css/sweetalert2.min.css');
     wp_enqueue_script('register-page', get_template_directory_uri() . '/js/pages/register.js', array('jquery'), '1.0', true);
 	wp_enqueue_script('collaborators-page', get_template_directory_uri() . '/js/pages/collaborators.js', array('jquery'), '1.0', true);
+	wp_enqueue_script('sweetalert2-js', get_template_directory_uri() . '/js/sweetalert2.min.js', array('jquery'), '1.0', true);
 	wp_enqueue_script('custom-fetch', get_template_directory_uri() . '/js/custom_fetch.js', array('jquery'), '1.0', true);
 	wp_localize_script('custom-fetch', 'customFetch', array(
         'home_url' => home_url(),
     ));
 }
 add_action('wp_enqueue_scripts', 'cargar_archivo_js_del_tema');
+
+// Cambiar texto de formulario de login
+function cambiar_label_form_inicio_sesion( $translated_text, $text, $domain ) {
+    if ($text === 'Username or Email Address') { // Cambia este texto al que desees cambiar
+        $translated_text = 'Documento ó correo electrónico';
+    }
+    return $translated_text;
+}
+add_filter( 'gettext', 'cambiar_label_form_inicio_sesion', 20, 3 );
 
 if (!defined("UNITRAVEL_THEME_DIR")) define("UNITRAVEL_THEME_DIR", trailingslashit( get_template_directory() ));
 if (!defined("UNITRAVEL_CHILD_DIR")) define("UNITRAVEL_CHILD_DIR", trailingslashit( get_stylesheet_directory() ));

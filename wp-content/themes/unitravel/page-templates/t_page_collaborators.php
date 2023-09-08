@@ -42,7 +42,7 @@ Template Name: Collaborators
                                         ?>
                                         <div class="col text-right">
                                             <a href="<?= home_url() ?>/agregar-colaboradora">
-                                                <button class="btn mb-2"><i class="fa-solid fa-plus mr-2"></i>Agregar Colaboradora</button>
+                                                <button class="btn btn-primary mb-2"><i class="fa-solid fa-plus mr-2"></i>Agregar Colaboradora</button>
                                             </a>
                                         </div>
                                         <?php
@@ -60,6 +60,13 @@ Template Name: Collaborators
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Correo electrónico</th>
                                             <th scope="col">Rol</th>
+                                            <?php
+                                                if(check_is_admin($current_user)){
+                                                    ?>
+                                                        <th scope="col"></th>
+                                                    <?php
+                                                }
+                                            ?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -88,6 +95,16 @@ Template Name: Collaborators
                                                                     }
                                                                     else {
                                                                         echo ($collaborator["user_company_permissions"] == "admin") ? "Administradora" : "Colaboradora";
+                                                                    }
+                                                                ?>
+                                                                
+                                                            </td>
+                                                            <td>
+                                                                <?php
+                                                                    if(check_is_admin($current_user)){
+                                                                        ?>
+                                                                        <button user_id="<?= $collaborator["ID"] ?>" class="btn btn-danger collaborator-delete">Eliminar</button>
+                                                                        <?php
                                                                     }
                                                                 ?>
                                                                 
