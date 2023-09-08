@@ -76,10 +76,11 @@
                                  </div>
                                  <div class="col-lg-12 bg-indigo">
                                     <div class="p-5">
-                                       <h3 class="fw-normal mb-5 no-top text-center">Información del emprendimiento</h3>
+                                       <h3 class="fw-normal mb-5 no-top text-center">Información de la finca</h3>
                                        <div class="row">
                                           <div class="col-md-12">
                                              <div class="form-group text-center">
+                                                   <label for=""><i class="fa-regular fa-pen-to-square"></i> Seleccionar imagen de finca</label><br>
                                                    <label for="logo-image" style="cursor: pointer;">
                                                       <img id="logo-preview" src="https://www.globalterramaps.com/images/AGLCA/HistoricSite.png" alt="Vista previa de la imagen" class="img-thumbnail custom-image-profile">
                                                    </label>
@@ -148,7 +149,7 @@
                                        </div>
                                        <button type="button" class="btn btn-dark btn-lg"
                                           data-mdb-ripple-color="dark">Cancelar</button>
-                                       <button type="submit" class="btn btn-light btn-lg"
+                                       <button type="submit" class="btn btn-primary btn-lg"
                                           data-mdb-ripple-color="dark">Continuar</button>
                                     </div>
                                  </div>

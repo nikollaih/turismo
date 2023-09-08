@@ -10765,7 +10765,7 @@ msgstr "Anteriores"
 
 #: wp-includes/general-template.php:523 wp-login.php:844 wp-login.php:1427
 msgid "Username or Email Address"
-msgstr "Nombre de usuario o correo electrónico"
+msgstr "Número de cedula o correo electrónico"
 
 #. translators: %s: "Search WordPress.org themes" button text.
 #: wp-includes/customize/class-wp-customize-themes-section.php:102

@@ -26849,7 +26849,7 @@ msgstr "Recuérdame"
 #: templates/global/form-login.php:34
 #: templates/myaccount/form-lost-password.php:28
 msgid "Username or email"
-msgstr "Nombre de usuario o correo electrónico"
+msgstr "Número de cedula o correo electrónico"
 
 #. translators: %s: Order link.
 #: templates/emails/plain/email-order-details.php:51
@@ -27060,7 +27060,7 @@ msgstr "Contraseña"
 
 #: templates/auth/form-login.php:40 templates/myaccount/form-login.php:39
 msgid "Username or email address"
-msgstr "Nombre de usuario o correo electrónico"
+msgstr "Número de cedula o correo electrónico"
 
 #. translators: %1$s: app name, %2$s: URL
 #: templates/auth/form-login.php:34
