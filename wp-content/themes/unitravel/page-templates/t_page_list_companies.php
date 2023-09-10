@@ -5,7 +5,6 @@ Template Name: List Companies
 ?>
 <?php 
 include get_theme_file_path("page-templates/utilities.php");
-include get_theme_file_path("page-templates/current_user_company_data.php"); 
 
 $companies_all = cus_get_companies_all($_GET['city']);
 
@@ -44,7 +43,7 @@ if (!empty($city_banner_img['img_city'])) {
                                                 <figure class="wpb_wrapper vc_figure">
                                                     <a href="filandia/" target="_blank" class="vc_single_image-wrapper   vc_box_border_grey">
                                                         <img width="1024" height="576" 
-                                                        src="<?= $company_logo ?>" 
+                                                        src="<?= get_company_logo($companies['id_cus_company'],$companies['cus_company_logo'])?>" 
                                                         class="vc_single_image-img attachment-large" alt="" decoding="async" loading="lazy" 
                                                         title="finca-hotel-el-palmar-23"
                                                         sizes="(max-width: 1024px) 100vw, 1024px"></a>
@@ -53,7 +52,7 @@ if (!empty($city_banner_img['img_city'])) {
                                             <div id="text-ventures" class=" p-3 sc_title sc_title_default m ">
                                                 <h6 style="color:#333333;"
                                                 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default sc_item_title_tag">
-                                                <?= $companies["cus_company_name"] ?></h6>
+                                                <?= $companies['cus_company_name'] ?></h6>
                                                 <div class="sc_item_descr sc_title_descr sc_align_center sc_item_title_style_default">
                                                <?= $companies['cus_company_description']?>
                                                 </div>
