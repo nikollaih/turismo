@@ -1,4 +1,6 @@
 <?php
+require_once get_template_directory().'/includes/custom-clases/CUS_Collaborators.php';
+
 class CUS_Controller_Collaborators {
     private $collaborators;
 
@@ -16,10 +18,21 @@ class CUS_Controller_Collaborators {
             }
         }
 
-        if (count($administrators) == 1 && $administrators[0] == $user_id) return false; else return true;
+        if ((count($administrators) == 1 && $administrators[0] == $user_id) || ($this->collaborators != false && count($this->collaborators) == 1)) return false; else return true;
     }
 
     public function set_collaborators($collaborators) {
         $this->collaborators = $collaborators;
+    }
+
+    public function get_collaborators($company_id){
+        $collaborators_model = new CUS_Collaborators();
+        $collaborators = $collaborators_model->get_all($company_id);
+
+        for ($i=0; $i < count($collaborators); $i++) { 
+            $collaborators[$i]["phone_number"] = get_user_meta($collaborators[$i]["ID"], "phone_number", true);
+        }
+
+        return $collaborators;
     }
 }

@@ -57,10 +57,10 @@
     }
 
     function get_company_logo($company_id, $file){
-        $company_logo = "";
+        $company_logo = "https://www.globalterramaps.com/images/AGLCA/HistoricSite.png";
         if(company_file_exists($company_id, $file) && $file){
             $upload_dir = wp_upload_dir();
-            $company_logo = $upload_dir['basedir'] . '/companies/' . $company_id . '/' . $file;
+            $company_logo = $upload_dir['baseurl'] . '/companies/' . $company_id . '/' . $file;
         }
 
         return $company_logo;

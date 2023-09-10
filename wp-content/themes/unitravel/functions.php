@@ -30,6 +30,12 @@ function cambiar_label_form_inicio_sesion( $translated_text, $text, $domain ) {
 }
 add_filter( 'gettext', 'cambiar_label_form_inicio_sesion', 20, 3 );
 
+// Cambiar enlace de "Has olvidado tu contraseña"
+function cambiar_enlace_recuperar_contrasena() {
+    return home_url()."/wp-login.php?action=lostpassword"; // Reemplaza con tu nueva URL
+}
+add_filter('lostpassword_url', 'cambiar_enlace_recuperar_contrasena');
+
 if (!defined("UNITRAVEL_THEME_DIR")) define("UNITRAVEL_THEME_DIR", trailingslashit( get_template_directory() ));
 if (!defined("UNITRAVEL_CHILD_DIR")) define("UNITRAVEL_CHILD_DIR", trailingslashit( get_stylesheet_directory() ));
 

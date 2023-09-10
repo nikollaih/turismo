@@ -4,9 +4,11 @@ Template Name: Collaborators
 */
     include get_theme_file_path("page-templates/utilities.php");
     include get_theme_file_path("page-templates/current_user_company_data.php");
+    require_once get_theme_file_path("includes/custom-clases/controllers/CUS_Controller_Collaborators.php");
 
     // Obtiene la lista de colaboradoras del sitio
-    $collaborators = get_company_collaborators($company["id_cus_company"]);
+    $collaborators = new CUS_Controller_Collaborators();
+    $collaborators_list = $collaborators->get_collaborators($company["id_cus_company"]);
     // Obtiene la session falsh en caso de que se haya creado una nueva colaboradora
     $success_message = get_flash_message('success_message');
 ?>
@@ -58,6 +60,7 @@ Template Name: Collaborators
                                             <th scope="col">#</th>
                                             <th scope="col"></th>
                                             <th scope="col">Nombre</th>
+                                            <th scope="col">Teléfono</th>
                                             <th scope="col">Correo electrónico</th>
                                             <th scope="col">Rol</th>
                                             <?php
@@ -71,14 +74,15 @@ Template Name: Collaborators
                                     </thead>
                                     <tbody>
                                         <?php
-                                            if(count($collaborators) > 0){
-                                                for ($i=1; $i < count($collaborators) + 1; $i++) { 
-                                                    $collaborator = $collaborators[$i-1];
+                                            if(count($collaborators_list) > 0){
+                                                for ($i=1; $i < count($collaborators_list) + 1; $i++) { 
+                                                    $collaborator = $collaborators_list[$i-1];
                                                     ?>
                                                         <tr id="<?= $collaborator["ID"] ?>">
                                                             <th scope="row"><?= $i ?></th>
                                                             <td><img src="<?= get_profile_image($collaborator["ID"]) ?>" alt="" srcset="" style="width:50px;height:50px;border-radius:50%;"></td>
                                                             <td><?= $collaborator["display_name"] ?></td>
+                                                            <td><?= $collaborator["phone_number"] ?></td>
                                                             <td><?= $collaborator["user_email"] ?></td>
                                                             <td>
                                                                 <?php
@@ -87,7 +91,7 @@ Template Name: Collaborators
                                                                         <select name="" id="" class="collaborator-select">
                                                                             <option <?= ($collaborator["user_company_permissions"] == "admin") ? "selected" : ""  ?> value="admin">Administradora</option>
                                                                             <?php
-                                                                                if(count($collaborators) > 1) { ?>
+                                                                                if(count($collaborators_list) > 1) { ?>
                                                                             <option <?= ($collaborator["user_company_permissions"] == "collaborator") ? "selected" : ""  ?> value="collaborator">Colaboradora</option>
                                                                                 <?php } ?>
                                                                         </select>

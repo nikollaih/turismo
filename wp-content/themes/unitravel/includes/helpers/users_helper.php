@@ -27,6 +27,9 @@ function registerUserMeta($user_id, $user, $company_id, $do_login = true){
     $data_add = array("user_id" => $user_id, "meta_key" => "document_number", "meta_value" => $user["document"]);
     $saved_user_meta = $user_meta->insert_usermeta($data_add);
 
+    $data_add = array("user_id" => $user_id, "meta_key" => "phone_number", "meta_value" => $user["phone_number"]);
+    $saved_user_meta = $user_meta->insert_usermeta($data_add);
+
     $data_add = array("user_id" => $user_id, "meta_key" => "user_company_id", "meta_value" => $company_id);
     $saved_user_meta = $user_meta->insert_usermeta($data_add);
 

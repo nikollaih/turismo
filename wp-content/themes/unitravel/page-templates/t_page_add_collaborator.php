@@ -48,7 +48,16 @@ include get_theme_file_path("includes/form-handlers/add_collaborator.php");
                                                 <input required placeholder="" name="user[fullname]" type="text" id="fullname" class="form-control form-control-lg" value="<?= (isset($FORM_DATA["user"]["fullname"]) ? $FORM_DATA["user"]["fullname"] : "") ?>" />
                                              </div>
                                           </div>
-                                          <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
+                                          <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
+                                             <div class="form-outline form-white">
+                                                <label for="nameActivityRoute">Teléfono <b class="text-danger">*</b></label>
+                                                <input minlength="7" required placeholder="" name="user[phone_number]" type="number" id="phone_number" class="form-control form-control-lg" value="<?= (isset($FORM_DATA["user"]["phone_number"]) ? $FORM_DATA["user"]["phone_number"] : "") ?>" />
+                                                <?php if(isset($RESPONSE_CREATE_USER["status"]) && $RESPONSE_CREATE_USER["status"] == false && $RESPONSE_CREATE_USER["field"] == "phone_number"){
+                                                   echo "<span class='cus_error_field'>".$RESPONSE_CREATE_USER["message"]."<span/>";
+                                                }?>
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
                                                 <label for="nameActivityRoute">Correo electrónico <b class="text-danger">*</b></label>
                                                 <input minlength="8" required placeholder="" name="user[email]" type="email" id="email" class="form-control form-control-lg" value="<?= (isset($FORM_DATA["user"]["email"]) ? $FORM_DATA["user"]["email"] : "") ?>" />
@@ -59,7 +68,7 @@ include get_theme_file_path("includes/form-handlers/add_collaborator.php");
                                           </div>
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                                <label for="nameActivityRoute">Contraseña <b class="text-danger">*</b></label>
+                                                <label for="nameActivityRoute">Contraseña (Minimo 8 caracteres) <b class="text-danger">*</b></label>
                                                 <input minlength="8" required placeholder="" name="user[pass]" type="password" id="pass" class="form-control form-control-lg" value="<?= (isset($FORM_DATA["user"]["pass"]) ? $FORM_DATA["user"]["pass"] : "") ?>"/>
                                                 <?php if(isset($RESPONSE_CREATE_USER["status"]) && $RESPONSE_CREATE_USER["status"] == false && $RESPONSE_CREATE_USER["field"] == "pass"){
                                                    echo "<span class='cus_error_field'>".$RESPONSE_CREATE_USER["message"]."<span/>";
@@ -76,7 +85,7 @@ include get_theme_file_path("includes/form-handlers/add_collaborator.php");
                                        </div>
                                           <button onclick="window.history.back();" type="button" class="btn btn-dark btn-lg"
                                              data-mdb-ripple-color="dark">Cancelar</button>
-                                       <button type="submit" class="btn btn-light btn-lg"
+                                       <button type="submit" class="btn btn-primary btn-lg"
                                           data-mdb-ripple-color="dark">Continuar</button>
                                     </div>
                                  </div>
