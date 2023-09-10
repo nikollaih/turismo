@@ -31,7 +31,7 @@ if(!$current_user)
                         <h1>Bienvenida!</h1>
                         <p style="font-size:20px;">Su cuenta ha sido creada exitosamente. </p>
                         <a href="<?= site_url("/mi-cuenta") ?>">
-                            <button style="font-size:23px;" class="btn">Perfil</button>
+                            <button style="font-size:23px;" class="btn btn-primary">Perfil</button>
                         </a>
                     </div>
                 </div>

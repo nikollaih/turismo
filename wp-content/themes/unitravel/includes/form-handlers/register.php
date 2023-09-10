@@ -1,5 +1,6 @@
 <?php
 require_once get_theme_file_path("includes/custom-clases/CUS_Companies.php");
+require_once get_theme_file_path("includes/custom-clases/controllers/CUS_Controller_Company.php");
 require_once get_theme_file_path("includes/custom-clases/CUS_Users.php");
 require_once get_theme_file_path("includes/custom-clases/CUS_UserMeta.php");
 
@@ -32,7 +33,7 @@ function registerUser($user, $company) {
                 $user["profile_image"] = $profile_image;
             }
             
-            $company_id = registerCompany($user_id, $company);
+            $company_id = registerCompany($company);
             registerUserMeta($user_id, $user, $company_id);
         } else {
             echo 'Error al agregar el usuario.';
@@ -43,9 +44,10 @@ function registerUser($user, $company) {
     }
 }
 
-function registerCompany($user_id, $company) {
+function registerCompany($company) {
     $company_class = new CUS_Companies();
-    $new_company = getFormatedCompanyArray($user_id, $company);
+    $company_controller_class = new CUS_Controller_Company();
+    $new_company = $company_controller_class->getFormatedCompanyArray($company);
     $company_id = $company_class->insert_company($new_company);
 
     if(isset($_FILES["logo"])){
@@ -72,20 +74,4 @@ function validateNewUserCompany($user, $company_data){
     return array("status" => true);
 }
 
-function getFormatedCompanyArray($id_user, $company){
-    $company_class = new CUS_Companies();
-
-    // Datos del nuevo emprendimiento
-    return array(
-        'cus_company_name' => $company["name"],
-        'cus_company_slug' => $company_class->generateSlug($company["name"]),
-        'cus_company_web' => $company["web"],
-        'cus_company_city' => $company["city"],
-        'cus_company_whatsapp' => $company["whatsapp"],
-        'cus_company_address' => $company["address"],
-        'cus_company_latitude' => $company["latitude"],
-        'cus_company_longitude' => $company["longitude"],
-        'cus_company_description' => $company["description"]
-    );
-}
 ?>

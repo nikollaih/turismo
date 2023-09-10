@@ -27,21 +27,10 @@ class CUS_Users {
     public function update_user($id, $data) {
         global $wpdb;
 
-        $wpdb->update(
+        return $wpdb->update(
             $this->table_name,
             $data,
-            array('ID' => $id),
-            array(
-                '%s', // user_login
-                '%s', // user_pass
-                '%s', // user_nicename
-                '%s', // user_email
-                '%s', // user_url
-                '%s', // user_activation_key
-                '%d', // user_status
-                '%s'  // display_name
-            ),
-            array('%d') // ID data type
+            array('ID' => $id)
         );
     }
 

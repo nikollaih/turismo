@@ -118,6 +118,18 @@ div:where(.swal2-container) h2:where(.swal2-title) {
     background-color: #4b5664 !important;
 }
 
+.show-password {
+    position: absolute;
+    right: 25px;
+    top: 16px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.password-container {
+    position: relative;
+}
+
 @media(max-width: 767px){
     .img-perfil-routes {
 	margin-top: -90;    
