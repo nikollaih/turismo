@@ -28,6 +28,10 @@ if (!empty($city_banner_img['img_city'])) {
                     <div class="row content-profile-one">
                         <div class="col-md-12 col-sm-12">
                             <div class="row">
+                               <?php
+                               $contador = 0;
+                               foreach($companies_all as $companies){
+                               ?> 
                                 <div class="col-md-4 col-sm-12">
                                     <div class="mt-5">
                                         <div class="wpb_wrapper" style="background-color: #f6f7e6; border-radius: 0px 0px 30px 30px;">
@@ -52,6 +56,11 @@ if (!empty($city_banner_img['img_city'])) {
                                         </div>
                                     </div>
                                 </div>
+                               
+                                 <?php
+
+                            }
+                                ?>
                             </div>
                         </div>
                     </div>  
