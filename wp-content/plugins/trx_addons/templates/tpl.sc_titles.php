@@ -1,9 +1,3 @@
-<style>
-	.historys-home{
-		color: #ffffff !important;
-		margin-top: -130px;
-	}
-</style>
 <?php
 /**
  * The template to display shortcode's title, subtitle and description
