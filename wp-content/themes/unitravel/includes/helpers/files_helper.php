@@ -20,7 +20,7 @@
 
     function load_profile_image($file, $user_id) {
         if (isset($file['name']) && $user_id) {
-            $name = 'profile_image.'.get_file_extension($file); // Define el nombre del archivo
+            $name = microtime(true).".".get_file_extension($file); // Define el nombre del archivo
             $upload_dir = wp_upload_dir(); // Obtiene la ruta y la URL de la carpeta de subida
             $perfil_folder = trailingslashit($upload_dir['basedir'] . '/profiles/' . $user_id); // Ruta completa de la carpeta de perfil
             return load_file($file, $perfil_folder, $name);
@@ -30,7 +30,7 @@
 
     function load_company_image($file, $company_id) {
         if (isset($file['name']) && $company_id) {
-            $name = 'logo_image.'.get_file_extension($file); // Define el nombre del archivo
+            $name = microtime(true).".".get_file_extension($file); // Define el nombre del archivo
             $upload_dir = wp_upload_dir(); // Obtiene la ruta y la URL de la carpeta de subida
             $perfil_folder = trailingslashit($upload_dir['basedir'] . '/companies/' . $company_id); // Ruta completa de la carpeta de perfil
             return load_file($file, $perfil_folder, $name);
