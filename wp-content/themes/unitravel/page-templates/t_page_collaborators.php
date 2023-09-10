@@ -103,16 +103,15 @@ Template Name: Collaborators
                                                                 ?>
                                                                 
                                                             </td>
-                                                            <td>
                                                                 <?php
                                                                     if(check_is_admin($current_user)){
                                                                         ?>
-                                                                        <button user_id="<?= $collaborator["ID"] ?>" class="btn btn-danger collaborator-delete">Eliminar</button>
+                                                                        <td>
+                                                                            <button user_id="<?= $collaborator["ID"] ?>" class="btn btn-danger collaborator-delete">Eliminar</button>
+                                                                        </td>
                                                                         <?php
                                                                     }
                                                                 ?>
-                                                                
-                                                            </td>
                                                         </tr>
                                                     <?php
                                                 }
