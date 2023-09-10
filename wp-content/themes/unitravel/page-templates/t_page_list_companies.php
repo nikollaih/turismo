@@ -42,7 +42,7 @@ if (!empty($city_banner_img['img_city'])) {
                                             <div class="wpb_single_image wpb_content_element vc_align_center">	
                                                 <figure class="wpb_wrapper vc_figure">
                                                     <a href="filandia/" target="_blank" class="vc_single_image-wrapper   vc_box_border_grey">
-                                                        <img width="1024" height="576" 
+                                                        <img style="height: 200px; width: auto;"
                                                         src="<?= get_company_logo($companies['id_cus_company'],$companies['cus_company_logo'])?>" 
                                                         class="vc_single_image-img attachment-large" alt="" decoding="async" loading="lazy" 
                                                         title="finca-hotel-el-palmar-23"
@@ -54,7 +54,7 @@ if (!empty($city_banner_img['img_city'])) {
                                                 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default sc_item_title_tag">
                                                 <?= $companies['cus_company_name'] ?></h6>
                                                 <div class="sc_item_descr sc_title_descr sc_align_center sc_item_title_style_default">
-                                               <?= $companies['cus_company_description']?>
+                                               <?= $companies['cus_company_short_description']?>
                                                 </div>
                                             </div><!-- /.sc_title -->
                                         </div>
