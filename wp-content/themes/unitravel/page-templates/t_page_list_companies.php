@@ -44,7 +44,7 @@ if (!empty($city_banner_img['img_city'])) {
                                                 <figure class="wpb_wrapper vc_figure">
                                                     <a href="filandia/" target="_blank" class="vc_single_image-wrapper   vc_box_border_grey">
                                                         <img width="1024" height="576" 
-                                                        src="https://redesystemco.com/turismo/wp-content/uploads/2023/09/finca-hotel-el-palmar-23.jpg" 
+                                                        src="<?= $company_logo ?>" 
                                                         class="vc_single_image-img attachment-large" alt="" decoding="async" loading="lazy" 
                                                         title="finca-hotel-el-palmar-23"
                                                         sizes="(max-width: 1024px) 100vw, 1024px"></a>
