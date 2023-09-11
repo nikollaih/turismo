@@ -12,7 +12,7 @@ $companies_all = cus_get_companies_all($_GET['city']);
 $city_banner_img =  find_city($_GET['city']);
 
 if (!empty($city_banner_img['img_city'])) {
-    $css = '.page-id-1505 .vc_custom_1693159376634 {
+    $css = '.page-id-1506 .vc_custom_1693159376634 {
         background-image: url(' . esc_url($city_banner_img['img_city']) . ') !important;
     }';
     echo '<style>' . $css . '</style>';
