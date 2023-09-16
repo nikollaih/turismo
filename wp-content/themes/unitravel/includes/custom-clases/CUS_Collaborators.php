@@ -1,6 +1,7 @@
 <?php
 class CUS_Collaborators {
     private $table_name;
+    private $table_usermeta;
 
     public function __construct() {
         global $wpdb;

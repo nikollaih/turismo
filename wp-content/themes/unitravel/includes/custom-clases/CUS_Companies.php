@@ -13,18 +13,7 @@ class CUS_Companies {
 
         $wpdb->insert(
             $this->table_name,
-            $data,
-            array(
-                '%s', // cus_company_name
-                '%s', // cus_company_slug
-                '%s', // cus_company_web
-                '%d', // cus_company_city
-                '%s', // cus_company_whatsapp
-                '%s', // cus_company_address
-                '%f', // cus_company_latitud
-                '%f', // cus_company_longitude
-                '%s'  // cus_company_description
-            )
+            $data
         );
 
         return $wpdb->insert_id;

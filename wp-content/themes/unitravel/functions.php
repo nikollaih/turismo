@@ -15,6 +15,7 @@ function cargar_archivo_js_del_tema() {
 	wp_enqueue_script('collaborators-page', get_template_directory_uri() . '/js/pages/collaborators.js', array('jquery'), '1.0', true);
 	wp_enqueue_script('sweetalert2-js', get_template_directory_uri() . '/js/sweetalert2.min.js', array('jquery'), '1.0', true);
 	wp_enqueue_script('custom-fetch', get_template_directory_uri() . '/js/custom_fetch.js', array('jquery'), '1.0', true);
+	wp_enqueue_script('general-js', get_template_directory_uri() . '/js/general.js', array('jquery'), '1.0', true);
 	wp_localize_script('custom-fetch', 'customFetch', array(
         'home_url' => home_url(),
     ));

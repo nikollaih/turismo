@@ -7,16 +7,20 @@ class CUS_Route {
         $this->table_name = $wpdb->prefix . 'routes';
     }
 
-    public function insert_routes($data){
-
+    public function insert($data){
         global $wpdb;
-        $route_id = $wpdb->insert($this->table_name,$data);
-        print_r($wpdb->last_error);
-        if (!is_wp_error($route_id)) {
-            return $route_id;
-        } else {
-            return false;
-        }
+        $wpdb->insert($this->table_name,$data);
+        return $wpdb->insert_id;
+    }
+
+    public function update($id, $data) {
+        global $wpdb;
+
+        $wpdb->update(
+            $this->table_name,
+            $data,
+            array('id_route' => $id)
+        );
     }
 
 }

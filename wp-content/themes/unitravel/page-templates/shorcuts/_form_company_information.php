@@ -75,7 +75,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
                 <div class="form-outline form-white">
                 <label for="nameActivityRoute">Descripción</label>
-                <textarea minlength="20" name="company[description]" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="" name="textarea-message"><?= (isset($FORM_DATA["company"]["description"]) ? $FORM_DATA["company"]["description"] : "") ?></textarea>
+                <textarea minlength="20" name="route[route_description]" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder=""><?= (isset($FORM_DATA["route"]["route_description"]) ? $FORM_DATA["route"]["route_description"] : "") ?></textarea>
                 </div>
             </div>
         </div>

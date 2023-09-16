@@ -743,6 +743,7 @@ input[type="email"],
 input[type="tel"],
 input[type="password"],
 input[type="search"],
+input[type="time"],
 select,
 textarea,
 textarea.wp-editor-area {
