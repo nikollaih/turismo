@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
+    jQuery('.go-back').on('click', async function() {
+        history.back();
+    })
+
+
     const profileImageInput = document.getElementById('file-image');
     const previewImage = document.getElementById('file-preview');
 

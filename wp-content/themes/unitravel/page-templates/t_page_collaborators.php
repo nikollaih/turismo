@@ -23,7 +23,7 @@ Template Name: Collaborators
                         <div class="col-md-12 col-sm-12">
                             <h3 class="text-center mt-0 "><?= $company["cus_company_name"] ?></h3>
                             <h5 class="text-center mt-0 h5-orange-list-routes">colaboradoras</h5>
-                            <dic class="row">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <?php
                                         if (!empty($success_message)) {
@@ -31,7 +31,7 @@ Template Name: Collaborators
                                         }
                                     ?>
                                 </div>
-                            </dic>
+                            </div>
                             <div class="row">
                                 <div class="col">
                                     <a href="<?= home_url() ?>/mi-cuenta">

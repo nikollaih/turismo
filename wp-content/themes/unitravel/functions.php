@@ -37,6 +37,12 @@ function cambiar_enlace_recuperar_contrasena() {
 }
 add_filter('lostpassword_url', 'cambiar_enlace_recuperar_contrasena');
 
+function prevent_caching() {
+    header("Cache-Control: no-cache, must-revalidate");
+    header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+}
+add_action('init', 'prevent_caching');
+
 if (!defined("UNITRAVEL_THEME_DIR")) define("UNITRAVEL_THEME_DIR", trailingslashit( get_template_directory() ));
 if (!defined("UNITRAVEL_CHILD_DIR")) define("UNITRAVEL_CHILD_DIR", trailingslashit( get_stylesheet_directory() ));
 

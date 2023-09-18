@@ -6,18 +6,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const previewImage2 = document.getElementById('logo-preview');
 
     function setupImageInput(input, preview) {
-        input.addEventListener('change', function() {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
+        if(input)
+            input.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
 
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
+                    reader.onload = function(e) {
+                        preview.src = e.target.result;
+                    }
+
+                    reader.readAsDataURL(file);
                 }
-
-                reader.readAsDataURL(file);
-            }
-        });
+            });
     }
 
     setupImageInput(profileImageInput1, previewImage1);

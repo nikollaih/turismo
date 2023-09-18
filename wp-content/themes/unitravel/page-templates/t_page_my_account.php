@@ -83,10 +83,6 @@ Template Name: My account enterprising
                                             <label for="nameActivityRoute">Descripción</label>
                                             <textarea disabled class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" id="nameActivityRoute"><?= isset($company["cus_company_description"]) ? $company["cus_company_description"] : "" ?></textarea>
                                         </div>
-                                    
-                                        <a href="<?= home_url() ?>/modificar-cuenta">
-                                            <button type="submit" class="btn btn-primary">Modificar</button>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
