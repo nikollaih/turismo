@@ -12,8 +12,24 @@ $companies_all = cus_get_companies_all($_GET['city']);
 $city_banner_img =  find_city($_GET['city']);
 
 if (!empty($city_banner_img['img_city'])) {
-    $css = '.page-id-1506 .vc_custom_1693159376634 {
+    $name = $city_banner_img['city_name'];
+
+    $css = '
+    .page-id-1506 .vc_custom_1693159376634 {
         background-image: url(' . esc_url($city_banner_img['img_city']) . ') !important;
+        position: relative;
+    }
+    .page-id-1506 .vc_custom_1693159376634::before {
+        content: "' . $name . '"; 
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        padding: 10px;
+        font-size: 95px;
+        color: white;
+        letter-spacing: 5px;
     }';
     echo '<style>' . $css . '</style>';
 }
@@ -52,7 +68,7 @@ if (!empty($city_banner_img['img_city'])) {
                                                 <div class="sc_item_descr sc_title_descr sc_align_center sc_item_title_style_default">
                                                <?= $companies['cus_company_short_description']?>
                                                 </div>
-                                            </div><!-- /.sc_title -->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
