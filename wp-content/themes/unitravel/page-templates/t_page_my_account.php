@@ -49,7 +49,6 @@ Template Name: My account enterprising
                                         <div class="col-md-6 col-sm-6 form-group">
                                         <label for="nameActivityRoute">Municipio</label>
                                             <select disabled name="company[city]" id="">
-                                                <option value="null">- Seleccionar municipio</option>
                                                 <?php
                                                     if(count($cities) > 0){
                                                         for ($i=0; $i < count($cities); $i++) { 

@@ -1,18 +1,27 @@
 <?php
 /*
-Template Name: My Routes
+Template Name: Activities Route
 */
     include get_theme_file_path("page-templates/shorcuts/_overlay_loading.php");
     include get_theme_file_path("page-templates/utilities.php");
     include get_theme_file_path("page-templates/current_user_company_data.php");
     require_once get_theme_file_path("includes/custom-clases/CUS_Route.php");
+    require_once get_theme_file_path("includes/custom-clases/CUS_Activities_Route.php");
 
-     // Obtiene la session falsh en caso de que se haya creado una nueva colaboradora
-     $success_message = get_flash_message('success_message');
+    // Obtiene la session falsh en caso de que se haya creado una nueva colaboradora
+    $success_message = get_flash_message('success_message');
+    // Obtenemos la información de la ruta
+    $id_route = isset($_GET['route']) ? cus_decrypt(sanitize_text_field($_GET['route'])) : false;
 
-    // Obtiene la lista de rutas asociadas a la finca
-    $routesModel = new CUS_Route();
-    $company_routes = $routesModel->get_all_by_company($company["id_cus_company"]);
+    if(!$id_route)  {
+        wp_redirect(site_url().'/mis-rutas');
+        exit;
+    }
+
+    $activitysModel = new CUS_Route();
+    $activity = $activitysModel->find($id_route);
+    $activitiesModel = new CUS_Activities_Route();
+    $activities = $activitiesModel->get_all_by_route($id_route); 
 ?>
 
 <div id="custom-page">
@@ -23,8 +32,8 @@ Template Name: My Routes
                 <div class="container" style="position: relative;">
                     <div class="row content-profile-one">
                         <div class="col-md-12 col-sm-12">
-                            <h3 class="text-center mt-0 "><?= $company["cus_company_name"] ?></h3>
-                            <h5 class="text-center mt-0 h5-orange-list-routes">Experiencias turisticas</h5>
+                            <h3 class="text-center mt-0 "><?= $activity["route_name"] ?></h3>
+                            <h5 class="text-center mt-0 h5-orange-list-routes">Actividades</h5>
                             <dic class="row">
                                 <div class="col-md-12">
                                     <?php
@@ -36,7 +45,7 @@ Template Name: My Routes
                             </dic>
                             <div class="row">
                                 <div class="col">
-                                    <a href="<?= home_url() ?>/mi-cuenta">
+                                    <a href="<?= home_url() ?>/mis-rutas">
                                         <button class="btn btn-secondary mb-2"><i class="fa-solid fa-arrow-left mr-2"></i>Regresar</button>
                                     </a>
                                     
@@ -45,8 +54,8 @@ Template Name: My Routes
                                     if(check_is_admin($current_user)){
                                         ?>
                                         <div class="col text-right">
-                                            <a href="<?= home_url() ?>/crear-ruta">
-                                                <button class="btn btn-primary mb-2"><i class="fa-solid fa-plus mr-2"></i>Agregar Experiencia</button>
+                                            <a href="<?= home_url() ?>/agregar-actividad?route=<?= cus_encrypt($id_route) ?>">
+                                                <button class="btn btn-primary mb-2"><i class="fa-solid fa-plus mr-2"></i>Agregar Actividad</button>
                                             </a>
                                         </div>
                                         <?php
@@ -60,8 +69,8 @@ Template Name: My Routes
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col"></th>
                                             <th scope="col">Nombre</th>
+                                            <th scope="col">Lugar</th>
                                             <th scope="col">Inicio</th>
                                             <th scope="col">Fin</th>
                                             <?php
@@ -73,29 +82,30 @@ Template Name: My Routes
                                     </thead>
                                     <tbody>
                                         <?php
-                                            if(count($company_routes) > 0){
-                                                for ($i=1; $i < count($company_routes) + 1; $i++) { 
-                                                    $route = $company_routes[$i-1];
-                                                    $edit_route_url = add_query_arg(array('route' => cus_encrypt($route["id_route"])), home_url('/crear-ruta'));
-                                                    $activities_url = add_query_arg(array('route' => cus_encrypt($route["id_route"])), home_url('/actividades-ruta'));
+                                            if(count($activities) > 0){
+                                                for ($i=1; $i < count($activities) + 1; $i++) { 
+                                                    $activity = $activities[$i-1];
+                                                    $edit_route_url = add_query_arg(
+                                                        array(
+                                                            'activity' => cus_encrypt($activity["id_activities_route"]), 
+                                                            'route' => cus_encrypt($activity["id_route"])
+                                                        ), home_url('/agregar-actividad'));
+                                                    $location = ($activity["activity_location"] == 0) ? $activity["activity_location_other"] : $activity["cus_company_name"];
                                                     ?>
-                                                        <tr id="<?= $route["id_route"] ?>">
-                                                            <th scope="row"><?= $i ?></th>
-                                                            <td><img src="<?= get_route_logo($route["id_route"], $route["route_image"]) ?>" alt="" srcset="" style="width:50px;height:50px;border-radius:50%;"></td>
-                                                            <td><?= $route["route_name"] ?></td>
-                                                            <td><?= date("h:i a", strtotime($route["route_start_time"])) ?></td>
-                                                            <td><?= date("h:i a", strtotime($route["route_end_time"])) ?></td>
+                                                        <tr id="<?= $activity["id_activities_route"] ?>">
+                                                            <th scope="row"><?= $activity["activity_order"] ?></th>
+                                                            <td><?= $activity["activity_name"] ?></td>
+                                                            <td><?= $location ?></td>
+                                                            <td><?= date("h:i a", strtotime($activity["activity_start_time"])) ?></td>
+                                                            <td><?= date("h:i a", strtotime($activity["activity_end_time"])) ?></td>
                                                                 <?php
                                                                     if(check_is_admin($current_user)){
                                                                         ?>
-                                                                        <td style="width:240px;">
+                                                                        <td style="width:150px;">
                                                                             <a class="" href="<?= $edit_route_url ?>">
                                                                                 <button class="btn btn-info">Editar</button>    
                                                                             </a>
-                                                                            <button user_id="<?= $route["id_route"] ?>" class="btn btn-danger route-delete">Eliminar</button>
-                                                                            <a class="" href="<?= $activities_url ?>">
-                                                                                <button class="btn btn-primary">Ver actividades</button>    
-                                                                            </a>
+                                                                            <button activity_id="<?= $activity["id_activities_route"] ?>" class="btn btn-danger activity-delete">Eliminar</button>
                                                                         </td>
                                                                         <?php
                                                                     }

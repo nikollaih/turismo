@@ -32,6 +32,8 @@ function registerRoute($fields) {
             }
 
             set_flash_message('success_message', '¡Información guardada exitosamente!');
+            wp_redirect(site_url().'/mis-rutas');
+            exit;
         }
         else {
             $RESPONSE_CREATE_ROUTE = array('field' => 'time', 'message' => "<b>Error!</b> No se ha podido crear la ruta.");

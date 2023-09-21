@@ -38,4 +38,12 @@ class CUS_Route {
         $query = $wpdb->prepare("SELECT * FROM $this->table_name WHERE company_id = %d", $company_id);
         return $wpdb->get_results($query, ARRAY_A);
     }
+
+    public function delete($value, $field = "id_route"){
+        global $wpdb;
+        // Perform the delete operation
+        $deleted = $wpdb->delete($this->table_name, array($field => $value), array('%s', '%d'));
+
+        return $deleted;
+    }
 }

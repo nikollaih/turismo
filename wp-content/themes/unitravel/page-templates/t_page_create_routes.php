@@ -12,7 +12,7 @@ Template Name: Create Routes
     $success_message = get_flash_message('success_message');
 
     // Obtenemos la información de la ruta en caso de querer modificarla
-    $id_route = isset($_GET['id_route']) ? sanitize_text_field($_GET['id_route']) : false;
+    $id_route = isset($_GET['route']) ? cus_decrypt(sanitize_text_field($_GET['route'])) : false;
     if($id_route){
         $routeModel = new CUS_Route();
         $route = $routeModel->find($id_route);
@@ -90,7 +90,7 @@ Template Name: Create Routes
                                                     <button type="reset" class="btn btn-dark btn-lg go-back"
                                                         data-mdb-ripple-color="dark">Regresar</button>
                                                     <button type="submit" class="btn btn-primary btn-lg"
-                                                        data-mdb-ripple-color="dark">Guardar y ver actividades</button>
+                                                        data-mdb-ripple-color="dark">Guardar</button>
                                                 </div>
                                             </div>
                                         </div>
