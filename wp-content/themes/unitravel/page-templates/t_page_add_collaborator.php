@@ -28,7 +28,7 @@ include get_theme_file_path("includes/form-handlers/add_collaborator.php");
                                              <div class="form-group text-center">
                                                    <label for=""><i class="fa-regular fa-pen-to-square"></i> Seleccionar foto de perfil</label><br>
                                                    <label for="profile-image" style="cursor: pointer;">
-                                                      <img id="profile-preview" src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png" alt="Vista previa de la imagen" class="img-thumbnail custom-image-profile">
+                                                      <img id="profile-preview" src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png" alt="Vista previa de la imagen" class="img-thumbnail custom-image-profile banner-image">
                                                    </label>
                                                    <input name="profile" type="file" class="form-control-file" id="profile-image" accept="image/*" style="display: none;">
                                              </div>
@@ -69,17 +69,23 @@ include get_theme_file_path("includes/form-handlers/add_collaborator.php");
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
                                                 <label for="nameActivityRoute">Contraseña (Minimo 8 caracteres) <b class="text-danger">*</b></label>
-                                                <input minlength="8" required placeholder="" name="user[pass]" type="password" id="pass" class="form-control form-control-lg" value="<?= (isset($FORM_DATA["user"]["pass"]) ? $FORM_DATA["user"]["pass"] : "") ?>"/>
+                                                <div class="password-container">
+                                                   <input minlength="8" required placeholder="" name="user[pass]" type="password" id="pass" class="form-control form-control-lg input-password" value="<?= (isset($FORM_DATA["user"]["pass"]) ? $FORM_DATA["user"]["pass"] : "") ?>"/>
+                                                   <i class="fa-solid fa-eye show-password"></i>
+                                                </div>
                                                 <?php if(isset($RESPONSE_CREATE_USER["status"]) && $RESPONSE_CREATE_USER["status"] == false && $RESPONSE_CREATE_USER["field"] == "pass"){
-                                                   echo "<span class='cus_error_field'>".$RESPONSE_CREATE_USER["message"]."<span/>";
-                                                }
-                                                ?>
+                                                      echo "<span class='cus_error_field'>".$RESPONSE_CREATE_USER["message"]."<span/>";
+                                                   }
+                                                   ?>
                                              </div>
                                           </div>
                                           <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
                                                 <label for="nameActivityRoute">Repetir contraseña <b class="text-danger">*</b></label>
-                                                <input required placeholder="" name="user[r_pass]" type="password" id="r_pass" class="form-control form-control-lg" value="<?= (isset($FORM_DATA["user"]["r_pass"]) ? $FORM_DATA["user"]["r_pass"] : "") ?>"/>
+                                                <div class="password-container">
+                                                   <input required placeholder="" name="user[r_pass]" type="password" id="r_pass" class="form-control form-control-lg input-password" value="<?= (isset($FORM_DATA["user"]["r_pass"]) ? $FORM_DATA["user"]["r_pass"] : "") ?>"/>
+                                                   <i class="fa-solid fa-eye show-password"></i>
+                                                </div>
                                              </div>
                                           </div>
                                        </div>

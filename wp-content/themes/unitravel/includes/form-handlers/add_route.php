@@ -26,8 +26,8 @@ function registerRoute($fields) {
             if(isset($_FILES["route_image"])){
                 if(trim($_FILES["route_image"]["name"]) != ""){
                     $profile_image = $route_controller->load_image($_FILES["route_image"], $route_id);
-                    $fields["route_image"] = $profile_image;
-                    $route->update($route_id, $fields);
+                    $new_fields["route_image"] = $profile_image;
+                    $route->update($route_id, $new_fields);
                 }
             }
 

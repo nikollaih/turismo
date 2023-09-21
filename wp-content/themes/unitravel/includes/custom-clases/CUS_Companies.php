@@ -13,6 +13,7 @@ class CUS_Companies {
             $this->table_name,
             $data
         );
+        echo $wpdb->last_query;
         return $wpdb->insert_id;
     }
 

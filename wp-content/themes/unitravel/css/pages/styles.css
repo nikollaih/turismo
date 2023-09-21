@@ -116,6 +116,11 @@ div:where(.swal2-container) h2:where(.swal2-title) {
     margin-bottom: 20px;
 }
 
+.custom-image-profile.banner-image {
+    width: 300px;
+    border-radius: 10px;
+}
+
 .btn-secondary {
     background-color: #4b5664 !important;
 }
