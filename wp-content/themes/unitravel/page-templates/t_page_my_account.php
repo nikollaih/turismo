@@ -78,10 +78,6 @@ Template Name: My account enterprising
                                             <label for="nameActivityRoute">Descripción corta</label>
                                             <input disabled type="text" class="form-control" id="nameActivityRoute" value="<?= isset($company["cus_company_short_description"]) ? $company["cus_company_short_description"] : "" ?>">
                                         </div>
-                                        <div class="form-group col-md-12">
-                                            <label for="nameActivityRoute">Descripción</label>
-                                            <textarea disabled class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" id="nameActivityRoute"><?= isset($company["cus_company_description"]) ? $company["cus_company_description"] : "" ?></textarea>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

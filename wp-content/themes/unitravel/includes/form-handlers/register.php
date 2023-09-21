@@ -34,7 +34,10 @@ function registerUser($user, $company) {
             }
             
             $company_id = registerCompany($company);
-            registerUserMeta($user_id, $user, $company_id);
+            if($company_id == 0)
+                $users->delete($user_id);
+            else
+                registerUserMeta($user_id, $user, $company_id);
         } else {
             echo 'Error al agregar el usuario.';
         }

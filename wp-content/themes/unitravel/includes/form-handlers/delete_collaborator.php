@@ -1,6 +1,7 @@
 <?php
 require_once('../../../../../wp-load.php');
 require_once get_theme_file_path("includes/custom-clases/CUS_UserMeta.php");
+require_once get_theme_file_path("includes/custom-clases/CUS_Users.php");
 require_once get_theme_file_path("includes/custom-clases/controllers/CUS_Controller_Collaborators.php");
 
 // Obtiene el usuario logueado
@@ -9,16 +10,25 @@ $current_user = cus_get_current_user();
 // Obtiene la lista de colaboradoras del sitio
 $company = cus_get_company($current_user->ID);
 $collaborators = new CUS_Controller_Collaborators();
+$usersModel = new CUS_Users();
 $collaborators->set_collaborators(get_company_collaborators($company["id_cus_company"]));
 
 if($current_user){
     if($_POST){
         // Determina si es posible actualizar un rol
         if($collaborators->check_if_possible_collaborator($_POST["user_id"])){
-            // Actualizar el metadato del usuario
-            update_user_meta($_POST["user_id"], "user_company_id", "0");
-            $updated = update_user_meta($_POST["user_id"], "user_company_permissions", "unassigned");
-            if($updated)
+            $id_user = $_POST["user_id"];
+
+            // Obtiene todos los metadatos del usuario
+            $all_user_meta = get_user_meta($id_user);
+
+            // Itera a través de los metadatos y elimínalos uno por uno
+            foreach ($all_user_meta as $meta_key => $meta_values) {
+                delete_user_meta($id_user, $meta_key);
+            }
+
+            $deleted = $usersModel->delete($id_user);
+            if($deleted)
                 echo json_encode(array("status" => true, "message" => "Colaborador eliminado exitosamente!"));
             else
                 echo json_encode(array("status" => false, "message" => "No ha sido posible eliminar el usuario"));

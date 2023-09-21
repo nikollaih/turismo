@@ -7,7 +7,7 @@
                 <div class="form-group text-center">
                     <label for=""><i class="fa-regular fa-pen-to-square"></i> Seleccionar imagen de finca</label><br>
                     <label for="logo-image" style="cursor: pointer;">
-                        <img id="logo-preview" src="<?= get_company_logo($FORM_DATA["company"]["id_company"], $FORM_DATA["company"]["cus_company_logo"]) ?>" alt="Vista previa de la imagen" class="img-thumbnail custom-image-profile">
+                        <img id="logo-preview" src="<?= get_company_logo($FORM_DATA["company"]["id_company"], $FORM_DATA["company"]["cus_company_logo"]) ?>" alt="Vista previa de la imagen" class="img-thumbnail custom-image-profile banner-image">
                     </label>
                     <input name="logo" type="file" class="form-control-file" id="logo-image" accept="image/*" style="display: none;">
                     <input type="hidden" value="<?= (isset($FORM_DATA["company"]["cus_company_logo"]) ? $FORM_DATA["company"]["cus_company_logo"] : "") ?>" name="company[cus_company_logo]">
@@ -72,12 +72,12 @@
                 <input maxlength="50" value="<?= (isset($FORM_DATA["company"]["short_description"]) ? $FORM_DATA["company"]["short_description"] : "") ?>" name="company[short_description]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
                 </div>
             </div>
-            <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
+            <!-- <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
                 <div class="form-outline form-white">
                 <label for="nameActivityRoute">Descripción</label>
                 <textarea minlength="20" name="route[route_description]" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder=""><?= (isset($FORM_DATA["route"]["route_description"]) ? $FORM_DATA["route"]["route_description"] : "") ?></textarea>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     </div>

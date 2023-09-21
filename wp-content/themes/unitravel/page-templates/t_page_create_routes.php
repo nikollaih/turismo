@@ -57,12 +57,12 @@ Template Name: Create Routes
                                     <form action="" method="post" enctype="multipart/form-data">
                                         <div class="card card-registration card-registration-2 p-5" style="border-radius: 15px;">
                                             <div class="card-body p-0">
-                                                <input type="hidden" name="route[id_route]" value="<?= (isset($FORM_DATA["route"]["id_route"]) ? $FORM_DATA["route"]["id_route"] : null) ?>">
+                                                <input type="hidden" name="route[id_route]" value="<?= (isset($FORM_DATA["route"]["id_route"]) && $FORM_DATA["route"]["id_route"] != 0) ? $FORM_DATA["route"]["id_route"] : null ?>">
                                                 <input type="hidden" name="route[company_id]" value="<?= $company["id_cus_company"] ?>">
                                                 <div class="form-group text-center">
                                                     <label for=""><i class="fa-regular fa-pen-to-square"></i> Seleccionar imagen de experiencia</label><br>
                                                     <label for="file-image" style="cursor: pointer;">
-                                                        <img id="file-preview" src="<?= get_route_logo($id_route, $FORM_DATA["route"]["route_image"]) ?>" alt="Vista previa de la imagen" class="img-thumbnail custom-image-profile">
+                                                        <img id="file-preview" src="<?= get_route_logo($id_route, $FORM_DATA["route"]["route_image"]) ?>" alt="Vista previa de la imagen" class="img-thumbnail custom-image-profile banner-image">
                                                     </label>
                                                     <input name="route_image" type="file" class="form-control-file" id="file-image" accept="image/*" style="display: none;">
                                                 </div>
@@ -87,8 +87,10 @@ Template Name: Create Routes
                                                     <textarea required cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="" name="route[route_recommendations]"><?= (isset($FORM_DATA["route"]["route_recommendations"]) ? $FORM_DATA["route"]["route_recommendations"] : "") ?></textarea>
                                                 </div>
                                                 <div class="mt-5">
-                                                    <button type="reset" class="btn btn-dark btn-lg go-back"
-                                                        data-mdb-ripple-color="dark">Regresar</button>
+                                                    <a href="<?= home_url() ?>/mis-rutas">
+                                                        <button type="button" class="btn btn-dark btn-lg"
+                                                            data-mdb-ripple-color="dark">Regresar</button>
+                                                    </a>
                                                     <button type="submit" class="btn btn-primary btn-lg"
                                                         data-mdb-ripple-color="dark">Guardar</button>
                                                 </div>

@@ -24,7 +24,7 @@ Template Name: Add Activity
         
         $FORM_DATA["activity"]["id_activities_route"] = $id_activity;
     }
-    $companies = $companiesModel->get_all();
+    $companies = cus_get_companies_all($company["cus_company_city"]);
     $next_order = count($activitiesModel->get_all_by_route($id_route)) + 1;
 ?>
 <div id="custom-page">
@@ -113,9 +113,9 @@ Template Name: Add Activity
                                                 </div>
                                                 <div class="mt-5">
                                                     <a href="<?= home_url() ?>/actividades-ruta?route=<?= cus_encrypt($id_route) ?>">
-                                                    <button type="button" class="btn btn-dark btn-lg"
-                                                        data-mdb-ripple-color="dark">Regresar</button>
-                                                </a>
+                                                        <button type="button" class="btn btn-dark btn-lg"
+                                                            data-mdb-ripple-color="dark">Regresar</button>
+                                                    </a>
                                                     <button type="submit" class="btn btn-primary btn-lg"
                                                         data-mdb-ripple-color="dark">Guardar</button>
                                                 </div>

@@ -81,7 +81,7 @@ Template Name: My Routes
                                                     ?>
                                                         <tr id="<?= $route["id_route"] ?>">
                                                             <th scope="row"><?= $i ?></th>
-                                                            <td><img src="<?= get_route_logo($route["id_route"], $route["route_image"]) ?>" alt="" srcset="" style="width:50px;height:50px;border-radius:50%;"></td>
+                                                            <td style="width:140px;"><img src="<?= get_route_logo($route["id_route"], $route["route_image"]) ?>" alt="" srcset="" style="width:130px;height:80px;border-radius:10px;"></td>
                                                             <td><?= $route["route_name"] ?></td>
                                                             <td><?= date("h:i a", strtotime($route["route_start_time"])) ?></td>
                                                             <td><?= date("h:i a", strtotime($route["route_end_time"])) ?></td>
