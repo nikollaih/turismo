@@ -48,3 +48,9 @@ function check_user_company_login(){
 function check_is_admin($current_user){
     return ($current_user->company_permissions == "admin");
 }
+
+// Verificamos si un usuario pertenece a una finca
+function user_belongs_company($id_user, $id_company){
+    $found = get_user_meta($id_user, "user_company_id", true);
+    return ($found == $id_company);
+}

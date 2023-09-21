@@ -49,7 +49,6 @@ Template Name: My account enterprising
                                         <div class="col-md-6 col-sm-6 form-group">
                                         <label for="nameActivityRoute">Municipio</label>
                                             <select disabled name="company[city]" id="">
-                                                <option value="null">- Seleccionar municipio</option>
                                                 <?php
                                                     if(count($cities) > 0){
                                                         for ($i=0; $i < count($cities); $i++) { 
@@ -83,10 +82,6 @@ Template Name: My account enterprising
                                             <label for="nameActivityRoute">Descripción</label>
                                             <textarea disabled class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" id="nameActivityRoute"><?= isset($company["cus_company_description"]) ? $company["cus_company_description"] : "" ?></textarea>
                                         </div>
-                                    
-                                        <a href="<?= home_url() ?>/modificar-cuenta">
-                                            <button type="submit" class="btn btn-primary">Modificar</button>
-                                        </a>
                                     </div>
                                 </div>
                             </div>

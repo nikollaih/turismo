@@ -20,15 +20,20 @@ function registerRoute($fields) {
     $validateFields = validateFieldRoutes($fields);
 
     if($validateFields["status"]){
-        //Insert Route
-        $route_id = $route->insert($fields);
+        $route_id = ($fields["id_route"]) ? $route->update($fields["id_route"], $fields) : $route->insert($fields);
 
         if($route_id){
             if(isset($_FILES["route_image"])){
-                $profile_image = $route_controller->load_image($_FILES["route_image"], $route_id);
-                $fields["route_image"] = $profile_image;
-                $route->update($route_id, $fields);
+                if(trim($_FILES["route_image"]["name"]) != ""){
+                    $profile_image = $route_controller->load_image($_FILES["route_image"], $route_id);
+                    $fields["route_image"] = $profile_image;
+                    $route->update($route_id, $fields);
+                }
             }
+
+            set_flash_message('success_message', '¡Información guardada exitosamente!');
+            wp_redirect(site_url().'/mis-rutas');
+            exit;
         }
         else {
             $RESPONSE_CREATE_ROUTE = array('field' => 'time', 'message' => "<b>Error!</b> No se ha podido crear la ruta.");
