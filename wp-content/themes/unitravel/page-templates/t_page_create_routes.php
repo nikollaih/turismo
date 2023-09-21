@@ -70,13 +70,33 @@ Template Name: Create Routes
                                                     <label for="nameRoute">Nombre <b class="text-danger">*</b></label>
                                                     <input required type="text" class="form-control" id="nameRoute" name="route[route_name]" value="<?= (isset($FORM_DATA["route"]["route_name"]) ? $FORM_DATA["route"]["route_name"] : "") ?>">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="nameRoute">Hora de inicio <b class="text-danger">*</b></label>
-                                                    <input required type="time" class="form-control" id="nameRoute" name="route[route_start_time]" value="<?= (isset($FORM_DATA["route"]["route_start_time"]) ? $FORM_DATA["route"]["route_start_time"] : "") ?>">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="nameRoute">Hora de inicio <b class="text-danger">*</b></label>
+                                                            <input required type="time" class="form-control" id="nameRoute" name="route[route_start_time]" value="<?= (isset($FORM_DATA["route"]["route_start_time"]) ? $FORM_DATA["route"]["route_start_time"] : "") ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="nameRoute">Hora de finalización <b class="text-danger">*</b></label>
+                                                            <input required type="time" class="form-control" id="nameRoute" name="route[route_end_time]" value="<?= (isset($FORM_DATA["route"]["route_end_time"]) ? $FORM_DATA["route"]["route_end_time"] : "") ?>">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="nameRoute">Hora de finalización <b class="text-danger">*</b></label>
-                                                    <input required type="time" class="form-control" id="nameRoute" name="route[route_end_time]" value="<?= (isset($FORM_DATA["route"]["route_end_time"]) ? $FORM_DATA["route"]["route_end_time"] : "") ?>">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="nameRoute">Precio <b class="text-danger">*</b> (Sin puntos ni comas)</label>
+                                                            <input placeholder="$" required type="number" class="form-control" id="nameRoute" name="route[route_price]" value="<?= (isset($FORM_DATA["route"]["route_price"]) ? $FORM_DATA["route"]["route_price"] : "") ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="nameRoute">Descuento (Sin puntos ni comas)</label>
+                                                            <input placeholder="$" type="number" class="form-control" id="nameRoute" name="route[route_discount]" value="<?= (isset($FORM_DATA["route"]["route_discount"]) ? $FORM_DATA["route"]["route_discount"] : "") ?>">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="descriptionRoute">Descripción <b class="text-danger">*</b></label>
