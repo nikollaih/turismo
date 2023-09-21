@@ -59,8 +59,8 @@ Template Name: My Routes
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
                                             <th scope="col"></th>
+                                            <th scope="col">Precio</th>
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Inicio</th>
                                             <th scope="col">Fin</th>
@@ -80,8 +80,17 @@ Template Name: My Routes
                                                     $activities_url = add_query_arg(array('route' => cus_encrypt($route["id_route"])), home_url('/actividades-ruta'));
                                                     ?>
                                                         <tr id="<?= $route["id_route"] ?>">
-                                                            <th scope="row"><?= $i ?></th>
                                                             <td style="width:140px;"><img src="<?= get_route_logo($route["id_route"], $route["route_image"]) ?>" alt="" srcset="" style="width:130px;height:80px;border-radius:10px;"></td>
+                                                            <td scope="row">
+                                                                $<?= number_format($route["route_price"], '0') ?><br>
+                                                                <?php 
+                                                                    if($route["route_discount"] > 0){
+                                                                        ?>
+                                                                        <span style="text-decoration:line-through;">$<?= number_format($route["route_discount"], '0') ?></span>
+                                                                        <?php
+                                                                    }
+                                                                ?>
+                                                            </td>
                                                             <td><?= $route["route_name"] ?></td>
                                                             <td><?= date("h:i a", strtotime($route["route_start_time"])) ?></td>
                                                             <td><?= date("h:i a", strtotime($route["route_end_time"])) ?></td>
