@@ -99,6 +99,10 @@ Template Name: Create Routes
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
+                                                    <label for="nameActivityRoute">Descripción corta (Maximo 50 caracteres)<b class="text-danger">*</b></label>
+                                                    <input maxlength="50" value="<?= (isset($FORM_DATA["route"]["route_short_description"]) ? $FORM_DATA["route"]["route_short_description"] : "") ?>" name="route[route_short_description]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="descriptionRoute">Descripción <b class="text-danger">*</b></label>
                                                     <textarea required cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="" name="route[route_description]"><?= (isset($FORM_DATA["route"]["route_description"]) ? $FORM_DATA["route"]["route_description"] : "") ?></textarea>
                                                 </div>

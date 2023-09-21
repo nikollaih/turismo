@@ -2,9 +2,12 @@
 /*
 Template Name: Routes
 */
-?>
-<?php 
+
 include get_theme_file_path("page-templates/utilities.php");
+include get_theme_file_path("includes/custom-clases/CUS_Route.php");
+
+$routesModel = new CUS_Route();
+$routes = $routesModel->get_all();
 
 ?>
 
@@ -23,75 +26,56 @@ include get_theme_file_path("page-templates/utilities.php");
                                 </div>  
                             </div>
                             <div class="row">
+                                
+                                <?php
+                                    if(is_array($routes)){
+                                        foreach ($routes as $route) {
+                                ?>
                                 <div class="col-md-4 col-sm-12">
-                                        <div class="mt-5">
-                                            <div class="wpb_wrapper" style="background-color: #f6f7e6; border-radius: 0px 0px 30px 30px;">
-                                                <div class="wpb_single_image wpb_content_element vc_align_center">	
-                                                    <figure class="wpb_wrapper vc_figure">
-                                                            <img style="height: 200px; width: auto;"
-                                                            src="https://rutasdelpaisajeculturalcafetero.com/wp-content/uploads/2016/07/mirador-salento.jpg" 
-                                                            class="vc_single_image-img attachment-large" alt="" decoding="async" loading="lazy" 
-                                                            title="finca-hotel-el-palmar-23"
-                                                            sizes="(max-width: 1024px) 100vw, 1024px">
-                                                    </figure>
+                                    <div class="room-plugin column-1-2">
+                                        <div id="post-518" class="post-518 room type-room status-publish has-post-thumbnail hentry">
+                                            <div class="room-plugin room-single">
+                                                <div class="room-plugin room-featured">
+                                                    <img src="<?= get_route_logo($route["id_route"], $route["route_image"]) ?>" class="attachment-room-small size-room-small wp-post-image" alt="" decoding="async"  sizes="(max-width: 740px) 100vw, 740px"> 
                                                 </div>
-                                                <div id="text-ventures" class=" p-3 sc_title sc_title_default m ">
-                                                    <h6 style="color:#333333;"
-                                                    class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default sc_item_title_tag">
-                                                     Mirador</h6>
-                                                    <div class="sc_item_descr sc_title_descr sc_align_center sc_item_title_style_default">
-                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                <div class="room-plugin room-plugin-content text-center">
+                                                    <div class="room-title">
+                                                        <a class="room-plugin room-title-link" href="https://unitravel.ancorathemes.com/room/entire-homeapt-in-bogota/"><?= $route["route_name"] ?></a>
                                                     </div>
+                                                    <div class="room-plugin room-info">
+                                                        <div class="room-plugin room-info-item">
+                                                            <div class="room-plugin room-people">
+                                                                <i class="fa-regular fa-clock"></i>&nbsp;&nbsp;&nbsp;<?= date("H:i a", strtotime($route["route_start_time"])) ?>&nbsp;&nbsp;-&nbsp;&nbsp;<?= date("H:i a", strtotime($route["route_end_time"])) ?>
+                                                            </div>
+                                                            <div class="room-plugin room-people">
+                                                            <i class="fa-solid fa-map-location-dot"></i>&nbsp;&nbsp;&nbsp;<?= $route["city_name"] ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="room-plugin room-content">
+                                                        <p><?= $route["route_short_description"] ?></p>
+                                                        <div class="room-plugin room-price">
+                                                            <?php
+                                                                if($route["route_discount"] > 0) {
+                                                                    ?>
+                                                                    <span class="room-plugin room-present-currency">$</span>
+                                                                    <span class="room-plugin room-old-price"><?= number_format($route["route_price"], 0) ?></span><br>
+                                                                    <?php
+                                                                }
+                                                            ?>
+                                                            <span class="room-plugin room-present-currency">$</span>
+                                                            <span class="room-plugin room-present-price"><?= number_format($route["route_price"] - $route["route_discount"], 0) ?></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 </div>
                                             </div>
                                         </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                        <div class="mt-5">
-                                            <div class="wpb_wrapper" style="background-color: #f6f7e6; border-radius: 0px 0px 30px 30px;">
-                                                <div class="wpb_single_image wpb_content_element vc_align_center">	
-                                                    <figure class="wpb_wrapper vc_figure">
-                                                            <img style="height: 200px; width: auto;"
-                                                            src="https://rutasdelosandes.com/images/rutas/quindio/cascadasantarita/featured.jpg" 
-                                                            class="vc_single_image-img attachment-large" alt="" decoding="async" loading="lazy" 
-                                                            title="finca-hotel-el-palmar-23"
-                                                            sizes="(max-width: 1024px) 100vw, 1024px">
-                                                    </figure>
-                                                </div>
-                                                <div id="text-ventures" class=" p-3 sc_title sc_title_default m ">
-                                                    <h6 style="color:#333333;"
-                                                    class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default sc_item_title_tag">
-                                                     Cascada Santa Rita</h6>
-                                                    <div class="sc_item_descr sc_title_descr sc_align_center sc_item_title_style_default">
-                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                        <div class="mt-5">
-                                            <div class="wpb_wrapper" style="background-color: #f6f7e6; border-radius: 0px 0px 30px 30px;">
-                                                <div class="wpb_single_image wpb_content_element vc_align_center">	
-                                                    <figure class="wpb_wrapper vc_figure">
-                                                            <img style="height: 200px; width: auto;"
-                                                            src="https://www.infobae.com/new-resizer/ZF_jTY2Uy_PilW1A3gr2JqsvN00=/arc-anglerfish-arc2-prod-infobae/public/RTYR3DD3PJDEZB5TVXT57NAQRE.jpg" 
-                                                            class="vc_single_image-img attachment-large" alt="" decoding="async" loading="lazy" 
-                                                            title="finca-hotel-el-palmar-23"
-                                                            sizes="(max-width: 1024px) 100vw, 1024px">
-                                                    </figure>
-                                                </div>
-                                                <div id="text-ventures" class=" p-3 sc_title sc_title_default m ">
-                                                    <h6 style="color:#333333;"
-                                                    class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default sc_item_title_tag">
-                                                     Avistamiento de aves</h6>
-                                                    <div class="sc_item_descr sc_title_descr sc_align_center sc_item_title_style_default">
-                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                </div>
+                                    </div>
+                                <?php
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>  
