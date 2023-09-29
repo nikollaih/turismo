@@ -17,11 +17,11 @@ if (!empty($city_banner_img['img_city'])) {
     $name = $city_banner_img['city_name'];
 
     $css = '
-    .page-id-1506 .vc_custom_1693159376634 {
+    body.page .vc_custom_1693159376634 {
         background-image: url(' . esc_url($city_banner_img['img_city']) . ') !important;
         position: relative;
     }
-    .page-id-1506 .vc_custom_1693159376634::before {
+    body.page .vc_custom_1693159376634::before {
         content: "' . $name . '"; 
         position: absolute;
         top: 50%;
