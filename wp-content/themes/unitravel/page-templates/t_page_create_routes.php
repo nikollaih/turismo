@@ -67,7 +67,7 @@ Template Name: Create Routes
                                                     <input name="route_image" type="file" class="form-control-file" id="file-image" accept="image/*" style="display: none;">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="nameRoute">Nombre <b class="text-danger">*</b></label>
+                                                    <label for="nameRoute">Nombre de la experiencia<b class="text-danger">*</b></label>
                                                     <input required type="text" class="form-control" id="nameRoute" name="route[route_name]" value="<?= (isset($FORM_DATA["route"]["route_name"]) ? $FORM_DATA["route"]["route_name"] : "") ?>">
                                                 </div>
                                                 <div class="row">
@@ -87,8 +87,8 @@ Template Name: Create Routes
                                                 <div class="row">
                                                     <div class="col-md-6 col-sm-12">
                                                         <div class="form-group">
-                                                            <label for="nameRoute">Precio <b class="text-danger">*</b> (Sin puntos ni comas)</label>
-                                                            <input placeholder="$" required type="number" class="form-control" id="nameRoute" name="route[route_price]" value="<?= (isset($FORM_DATA["route"]["route_price"]) ? $FORM_DATA["route"]["route_price"] : "") ?>">
+                                                            <label for="nameRoute">Precio (Sin puntos ni comas)</label>
+                                                            <input placeholder="$" type="number" class="form-control" id="nameRoute" name="route[route_price]" value="<?= (isset($FORM_DATA["route"]["route_price"]) ? $FORM_DATA["route"]["route_price"] : "") ?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-12">
@@ -103,7 +103,7 @@ Template Name: Create Routes
                                                     <input maxlength="50" value="<?= (isset($FORM_DATA["route"]["route_short_description"]) ? $FORM_DATA["route"]["route_short_description"] : "") ?>" name="route[route_short_description]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="descriptionRoute">Descripción <b class="text-danger">*</b></label>
+                                                    <label for="descriptionRoute">Descripción de la experiencia<b class="text-danger">*</b></label>
                                                     <textarea required cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="" name="route[route_description]"><?= (isset($FORM_DATA["route"]["route_description"]) ? $FORM_DATA["route"]["route_description"] : "") ?></textarea>
                                                 </div>
                                                 <div class="form-group">

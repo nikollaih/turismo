@@ -40,7 +40,7 @@
                         if(count($cities) > 0){
                             for ($i=0; $i < count($cities); $i++) { 
                     ?>
-                        <option <?= (isset($FORM_DATA["company"]["city"]) == $cities[$i]["city_id"]) ? "selected" : "" ?>  value="<?= $cities[$i]["city_id"] ?>"><?= $cities[$i]["city_name"] ?></option>
+                        <option <?= (isset($FORM_DATA["company"]["city"]) && ($FORM_DATA["company"]["city"] == $cities[$i]["city_id"])) ? "selected" : "" ?>  value="<?= $cities[$i]["city_id"] ?>"><?= $cities[$i]["city_name"] ?></option>
                     <?php
                             }
                         }

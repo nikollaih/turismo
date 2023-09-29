@@ -1,33 +1,52 @@
 <?php
 /*
-Template Name: Routes
+Template Name: List Routes By City
 */
-
+?>
+<?php 
 include get_theme_file_path("page-templates/utilities.php");
 include get_theme_file_path("includes/custom-clases/CUS_Route.php");
 
 $routesModel = new CUS_Route();
-$routes = $routesModel->get_all();
+$routes = $routesModel->get_all_by_city($_GET['city']);
+
+//img banner companies 
+$city_banner_img =  find_city($_GET['city']);
+
+if (!empty($city_banner_img['img_city'])) {
+    $name = $city_banner_img['city_name'];
+
+    $css = '
+    .page-id-1506 .vc_custom_1693159376634 {
+        background-image: url(' . esc_url($city_banner_img['img_city']) . ') !important;
+        position: relative;
+    }
+    .page-id-1506 .vc_custom_1693159376634::before {
+        content: "' . $name . '"; 
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        padding: 10px;
+        font-size: 95px;
+        color: white;
+        letter-spacing: 5px;
+    }';
+    echo '<style>' . $css . '</style>';
+}
 
 ?>
-
 <div id="custom-page">
     <?php get_header() ?>
     <div id="primary" class="site-content">
         <div id="content" role="main">
-        <section id="create-routes">
+        <section id="list_companies">
                 <div class="container" style="position: relative;">
                     <div class="row content-profile-one">
                         <div class="col-md-12 col-sm-12">
-                            <h5 class="text-center mt-0 h5-orange-list-routes">LISTA DE RUTAS</h5>
-                            <div class="justify-content-center my-3">
-                                <div class="text-center">
-                                    <input type="search" name="listRoutes" id="listRoutes" class="text-center input-search" placeholder="Buscar ruta">
-                                </div>  
-                            </div>
                             <div class="row">
-                                
-                                <?php
+                            <?php
                                     if(is_array($routes)){
                                         foreach ($routes as $route) {
                                 ?>
@@ -40,7 +59,7 @@ $routes = $routesModel->get_all();
                                                 </div>
                                                 <div class="room-plugin room-plugin-content text-center">
                                                     <div class="room-title">
-                                                        <a class="room-plugin room-title-link" href="https://unitravel.ancorathemes.com/room/entire-homeapt-in-bogota/"><?= $route["route_name"] ?></a>
+                                                        <a class="room-plugin room-title-link" href="<?= home_url() ?>/ver-ruta?ruta=<?= cus_encrypt($route["id_route"]) ?>"><?= $route["route_name"] ?></a>
                                                     </div>
                                                     <div class="room-plugin room-info">
                                                         <div class="room-plugin room-info-item">
@@ -48,7 +67,7 @@ $routes = $routesModel->get_all();
                                                                 <i class="fa-regular fa-clock"></i>&nbsp;&nbsp;&nbsp;<?= date("H:i a", strtotime($route["route_start_time"])) ?>&nbsp;&nbsp;-&nbsp;&nbsp;<?= date("H:i a", strtotime($route["route_end_time"])) ?>
                                                             </div>
                                                             <div class="room-plugin room-people">
-                                                            <i class="fa-solid fa-map-location-dot"></i>&nbsp;&nbsp;&nbsp;<?= $route["city_name"] ?>
+                                                            <i class="fa-solid fa-map-location-dot"></i>&nbsp;&nbsp;&nbsp;<?= $route["cus_company_name"] ?>
                                                             </div>
                                                         </div>
                                                     </div>

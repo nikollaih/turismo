@@ -35,6 +35,12 @@ class CUS_Route {
         return $wpdb->get_results($query, ARRAY_A);
     }
 
+    public function get_all_by_city($city_id){
+        global $wpdb;
+        $query = $wpdb->prepare("SELECT * FROM $this->table_name as r JOIN cus_companies as cc ON r.company_id = cc.id_cus_company WHERE cc.cus_company_city = %d", $city_id);
+        return $wpdb->get_results($query, ARRAY_A);
+    }
+
     public function get_all(){
         global $wpdb;
         $query = $wpdb->prepare("SELECT * FROM $this->table_name wr JOIN cus_companies cc ON wr.company_id = cc.id_cus_company JOIN cus_cities cci ON cc.cus_company_city = cci.city_id");
