@@ -40,7 +40,7 @@ $routes = $routesModel->get_all();
                                                 </div>
                                                 <div class="room-plugin room-plugin-content text-center">
                                                     <div class="room-title">
-                                                        <a class="room-plugin room-title-link" href="https://unitravel.ancorathemes.com/room/entire-homeapt-in-bogota/"><?= $route["route_name"] ?></a>
+                                                        <a class="room-plugin room-title-link" href="<?= home_url() ?>/ver-ruta?ruta=<?= cus_encrypt($route["id_route"]) ?>"><?= $route["route_name"] ?></a>
                                                     </div>
                                                     <div class="room-plugin room-info">
                                                         <div class="room-plugin room-info-item">
