@@ -68,6 +68,12 @@
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
                 <div class="form-outline form-white">
+                <label for="nameActivityRoute">URL de Google Maps (opcional)</label>
+                <input value="<?= (isset($FORM_DATA["company"]["cus_company_location"]) ? $FORM_DATA["company"]["cus_company_location"] : "") ?>" name="company[cus_company_location]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
+                <div class="form-outline form-white">
                 <label for="nameActivityRoute">Descripción corta (Maximo 50 caracteres)<b class="text-danger">*</b></label>
                 <input maxlength="50" value="<?= (isset($FORM_DATA["company"]["short_description"]) ? $FORM_DATA["company"]["short_description"] : "") ?>" name="company[short_description]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
                 </div>

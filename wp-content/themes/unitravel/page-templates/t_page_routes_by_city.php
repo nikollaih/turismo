@@ -67,7 +67,14 @@ if (!empty($city_banner_img['img_city'])) {
                                                                 <i class="fa-regular fa-clock"></i>&nbsp;&nbsp;&nbsp;<?= date("H:i a", strtotime($route["route_start_time"])) ?>&nbsp;&nbsp;-&nbsp;&nbsp;<?= date("H:i a", strtotime($route["route_end_time"])) ?>
                                                             </div>
                                                             <div class="room-plugin room-people">
-                                                            <i class="fa-solid fa-map-location-dot"></i>&nbsp;&nbsp;&nbsp;<?= $route["cus_company_name"] ?>
+                                                                <?php
+                                                                    if(trim($route["cus_company_location"]) != "") { ?>
+                                                                        <a target="_blank" href="<?= $route["cus_company_location"] ?>"><i class="fa-solid fa-map-location-dot"></i>&nbsp;&nbsp;&nbsp;<?= $route["city_name"] ?></a>
+                                                                    <?php }
+                                                                    else { ?>
+                                                                        <span style="color:#5d6673;"><i class="fa-solid fa-map-location-dot"></i>&nbsp;&nbsp;&nbsp;<?= $route["cus_company_name"] ?></span>
+                                                                    <?php }
+                                                                ?>
                                                             </div>
                                                         </div>
                                                     </div>
