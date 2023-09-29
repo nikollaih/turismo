@@ -9,7 +9,7 @@ include get_theme_file_path("includes/custom-clases/CUS_Route.php");
 
 $routesModel = new CUS_Route();
 $route = $routesModel->find(cus_decrypt($_GET['ruta']));
-print_r($route);
+
 ?>
 <div id="custom-page">
     <?php get_header() ?>
