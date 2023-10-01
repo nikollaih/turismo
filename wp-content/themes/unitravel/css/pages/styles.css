@@ -264,5 +264,84 @@ div:where(.swal2-container) h2:where(.swal2-title) {
         margin-top: 30px;
     }
 }
+/** Styles view t_page_view route*/
 
+.route_short_description{
+    font-size: 1.286em;
+    font-weight: 400;
+    line-height: 1.786em;
+    font-style: normal;
+    color: #4b5664;
+    margin-bottom: 0.5rem;
+}
+.img-same-height {
+    height: 100%;
+    border-radius: 4px;
+}
+.span-reserva{
+    color: #40c351;
+    font-size: xx-large;
+}     
+#float-whatsapp-route{
+    border-radius: 22px; 
+    position: fixed; 
+    bottom: 85px; 
+    right: 15px; 
+    z-index: 20000; 
+    background-color: #40c351; 
+    width: 150px; 
+    height: 45px; 
+    color: #ffffff !important; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+.room-content-route p{
+margin-bottom: 4px;
+}     
 
+.outer-circle {
+        width: 70px;
+        height: 70px;
+        background-color: #EDBB99;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .inner-circle {
+        width: 35px;
+        height: 35px;
+        background-color: #EB5D11; 
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+    }
+
+    .number {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .title-route{
+        color:#eb5d11 !important;
+    }
+    @media (max-width: 768px) {
+        .title-sm {
+            margin-top: 50px !important;
+            margin-bottom: 20px !important;
+            font-size: 35px !important;
+        }
+        
+    }
+
+.room-title-link:hover{
+    color:#EB5D11 !important;
+}
+.room-title{
+    color:#4b5664 !important;
+}
