@@ -31,9 +31,12 @@ function registerUser($user) {
             if(isset($_FILES["profile"])){
                 $profile_image = load_profile_image($_FILES["profile"], $user_id);
                 $user["profile_image"] = $profile_image;
+                $new_user["profile_image"] = $profile_image;
             }
 
             registerUserMeta($user_id, $user, $user["company_id"], false);
+            $new_user["biografia"] = $user["biografia"];
+            createProfilePost($new_user, $user_id);
             // En el controlador del formulario o en el lugar donde procesas el formulario con éxito.
             set_flash_message('success_message', '¡Colaboradora creada exitosamente!');
             header("Location: ".home_url()."/colaboradoras");

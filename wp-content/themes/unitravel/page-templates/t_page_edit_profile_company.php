@@ -13,6 +13,7 @@
       $FORM_DATA["user"]["document"] = $current_user->document_number;
       $FORM_DATA["user"]["fullname"] = $current_user->display_name;
       $FORM_DATA["user"]["email"] = $current_user->user_email;
+      $FORM_DATA["user"]["biografia"] = $current_user->biografia;
    }
 
    if(!isset($FORM_DATA["company"])){
