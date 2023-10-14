@@ -74,7 +74,7 @@ $activitys = $activitysModel->get_all_by_route($route['id_route']);
                                         <p class="text-start"><?= $route['route_recommendations']?></p>
                                     </div>
                                 </div> 
-                                <div class="mt-5">
+                                <div class="mt-5 mb-4">
                                     <h5 class="title-route sc_item_title sc_title_title sc_item_title_style_default">Actividades</h5>
                                 </div> 
                             </div>
@@ -87,7 +87,7 @@ $activitys = $activitysModel->get_all_by_route($route['id_route']);
                                     <?php if(!empty($activitys )) :?> 
                                             <?php $activityCount = 1;?> 
                                                 <?php foreach($activitys as $activity) :?>
-                                                <div class="container mt-5">
+                                                <div class="container">
                                                     <div class="row">
                                                         <div class="col-md-2 d-flex text-center justify-content-center align-items-center">
                                                             <div class="outer-circle">
@@ -108,9 +108,11 @@ $activitys = $activitysModel->get_all_by_route($route['id_route']);
                                                             </span>
                                                         </div>
                                                     </div>
+                                                    <div class="row mt-4 mb-4">
+                                                         <hr style="border: 1px solid #edbb99; width:100%">
+                                                    </div>
                                                 </div>
                                                 <?php $activityCount++; ?> 
-                                                <hr style="border: 1px solid #edbb99; width:100%">
                                             <?php endforeach; ?>
                                         <?php endif;?>
                                 </div>               
