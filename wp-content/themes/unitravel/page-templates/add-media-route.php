@@ -88,12 +88,12 @@ Template Name: Add Media Route
                                                     <div class="col-md-6 col-sm-12 show-image" style="display:<?= (isset($FORM_DATA["media"]["type"]) && $FORM_DATA["media"]["type"] == "foto") ? "block" : ((!isset($FORM_DATA["media"]["type"])) ? "block" : "none") ?>;">
                                                         <div class="form-group">
                                                             <label for="nameRoute">Seleccionar foto</label>
-                                                            <input name="media_image" type="file" class="form-control-file form-control" id="file-image" accept="image/*">
+                                                            <input name="media_image[]" multiple type="file" class="form-control-file form-control" id="file-image" accept="image/*">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="nameActivityRoute">Descripción corta<b class="text-danger">*</b></label>
+                                                    <label for="nameActivityRoute">Descripción corta</label>
                                                     <input maxlength="250" value="<?= (isset($FORM_DATA["media"]["description"]) ? $FORM_DATA["media"]["description"] : "") ?>" name="media[description]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
                                                 </div>
                                                 <div class="mt-5">

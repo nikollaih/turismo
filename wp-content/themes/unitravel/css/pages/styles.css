@@ -125,6 +125,20 @@ div:where(.swal2-container) h2:where(.swal2-title) {
     background-color: #4b5664 !important;
 }
 
+.btn-primary {
+    background-color: #ea5c12 !important;
+}
+
+.btn-info {
+    background-color: #ab2f0c !important;
+}
+
+.container-activity {
+    background: #f8f8f8;
+    padding: 25px 0;
+    border-bottom: 1px solid #ccc;
+}
+
 .show-password {
     position: absolute;
     right: 25px;

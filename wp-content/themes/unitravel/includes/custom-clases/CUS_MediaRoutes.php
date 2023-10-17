@@ -28,6 +28,12 @@ class CUS_MediaRoutes {
         return $wpdb->get_results($query, ARRAY_A);
     }
 
+    public function get_by_type($id_route, $type) {
+        global $wpdb;
+        $query = $wpdb->prepare("SELECT * FROM $this->table_name WHERE id_route = '$id_route' AND type = '$type'");
+        return $wpdb->get_results($query, ARRAY_A);
+    }
+
     public function update($id, $data) {
         global $wpdb;
         $wpdb->update(

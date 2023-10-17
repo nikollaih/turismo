@@ -63,7 +63,7 @@
     }
 
     function get_company_logo($company_id, $file){
-        $company_logo = "https://dummyimage.com/400x250";
+        $company_logo = "https://dummyimage.com/1200X750";
         if(company_file_exists($company_id, $file) && $file){
             $upload_dir = wp_upload_dir();
             $company_logo = $upload_dir['baseurl'] . '/companies/' . $company_id . '/' . $file;
@@ -73,7 +73,7 @@
     }
 
     function get_route_logo($id_route, $file){
-        $route_logo = "https://dummyimage.com/400x250";
+        $route_logo = "https://dummyimage.com/1200X750";
         if(cus_file_exists($id_route, $file, "routes") && $file){
             $upload_dir = wp_upload_dir();
             $route_logo = $upload_dir['baseurl'] . '/routes/' . $id_route . '/' . $file;

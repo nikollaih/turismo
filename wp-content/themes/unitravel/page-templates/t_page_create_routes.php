@@ -99,6 +99,10 @@ Template Name: Create Routes
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
+                                                    <label for="nameRoute">Archivo de itinerario (.pdf)</label>
+                                                    <input type="file" class="form-control-file form-control" id="file" name="file_itinerario" accept="application/pdf">
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="nameActivityRoute">Descripción corta (Maximo 50 caracteres)<b class="text-danger">*</b></label>
                                                     <input maxlength="50" value="<?= (isset($FORM_DATA["route"]["route_short_description"]) ? $FORM_DATA["route"]["route_short_description"] : "") ?>" name="route[route_short_description]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
                                                 </div>

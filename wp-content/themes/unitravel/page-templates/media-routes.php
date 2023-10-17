@@ -51,7 +51,7 @@ Template Name: Media Routes
                                     
                                 </div>
                                 <?php
-                                    if(check_is_admin($current_user)){
+                                    if(check_is_admin($current_user, $company["id_cus_company"])){
                                         ?>
                                         <div class="col text-right">
                                             <a href="<?= home_url() ?>/agregar-foto-video?route=<?= cus_encrypt($id_route) ?>">
@@ -73,7 +73,7 @@ Template Name: Media Routes
                                             <th scope="col">Foto o video</th>
                                             <th scope="col">Tipo</th>
                                             <?php
-                                                if(check_is_admin($current_user)){?>
+                                                if(check_is_admin($current_user, $company["id_cus_company"])){?>
                                                         <th scope="col"></th>
                                                 <?php }
                                             ?>
@@ -105,7 +105,7 @@ Template Name: Media Routes
                                                             </td>
                                                             <td><?= $media["type"] ?></td>
                                                                 <?php
-                                                                    if(check_is_admin($current_user)){
+                                                                    if(check_is_admin($current_user, $company["id_cus_company"])){
                                                                         ?>
                                                                         <td style="width:150px;">
                                                                             <a class="" href="<?= $edit_route_url ?>">
