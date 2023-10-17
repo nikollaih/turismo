@@ -13,6 +13,8 @@ Template Name: My Routes
     // Obtiene la lista de rutas asociadas a la finca
     $routesModel = new CUS_Route();
     $company_routes = $routesModel->get_all_by_company($company["id_cus_company"]);
+    $collaborator_routes = $routesModel->get_all_collaborator($company["id_cus_company"]);
+    $all_routes = array_merge($company_routes, $collaborator_routes);
 ?>
 
 <div id="custom-page">
@@ -42,7 +44,7 @@ Template Name: My Routes
                                     
                                 </div>
                                 <?php
-                                    if(check_is_admin($current_user)){
+                                    if(check_is_admin($current_user, $company["id_cus_company"])){
                                         ?>
                                         <div class="col text-right">
                                             <a href="<?= home_url() ?>/crear-ruta">
@@ -65,7 +67,7 @@ Template Name: My Routes
                                             <th scope="col">Inicio</th>
                                             <th scope="col">Fin</th>
                                             <?php
-                                                if(check_is_admin($current_user)){?>
+                                                if(check_is_admin($current_user, $company["id_cus_company"])){?>
                                                         <th scope="col"></th>
                                                 <?php }
                                             ?>
@@ -73,11 +75,12 @@ Template Name: My Routes
                                     </thead>
                                     <tbody>
                                         <?php
-                                            if(count($company_routes) > 0){
-                                                for ($i=1; $i < count($company_routes) + 1; $i++) { 
-                                                    $route = $company_routes[$i-1];
+                                            if(count($all_routes) > 0){
+                                                for ($i=1; $i < count($all_routes) + 1; $i++) { 
+                                                    $route = $all_routes[$i-1];
                                                     $edit_route_url = add_query_arg(array('route' => cus_encrypt($route["id_route"])), home_url('/crear-ruta'));
                                                     $activities_url = add_query_arg(array('route' => cus_encrypt($route["id_route"])), home_url('/actividades-ruta'));
+                                                    $media_url = add_query_arg(array('route' => cus_encrypt($route["id_route"])), home_url('/media-experiencias'));
                                                     ?>
                                                         <tr id="<?= $route["id_route"] ?>">
                                                             <td style="width:140px;"><img src="<?= get_route_logo($route["id_route"], $route["route_image"]) ?>" alt="" srcset="" style="width:130px;height:80px;border-radius:10px;"></td>
@@ -91,19 +94,33 @@ Template Name: My Routes
                                                                     }
                                                                 ?>
                                                             </td>
-                                                            <td><?= $route["route_name"] ?></td>
+                                                            <td>
+                                                                <?php
+                                                                    if($company["id_cus_company"] != $route["company_id"]){
+                                                                        echo '<span class="text-primary">'.$route["cus_company_name"].'</span><br>';
+                                                                    } 
+                                                                ?>
+                                                                <?= $route["route_name"] ?>
+                                                            </td>
                                                             <td><?= date("h:i a", strtotime($route["route_start_time"])) ?></td>
                                                             <td><?= date("h:i a", strtotime($route["route_end_time"])) ?></td>
                                                                 <?php
-                                                                    if(check_is_admin($current_user)){
+                                                                    if(check_is_admin($current_user, $company["id_cus_company"])){
                                                                         ?>
                                                                         <td style="width:240px;">
-                                                                            <a class="" href="<?= $edit_route_url ?>">
-                                                                                <button class="btn btn-info">Editar</button>    
-                                                                            </a>
-                                                                            <button user_id="<?= $route["id_route"] ?>" class="btn btn-danger route-delete">Eliminar</button>
+                                                                            <?php
+                                                                                if(check_is_admin($current_user, $route["company_id"])) { ?>
+                                                                                    <a class="" href="<?= $edit_route_url ?>">
+                                                                                        <button class="btn btn-info btn-sm">Editar</button>    
+                                                                                    </a>
+                                                                                    <button user_id="<?= $route["id_route"] ?>" class="btn btn-danger route-delete btn-sm">Eliminar</button>
+                                                                                    <a class="" href="<?= $media_url ?>">
+                                                                                        <button class="btn btn-primary btn-sm">Fotos y videos</button>    
+                                                                                    </a>
+                                                                                <?php }
+                                                                            ?>
                                                                             <a class="" href="<?= $activities_url ?>">
-                                                                                <button class="btn btn-primary">Ver actividades</button>    
+                                                                                <button class="btn btn-primary btn-sm mt-2">Ver actividades</button>    
                                                                             </a>
                                                                         </td>
                                                                         <?php

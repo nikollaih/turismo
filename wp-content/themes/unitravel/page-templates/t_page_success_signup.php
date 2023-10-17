@@ -28,7 +28,7 @@ if(!$current_user)
                         </svg>
                     </div>
                     <div class="text-center">
-                        <h1>Bienvenida!</h1>
+                        <h1>Bienvenid@!</h1>
                         <p style="font-size:20px;">Su cuenta ha sido creada exitosamente. </p>
                         <a href="<?= site_url("/mi-cuenta") ?>">
                             <button style="font-size:23px;" class="btn btn-primary">Perfil</button>
