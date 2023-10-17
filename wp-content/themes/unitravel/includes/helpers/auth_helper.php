@@ -46,8 +46,8 @@ function check_user_company_login(){
     }
 }
 
-function check_is_admin($current_user){
-    return ($current_user->company_permissions == "admin");
+function check_is_admin($current_user, $companyID = null){
+    return ($current_user->company_permissions == "admin" && $current_user->company_id == $companyID);
 }
 
 // Verificamos si un usuario pertenece a una finca

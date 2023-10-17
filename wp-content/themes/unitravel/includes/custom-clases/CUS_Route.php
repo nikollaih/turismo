@@ -53,4 +53,10 @@ class CUS_Route {
         $deleted = $wpdb->delete($this->table_name, array($field => $value), array('%s', '%d'));
         return $deleted;
     }
+
+    public function get_all_collaborator($company_id){
+        global $wpdb;
+        $query = $wpdb->prepare("SELECT r.*, cc.cus_company_name FROM $this->table_name r LEFT JOIN wp_activities_route ar ON ar.id_route = r.id_route JOIN cus_companies cc ON cc.id_cus_company = r.company_id WHERE ar.activity_location = %d AND r.company_id != %d GROUP BY r.id_route", $company_id, $company_id);
+        return $wpdb->get_results($query, ARRAY_A);
+    }
 }

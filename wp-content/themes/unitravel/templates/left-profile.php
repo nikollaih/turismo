@@ -11,7 +11,7 @@
         </div>
 
         <div class="justify-content-center mt-5 pt-5">
-            <h6 class="my-0 mb-3 h5-green">MIS EXPERIENCIAS TURISTICAS</h6>
+            <h6 class="my-0 mb-3 h5-green px-2">EXPERIENCIAS TURISTICAS</h6>
 
             <div class="justify-content-center mb-3">
                 <a href="<?php echo home_url() . '/mis-rutas'; ?>" class="btn btn-routes-primary ms-1">ADMINISTRAR</a>
