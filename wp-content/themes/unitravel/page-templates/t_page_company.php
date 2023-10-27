@@ -6,7 +6,7 @@ Template Name: Company
 <?php 
 include get_theme_file_path("page-templates/utilities.php");
 
-$dataCompany = cus_get_companies_all(2);
+$dataCompany = cus_get_companies_all(3);
 
 $page_id = get_the_ID();
 $page ='.page-id-'.$page_id;
@@ -38,7 +38,6 @@ if(!empty($dataCompany[0]['cus_company_name'])){
 ?>
 <div id="custom-page">
     <?php get_header() ?>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">			<div id="primary" class="site-content">
 				<div id="content" role="main">
 					<section id="company">
 						<div class="wrapper">
@@ -61,32 +60,32 @@ if(!empty($dataCompany[0]['cus_company_name'])){
 
 						<div class="row" style="padding-top: 100px;">
 							<div class="col-md-8 col-sm-6 col-xs-12">
-								<div>
-									<h2 class="h1-information">INFORMACIÓN</h2>
-									<p style="font-size: large;"><?= $dataCompany[0]['cus_company_description'] ?> </p>
+								<div class="mb-5">
+									<h3 class="h1-information">INFORMACIÓN</h3>
+									<p style="font-size: large;" class="mb-4"><?= isset($dataCompany[0]['cus_company_short_description']) ? $dataCompany[0]['cus_company_short_description'] : '' ?></p>
 								</div>
 								<div class="mt-4">
-									<label for="" class="mb-2">
+									<label for="" class="mb-3">
 										<i class="fa fa-thermometer-half fa-2x fa-color"></i>
-										<span class="label-prefix mx-2"><?= $dataCompany[0]['cus_company_latitude'] ?> latitud</span>
+										<span class="label-prefix mx-2"><?= isset($dataCompany[0]['cus_company_latitude']) ? $dataCompany[0]['cus_company_latitude'] : '' ?> latitud</span>
 									</label> <br>
-									<label for="" class="mb-2">
+									<label for="" class="mb-3">
 										<i class="fa fa-thermometer-three-quarters fa-2x fa-color"></i>
-										<span class="label-prefix mx-2"><?= $dataCompany[0]['cus_company_longitude'] ?> longitud</span>
+										<span class="label-prefix mx-2"><?= isset($dataCompany[0]['cus_company_longitude']) ? $dataCompany[0]['cus_company_longitude']  : '' ?> longitud</span>
 									</label> <br>
-									<label for="" class="mb-2">
+									<label for="" class="mb-3">
 										<i class="fa-brands fa-whatsapp fa-2x fa-color"></i>
-										<span class="label-prefix mx-2"><?= $dataCompany[0]['cus_company_whatsapp'] ?></span>
+										<span class="label-prefix mx-2"><?= isset($dataCompany[0]['cus_company_whatsapp']) ? $dataCompany[0]['cus_company_whatsapp'] : '' ?></span>
 									</label> <br>
-									<label for="" class="mb-2">
+									<label for="" class="mb-3">
 										<i class="fa fa-map-marker fa-2x fa-color"></i>
 										<i class="bi bi-geo-alt"></i>
-										<span class="label-prefix mx-2"> <?= $dataCompany[0]['cus_company_address'] ?></span>
+										<span class="label-prefix mx-2"> <?= isset($dataCompany[0]['cus_company_address']) ? $dataCompany[0]['cus_company_address'] : '' ?></span>
 									</label> <br>
-									<label for="" class="mb-2">
+									<label for="" class="mb-3">
 										<i class="fa fa-facebook fa-2x fa-color" aria-hidden="true"></i>
 										<i class="fa fa-instagram fa-2x fa-color mx-2" aria-hidden="true"></i>
-										<span class="label-prefix mx-2 ">  <a style="color: #a8b504;"href="<?= $dataCompany[0]['cus_company_web'] ?>" target="_blank"><?= $dataCompany[0]['cus_company_web'] ?></a></span>
+										<span class="label-prefix mx-2 ">  <a style="color: #a8b504;"href="<?= isset($dataCompany[0]['cus_company_web']) ?  $dataCompany[0]['cus_company_web'] : "" ?>" target="_blank"><?= $dataCompany[0]['cus_company_web'] ?></a></span>
 									</label> <br>
 								</div>
 							</div>
@@ -118,44 +117,48 @@ if(!empty($dataCompany[0]['cus_company_name'])){
 					</section>
 				</div>
 			</div>
-		
-
-<script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+ <!-- Carrusel view companies image -->
 <script>
-		window.addEventListener('load',function(){
-			new Glider(document.querySelector('.carousel-list'), {
-				// Mobile-first defaults
-				slidesToShow: 2,
-				slidesToScroll: 1,
-				scrollLock: true,
-				dots: '#resp-dots',
-				draggable: true,
-				dragVelocity: 1.3,
-				arrows: {
-					prev: '.carrusel-left',
-					next: '.carrusel-right'
-				},
-				responsive: [
-					{
-					breakpoint: 775,
-					settings: {
-						slidesToShow: 2,
-						slidesToScroll: 1,
-						itemWidth: 150,
-						duration: 0.25
-					}
-					},{
-					breakpoint: 1024,
-					settings: {
-						slidesToShow: 3,
-						slidesToScroll: 1,
-						itemWidth: 150,
-						duration: 0.25
-					}
-					}
-				]
-				});
-		});
+  var carousel = $('.carousel-list');
+  $(document).ready(function(){
+    $('.carousel-list').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+	  scrollLock: true,
+	  dots: '#resp-dots',
+      arrows: false,
+      autoplay: true,
+      autoplaySpeed: 2500,
+      pauseOnHover: true,
+      responsive: [
+        {
+          breakpoint: 775,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            itemWidth: 150,
+            speed: 250
+          }
+        },
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            itemWidth: 150,
+            speed: 250
+          }
+        }
+      ]
+    });
+  });
+  $('#right').on('click', function() {
+    carousel.slick('slickNext');
+  });
+
+  $('#left').on('click', function() {
+    carousel.slick('slickPrev');
+  });
 </script>
 	<?php get_footer() ?>
 </div>
