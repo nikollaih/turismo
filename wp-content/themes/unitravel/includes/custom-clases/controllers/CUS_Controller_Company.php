@@ -24,7 +24,7 @@
                 'cus_company_latitude' => $company["latitude"],
                 'cus_company_longitude' => $company["longitude"],
                 'cus_company_short_description' => $company["short_description"],
-                'cus_company_description' => $company["description"]
+                'cus_company_location' => $company["cus_company_location"]
             );
 
             if($company["id_company"]){

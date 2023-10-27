@@ -24,6 +24,7 @@ function cus_get_current_user() {
         $current_user->document_number = get_user_meta($current_user->ID, "document_number", true );
         $current_user->company_id = get_user_meta($current_user->ID, "user_company_id", true );
         $current_user->company_permissions = get_user_meta($current_user->ID, "user_company_permissions", true );
+        $current_user->biografia = get_user_meta($current_user->ID, "biografia", true );
 
         // Usuario logueado
         return $current_user;
@@ -45,6 +46,12 @@ function check_user_company_login(){
     }
 }
 
-function check_is_admin($current_user){
-    return ($current_user->company_permissions == "admin");
+function check_is_admin($current_user, $companyID = null){
+    return ($current_user->company_permissions == "admin" && $current_user->company_id == $companyID);
+}
+
+// Verificamos si un usuario pertenece a una finca
+function user_belongs_company($id_user, $id_company){
+    $found = get_user_meta($id_user, "user_company_id", true);
+    return ($found == $id_company);
 }

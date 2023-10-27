@@ -16,6 +16,8 @@ function cargar_archivo_js_del_tema() {
 	wp_enqueue_script('sweetalert2-js', get_template_directory_uri() . '/js/sweetalert2.min.js', array('jquery'), '1.0', true);
 	wp_enqueue_script('custom-fetch', get_template_directory_uri() . '/js/custom_fetch.js', array('jquery'), '1.0', true);
 	wp_enqueue_script('general-js', get_template_directory_uri() . '/js/general.js', array('jquery'), '1.0', true);
+	wp_enqueue_script('activities-js', get_template_directory_uri() . '/js/pages/activities.js', array('jquery'), '1.0', true);
+	wp_enqueue_script('routes-js', get_template_directory_uri() . '/js/pages/routes.js', array('jquery'), '1.0', true);
 	wp_localize_script('custom-fetch', 'customFetch', array(
         'home_url' => home_url(),
     ));
@@ -36,6 +38,12 @@ function cambiar_enlace_recuperar_contrasena() {
     return home_url()."/wp-login.php?action=lostpassword"; // Reemplaza con tu nueva URL
 }
 add_filter('lostpassword_url', 'cambiar_enlace_recuperar_contrasena');
+
+function prevent_caching() {
+    header("Cache-Control: no-cache, must-revalidate");
+    header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+}
+add_action('init', 'prevent_caching');
 
 if (!defined("UNITRAVEL_THEME_DIR")) define("UNITRAVEL_THEME_DIR", trailingslashit( get_template_directory() ));
 if (!defined("UNITRAVEL_CHILD_DIR")) define("UNITRAVEL_CHILD_DIR", trailingslashit( get_stylesheet_directory() ));

@@ -266,7 +266,7 @@ table th {
 }
 
 table th {
-	font-size: 2.143rem;
+	font-size: 20px;
 	font-weight: 700;
 	line-height: 2.786rem;
 	text-transform: uppercase;
@@ -7557,4 +7557,8 @@ button.mfp-close {
 
 .top_panel_navi, .top_panel .sc_layouts_row_fixed {
 	box-shadow: rgba(0, 0, 0, 0.29) 0px 0px 13px;
+}
+
+.text-primary {
+	color: #eb7373 !important;
 }

@@ -19,14 +19,12 @@ class CUS_Users {
 
     public function get_user_by_param($param, $value) {
         global $wpdb;
-
         $query = $wpdb->prepare("SELECT * FROM $this->table_name WHERE $param = '$value'");
         return $wpdb->get_row($query, ARRAY_A);
     }
 
     public function update_user($id, $data) {
         global $wpdb;
-
         return $wpdb->update(
             $this->table_name,
             $data,
@@ -34,10 +32,9 @@ class CUS_Users {
         );
     }
 
-    public function delete_user($id) {
+    public function delete($id) {
         global $wpdb;
-
-        $wpdb->delete(
+        return $wpdb->delete(
             $this->table_name,
             array('ID' => $id),
             array('%d') // ID data type

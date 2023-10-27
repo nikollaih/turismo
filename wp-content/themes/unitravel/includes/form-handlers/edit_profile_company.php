@@ -35,6 +35,7 @@ function updateUser($user) {
 
         if($validateFields["status"] == true){
             $new_user = $user_controller->getFormatedEditUserArray($user);
+            $new_meta = array("biografia" => $user["biografia"]);
 
             // Modificar el usuario usuario
             $updated_user = $users_model->update_user($user["ID"], $new_user);
@@ -42,14 +43,13 @@ function updateUser($user) {
                 if(trim($_FILES["profile"]["name"]) != ""){
                     $profile_image = load_profile_image($_FILES["profile"], $user["ID"]);
                     $user["profile_image"] = $profile_image;
-
-                    $new_meta = array(
-                        "wp_profile_image" => $user["profile_image"]
-                    );
+                    $new_meta = array("wp_profile_image" => $user["profile_image"], "biografia" => $user["biografia"]);
                     
-                    $user_controller->update_user_meta($user["ID"], $new_meta);
                 }
             }
+            $user_controller->update_user_meta($user["ID"], $new_meta);
+            $user["display_name"] = $user["fullname"];
+            updateProfilePost($user, $user["ID"]);
         }
         else {
             $RESPONSE_CREATE_USER_COMPANY = $validateFields;

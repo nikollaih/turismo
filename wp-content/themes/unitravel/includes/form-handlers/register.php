@@ -31,12 +31,17 @@ function registerUser($user, $company) {
             if(isset($_FILES["profile"])){
                 $profile_image = load_profile_image($_FILES["profile"], $user_id);
                 $user["profile_image"] = $profile_image;
+                $new_user["profile_image"] = $profile_image;
             }
             
             $company_id = registerCompany($company);
-            registerUserMeta($user_id, $user, $company_id);
-        } else {
-            echo 'Error al agregar el usuario.';
+            if($company_id == 0)
+                $users->delete($user_id);
+            else {
+                $new_user["biografia"] = $user["biografia"];
+                createProfilePost($new_user, $user_id);
+                registerUserMeta($user_id, $user, $company_id);
+            } 
         }
     }
     else {

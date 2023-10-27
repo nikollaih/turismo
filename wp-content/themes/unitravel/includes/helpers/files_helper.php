@@ -56,8 +56,14 @@
         return (file_exists($file_path) && $file);
     }
 
+    function cus_file_exists($id, $file, $folder){
+        $upload_dir = wp_upload_dir();
+        $file_path = $upload_dir['basedir'] . '/'.$folder.'/' . $id . '/' . $file;
+        return (file_exists($file_path) && $file);
+    }
+
     function get_company_logo($company_id, $file){
-        $company_logo = "https://www.globalterramaps.com/images/AGLCA/HistoricSite.png";
+        $company_logo = "https://dummyimage.com/1200X750";
         if(company_file_exists($company_id, $file) && $file){
             $upload_dir = wp_upload_dir();
             $company_logo = $upload_dir['baseurl'] . '/companies/' . $company_id . '/' . $file;
@@ -66,8 +72,30 @@
         return $company_logo;
     }
 
+    function get_route_logo($id_route, $file){
+        $route_logo = "https://dummyimage.com/1200X750";
+        if(cus_file_exists($id_route, $file, "routes") && $file){
+            $upload_dir = wp_upload_dir();
+            $route_logo = $upload_dir['baseurl'] . '/routes/' . $id_route . '/' . $file;
+        }
+
+        return $route_logo;
+    }
+
+    function get_media_route($id_route, $file){
+        $route_logo = "https://icon-library.com/images/upload-image-icon-png/upload-image-icon-png-10.jpg";
+        $upload_dir = wp_upload_dir();
+        $file_path = $upload_dir['basedir'] . '/routes/' . $id_route . '/media/' . $file;
+        if (file_exists($file_path) && $file){
+            $upload_dir = wp_upload_dir();
+            $route_logo = $upload_dir['baseurl'] . '/routes/' . $id_route . '/media/' . $file;
+        }
+
+        return $route_logo;
+    }
+
     function get_profile_image($user_id){
-        $profile_image = "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png";
+        $profile_image = "https://dummyimage.com/300";
         $file = get_user_meta($user_id, "wp_profile_image", true);
         if(profile_file_exists($user_id, $file)){
             $upload_dir = wp_upload_dir();
