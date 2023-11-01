@@ -48,7 +48,7 @@ function registerUserMeta($user_id, $user, $company_id, $do_login = true){
 }
 
 function createProfilePost($profile, $user_id){
-    /*if(isset($profile["profile_image"]) && !empty($profile["profile_image"])){
+    if(isset($profile["profile_image"]) && !empty($profile["profile_image"])){
         // Obtener información sobre el directorio de uploads
         $upload_dir = wp_upload_dir();
 
@@ -93,11 +93,11 @@ function createProfilePost($profile, $user_id){
     }
 
     // Check if the post was successfully created
-    return array("post_id" => $id_post, "attachment_id" => $id_adjunto); */
+    return array("post_id" => $id_post, "attachment_id" => $id_adjunto); 
 }
 
 function updateProfilePost($profile, $user_id){
-        /*// ID del autor que quieres modificar
+        // ID del autor que quieres modificar
 
         // Obtener posts del autor
         $args = array(
@@ -139,6 +139,7 @@ function updateProfilePost($profile, $user_id){
                         'post_title'     => $profile["display_name"],
                         'post_content'   => '',
                         'post_status'    => 'inherit',
+                        'post_parent'    => $post[0]->ID
                     );
 
                     // Insertar la imagen adjunta
@@ -157,5 +158,5 @@ function updateProfilePost($profile, $user_id){
         }
         else {
             createProfilePost($profile, $user_id);
-        } */
+        } 
 }
