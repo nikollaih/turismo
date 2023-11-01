@@ -25,7 +25,6 @@
       $FORM_DATA["company"]["address"] = $company["cus_company_address"];
       $FORM_DATA["company"]["latitude"] = $company["cus_company_latitude"];
       $FORM_DATA["company"]["longitude"] = $company["cus_company_longitude"];
-      $FORM_DATA["company"]["description"] = $company["cus_company_description"];
       $FORM_DATA["company"]["cus_company_logo"] = $company["cus_company_logo"];
       $FORM_DATA["company"]["short_description"] = $company["cus_company_short_description"];
    }
