@@ -83,7 +83,7 @@
     }
 
     function get_media_route($id_route, $file){
-        $route_logo = "https://icon-library.com/images/upload-image-icon-png/upload-image-icon-png-10.jpg";
+        $route_logo = "https://dummyimage.com/1200X750";
         $upload_dir = wp_upload_dir();
         $file_path = $upload_dir['basedir'] . '/routes/' . $id_route . '/media/' . $file;
         if (file_exists($file_path) && $file){
@@ -95,7 +95,7 @@
     }
 
     function get_profile_image($user_id){
-        $profile_image = "https://dummyimage.com/300";
+        $profile_image = "https://dummyimage.com/700x700";
         $file = get_user_meta($user_id, "wp_profile_image", true);
         if(profile_file_exists($user_id, $file)){
             $upload_dir = wp_upload_dir();

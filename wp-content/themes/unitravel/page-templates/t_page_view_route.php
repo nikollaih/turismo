@@ -172,7 +172,7 @@ $mediosVideo = $mediaModel->get_by_type($route['id_route'], "video");
             </section>
         </div>
     </div>
-    <a href='https://wa.me/57<?=$activity['cus_company_whatsapp'] ?>'target='_blank'>                                                 
+    <a href='https://wa.me/57<?=$route['route_whatsapp'] ?>'target='_blank'>                                                 
     <div id='float-whatsapp-route'>
     <span style="font-size:20px;">Reservar</span>  &nbsp;&nbsp;&nbsp;
          </span> <i style="color: #ffffff; font-size: 38px;" class="fa fa-whatsapp" aria-hidden="true"></i>

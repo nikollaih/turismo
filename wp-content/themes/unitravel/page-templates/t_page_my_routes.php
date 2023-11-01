@@ -97,6 +97,7 @@ Template Name: My Routes
                                                             <td>
                                                                 <?php
                                                                     if($company["id_cus_company"] != $route["company_id"]){
+                                                                        echo '<b>Lugar: </b>';
                                                                         echo '<span class="text-primary">'.$route["cus_company_name"].'</span><br>';
                                                                     } 
                                                                 ?>
