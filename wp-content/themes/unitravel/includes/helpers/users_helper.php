@@ -86,7 +86,7 @@ function createProfilePost($profile, $user_id){
 
     // Insertar el post en la base de datos
     $id_post = wp_insert_post($post_data);
-    update_post_meta($id_post, "trx_addons_options", 'a:1:{s:8:"subtitle";s:0:"";}');
+    update_post_meta($id_post, "trx_addons_options", array("subtitle" => ""));
 
     if(isset($profile["profile_image"])){
         // Asignar la imagen adjunta como miniatura del post
@@ -118,7 +118,7 @@ function updateProfilePost($profile, $user_id){
 
             // Actualizar el post
             wp_update_post($nuevos_datos_post);
-            update_post_meta($post[0]->ID, "trx_addons_options", 'a:1:{s:8:"subtitle";s:0:"";}');
+            update_post_meta($post[0]->ID, "trx_addons_options", array("subtitle" => ""));
 
             if(isset($profile["profile_image"]) && !empty($profile["profile_image"])){
                 // Obtener el ID de la imagen adjunta
