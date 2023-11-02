@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
                 <div class="form-outline form-white">
-                <label for="nameActivityRoute">Dirección <b class="text-danger">*</b></label>
+                <label for="nameActivityRoute">Dirección de la finca <b class="text-danger">*</b></label>
                 <input required value="<?= (isset($FORM_DATA["company"]["address"]) ? $FORM_DATA["company"]["address"] : "") ?>" name="company[address]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
                 </div>
             </div>
@@ -74,7 +74,7 @@
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
                 <div class="form-outline form-white">
-                <label for="nameActivityRoute">Descripción corta (Maximo 50 letras)<b class="text-danger">*</b></label>
+                <label for="nameActivityRoute">Descripción corta de la finca (Maximo 50 letras)<b class="text-danger">*</b></label>
                 <input maxlength="50" value="<?= (isset($FORM_DATA["company"]["short_description"]) ? $FORM_DATA["company"]["short_description"] : "") ?>" name="company[short_description]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
                 </div>
             </div>
