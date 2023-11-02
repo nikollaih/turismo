@@ -28,7 +28,7 @@ $routes = $routesModel->get_all();
                             <div class="row">
                                 
                                 <?php
-                                    if(is_array($routes)){
+                                    if(is_array($routes) && count($routes) > 0){
                                         foreach ($routes as $route) {
                                 ?>
                                 <div class="col-md-4 col-sm-12">
