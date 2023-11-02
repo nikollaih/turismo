@@ -20,6 +20,7 @@ if (!empty($city_banner_img['img_city'])) {
     body.page .vc_custom_1693159376634 {
         background-image: url(' . esc_url($city_banner_img['img_city']) . ') !important;
         position: relative;
+        background-position: center !important;
     }
     body.page .vc_custom_1693159376634::before {
         content: "' . $name . '"; 
