@@ -19,14 +19,13 @@ $routes = $routesModel->get_all();
                 <div class="container" style="position: relative;">
                     <div class="row content-profile-one">
                         <div class="col-md-12 col-sm-12">
-                            <h5 class="text-center mt-0 h5-orange-list-routes">LISTA DE EXPERIENCIAS TURISTICAS</h5>
-                            <div class="justify-content-center my-3">
+                            <h5 class="text-center mt-0 mb-5 h5-orange-list-routes">LISTA DE EXPERIENCIAS TURISTICAS</h5>
+                            <!-- <div class="justify-content-center my-3">
                                 <div class="text-center">
                                     <input type="search" name="listRoutes" id="listRoutes" class="text-center input-search" placeholder="Buscar ruta">
                                 </div>  
-                            </div>
-                            <div class="row">
-                                
+                            </div> -->
+                            <div class="row mt-5">
                                 <?php
                                     if(is_array($routes) && count($routes) > 0){
                                         foreach ($routes as $route) {
