@@ -37,6 +37,9 @@ function registerUserMeta($user_id, $user, $company_id, $do_login = true){
     $data_add = array("user_id" => $user_id, "meta_key" => "biografia", "meta_value" => $user["biografia"]);
     $saved_user_meta = $user_meta->insert_usermeta($data_add);
 
+    $data_add = array("user_id" => $user_id, "meta_key" => "historia", "meta_value" => $user["historia"]);
+    $saved_user_meta = $user_meta->insert_usermeta($data_add);
+
     $data_add = array("user_id" => $user_id, "meta_key" => "user_company_id", "meta_value" => $company_id);
     $saved_user_meta = $user_meta->insert_usermeta($data_add);
 

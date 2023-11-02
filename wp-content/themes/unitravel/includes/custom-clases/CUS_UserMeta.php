@@ -45,4 +45,11 @@ class CUS_UserMeta {
             array('%d') // umeta_id data type
         );
     }
+
+    public function get_users_historias() {
+        global $wpdb;
+
+        $query = $wpdb->prepare("SELECT * FROM $this->table_name um JOIN wp_users u ON um.user_id = u.ID WHERE um.meta_key = 'historia'");
+        return $wpdb->get_results($query, ARRAY_A);
+    }
 }

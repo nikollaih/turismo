@@ -35,6 +35,15 @@
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
                 <div class="form-outline form-white">
+                    <label for="nameActivityRoute">Historia (Video de YouTube)</label>
+                    <input placeholder="" name="user[historia]" type="text" id="historia" class="form-control form-control-lg" value="<?= (isset($FORM_DATA["user"]["historia"]) ? $FORM_DATA["user"]["historia"] : "") ?>"/>
+                    <?php if(isset($RESPONSE_CREATE_USER_COMPANY["status"]) && $RESPONSE_CREATE_USER_COMPANY["status"] == false && $RESPONSE_CREATE_USER_COMPANY["field"] == "historia"){
+                        echo "<span class='cus_error_field'>".$RESPONSE_CREATE_USER_COMPANY["message"]."<span/>";
+                    }?>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
+                <div class="form-outline form-white">
                 <label for="nameActivityRoute">Biografía <b class="text-danger">*</b> (Máximo 250 letras)</label>
                 <textarea maxlength="250" name="user[biografia]" id="" cols="30" rows="5"><?= (isset($FORM_DATA["user"]["biografia"]) ? $FORM_DATA["user"]["biografia"] : "") ?></textarea>
                 </div>

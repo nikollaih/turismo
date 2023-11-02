@@ -14,6 +14,7 @@
       $FORM_DATA["user"]["fullname"] = $current_user->display_name;
       $FORM_DATA["user"]["email"] = $current_user->user_email;
       $FORM_DATA["user"]["biografia"] = $current_user->biografia;
+      $FORM_DATA["user"]["historia"] = $current_user->historia;
    }
 
    if(!isset($FORM_DATA["company"])){
@@ -43,8 +44,12 @@
                <dic class="row">
                   <div class="col-md-12">
                      <?php
-                           if (!empty($success_message)) {
+                           if (!empty($success_message) && (isset($RESPONSE_CREATE_USER_COMPANY["status"]) && $RESPONSE_CREATE_USER_COMPANY["status"] == true)) {
                               echo '<div class="alert alert-success" role="alert">' . esc_html($success_message) . '</div>';
+                           }
+                           
+                           if ((isset($RESPONSE_CREATE_USER_COMPANY["status"]) && $RESPONSE_CREATE_USER_COMPANY["status"] == false)) {
+                              echo '<div class="alert alert-danger" role="alert">' . esc_html($RESPONSE_CREATE_USER_COMPANY["message"]) . '</div>';
                            }
                      ?>
                   </div>

@@ -32,10 +32,12 @@ function updateUser($user) {
 
         // Validar que los campos
         $validateFields = validateUserCompany($user);
+        $RESPONSE_CREATE_USER_COMPANY = $validateFields;
 
         if($validateFields["status"] == true){
             $new_user = $user_controller->getFormatedEditUserArray($user);
             $new_meta = array("biografia" => $user["biografia"]);
+            $new_meta = array("historia" => $user["historia"]);
 
             // Modificar el usuario usuario
             $updated_user = $users_model->update_user($user["ID"], $new_user);
@@ -50,9 +52,6 @@ function updateUser($user) {
             $user_controller->update_user_meta($user["ID"], $new_meta);
             $user["display_name"] = $user["fullname"];
             updateProfilePost($user, $user["ID"]);
-        }
-        else {
-            $RESPONSE_CREATE_USER_COMPANY = $validateFields;
         }
     }
 }
@@ -80,6 +79,8 @@ function validateUserCompany($user){
     $exists_document = $user_meta->get_usermeta_by_param("document_number", $user["document"]);
     
     if(is_array($exists_document) && $exists_document["user_id"] != $user["ID"]) return array('field' => 'document', 'message' => "Ya existe una cuenta con este número de documento.", "status" => false);
+
+    if(trim($user["historia"]) != "" && !strpos($user["historia"], 'embed')) return array('field' => 'historia', 'message' => "La url del video de YouTube no es válida, recuerde que debe ser la url del video embebido.", "status" => false);
 
     $exists_email = $users->get_user_by_param("user_email", $user["email"]);
     if(is_array($exists_email) && $exists_email["ID"] != $user["ID"]) return array('field' => 'email', 'message' => "Ya existe una cuenta con este correo.", "status" => false);
