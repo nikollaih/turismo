@@ -19,7 +19,7 @@ $routes = $routesModel->get_all();
                 <div class="container" style="position: relative;">
                     <div class="row content-profile-one">
                         <div class="col-md-12 col-sm-12">
-                            <h5 class="text-center mt-0 h5-orange-list-routes">LISTA DE RUTAS</h5>
+                            <h5 class="text-center mt-0 h5-orange-list-routes">LISTA DE EXPERIENCIAS TURISTICAS</h5>
                             <div class="justify-content-center my-3">
                                 <div class="text-center">
                                     <input type="search" name="listRoutes" id="listRoutes" class="text-center input-search" placeholder="Buscar ruta">
@@ -84,6 +84,9 @@ $routes = $routesModel->get_all();
                                     </div>
                                 <?php
                                         }
+                                    }
+                                    else {
+                                        echo '<p>No se han encontrado registros.</p>';
                                     }
                                 ?>
                             </div>
