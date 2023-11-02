@@ -26,7 +26,7 @@ Template Name: Meet Them
                         <?php
                             if(is_array($historias) && count($historias) > 0) {
                                 foreach ($historias as $historia) { 
-                                    if(trim($historia["meta_value"]) != "" && strpos($historia["historia"], 'embed')){
+                                    if(trim($historia["meta_value"]) != "" && strpos($historia["meta_value"], 'embed')){
                                     ?>
                                     <div class="col-md-4 col-sm-12 mt-4">
                                         <iframe width="560" height="315" src="<?= $historia["meta_value"] ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
