@@ -27,7 +27,8 @@
       $FORM_DATA["company"]["latitude"] = $company["cus_company_latitude"];
       $FORM_DATA["company"]["longitude"] = $company["cus_company_longitude"];
       $FORM_DATA["company"]["cus_company_logo"] = $company["cus_company_logo"];
-      $FORM_DATA["company"]["short_description"] = $company["cus_company_short_description"];
+      $FORM_DATA["company"]["cus_company_location"] = $company["cus_company_location"];
+      $FORM_DATA["company"]["cus_company_short_description"] = $company["cus_company_short_description"];
    }
 
    // Obtiene la session falsh en caso de que se haya creado una nueva colaboradora

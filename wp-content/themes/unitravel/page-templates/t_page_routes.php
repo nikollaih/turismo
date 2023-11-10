@@ -44,7 +44,7 @@ $routes = $routesModel->get_all();
                                                     <div class="room-plugin room-info">
                                                         <div class="room-plugin room-info-item">
                                                             <div class="room-plugin room-people">
-                                                                <i class="fa-regular fa-clock"></i>&nbsp;&nbsp;&nbsp;<?= date("H:i a", strtotime($route["route_start_time"])) ?>&nbsp;&nbsp;-&nbsp;&nbsp;<?= date("H:i a", strtotime($route["route_end_time"])) ?>
+                                                                <i class="fa-regular fa-clock"></i>&nbsp;&nbsp;&nbsp;<?= date("h:i a", strtotime($route["route_start_time"])) ?>&nbsp;&nbsp;-&nbsp;&nbsp;<?= date("h:i a", strtotime($route["route_end_time"])) ?>
                                                             </div>
                                                             <div class="room-plugin room-people">
                                                                 <?php

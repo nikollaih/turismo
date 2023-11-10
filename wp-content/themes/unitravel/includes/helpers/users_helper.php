@@ -136,6 +136,7 @@ function updateProfilePost($profile, $user_id){
                 // Ruta completa a tu imagen dentro del directorio de uploads
                 $ruta_imagen = $ruta_uploads . '/profiles/'.$user_id."/".$profile["profile_image"];
 
+
                 if(!$attachment_id){
                     // Preparar datos para la imagen adjunta
                     $datos_adjunto = array(
@@ -149,12 +150,14 @@ function updateProfilePost($profile, $user_id){
 
                     // Insertar la imagen adjunta
                     $attachment_id = wp_insert_attachment($datos_adjunto, $ruta_imagen);
+                    update_post_meta($post[0]->ID, "_thumbnail_id", $attachment_id);
                 }
+
 
                 // Generar metadatos de la imagen y actualizar el registro en la base de datos
                 $metadatos_adjunto = wp_generate_attachment_metadata($attachment_id, $ruta_imagen);
                 wp_update_attachment_metadata($attachment_id, $metadatos_adjunto);
-
+                
                 if(!$attachment_id){
                     // Asignar la imagen adjunta como miniatura del post
                     set_post_thumbnail($id_post, $attachment_id);

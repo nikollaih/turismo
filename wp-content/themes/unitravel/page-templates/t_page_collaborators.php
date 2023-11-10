@@ -41,7 +41,7 @@ Template Name: Collaborators
                                     
                                 </div>
                                 <?php
-                                    if(check_is_admin($current_user)){
+                                    if(check_is_admin($current_user, $company["id_cus_company"])){
                                         ?>
                                         <div class="col text-right">
                                             <a href="<?= home_url() ?>/agregar-colaboradora">
@@ -65,7 +65,7 @@ Template Name: Collaborators
                                             <th scope="col">Correo electrónico</th>
                                             <th scope="col">Rol</th>
                                             <?php
-                                                if(check_is_admin($current_user)){
+                                                if(check_is_admin($current_user, $company["id_cus_company"])){
                                                     ?>
                                                         <th scope="col"></th>
                                                     <?php
@@ -87,7 +87,7 @@ Template Name: Collaborators
                                                             <td><?= $collaborator["user_email"] ?></td>
                                                             <td>
                                                                 <?php
-                                                                    if(check_is_admin($current_user)){
+                                                                    if(check_is_admin($current_user, $company["id_cus_company"])){
                                                                         ?>
                                                                         <select name="" id="" class="collaborator-select">
                                                                             <option <?= ($collaborator["user_company_permissions"] == "admin") ? "selected" : ""  ?> value="admin">Administradora</option>
@@ -105,7 +105,7 @@ Template Name: Collaborators
                                                                 
                                                             </td>
                                                                 <?php
-                                                                    if(check_is_admin($current_user)){
+                                                                    if(check_is_admin($current_user, $company["id_cus_company"])){
                                                                         ?>
                                                                         <td>
                                                                             <button user_id="<?= $collaborator["ID"] ?>" class="btn btn-danger collaborator-delete">Eliminar</button>

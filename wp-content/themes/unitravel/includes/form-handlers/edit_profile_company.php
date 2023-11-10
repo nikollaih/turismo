@@ -46,7 +46,6 @@ function updateUser($user) {
                     $profile_image = load_profile_image($_FILES["profile"], $user["ID"]);
                     $user["profile_image"] = $profile_image;
                     $new_meta = array("wp_profile_image" => $user["profile_image"], "biografia" => $user["biografia"]);
-                    
                 }
             }
             $user_controller->update_user_meta($user["ID"], $new_meta);

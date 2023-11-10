@@ -168,6 +168,12 @@ $mediosVideo = $mediaModel->get_by_type($route['id_route'], "video");
                                 }
                             ?>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?= (count($mediosFoto) <= 0 && count($mediosVideo) <= 0) ? "No se han encontrado elementos para la galeria" : "" ?>
+                            </div>
+                        </div>
                 </div>
             </section>
         </div>
