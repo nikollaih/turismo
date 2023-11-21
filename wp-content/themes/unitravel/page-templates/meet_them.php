@@ -4,7 +4,6 @@ Template Name: Meet Them
 */
     include get_theme_file_path("page-templates/shorcuts/_overlay_loading.php");
     include get_theme_file_path("page-templates/utilities.php");
-    include get_theme_file_path("page-templates/current_user_company_data.php");
     require_once get_theme_file_path("includes/custom-clases/CUS_UserMeta.php");
 
     $UserMeta = new CUS_UserMeta();
