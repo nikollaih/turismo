@@ -27,8 +27,8 @@
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                 <div class="form-outline form-white">
-                <label for="nameActivityRoute">Número de whatsapp <b class="text-danger">*</b></label>
-                <input minlength="10" required value="<?= (isset($FORM_DATA["company"]["whatsapp"]) ? $FORM_DATA["company"]["whatsapp"] : "") ?>" name="company[whatsapp]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
+                <label for="nameActivityRoute">Whatsapp para reservas <b class="text-danger">*</b></label>
+                <input minlength="10" required value="<?= (isset($FORM_DATA["company"]["whatsapp"]) ? $FORM_DATA["company"]["whatsapp"] : "") ?>" name="company[whatsapp]" placeholder="" type="number" id="form3Examplea4" class="form-control form-control-lg" />
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
@@ -50,20 +50,20 @@
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
                 <div class="form-outline form-white">
-                <label for="nameActivityRoute">Dirección <b class="text-danger">*</b></label>
+                <label for="nameActivityRoute">Dirección de la finca <b class="text-danger">*</b></label>
                 <input required value="<?= (isset($FORM_DATA["company"]["address"]) ? $FORM_DATA["company"]["address"] : "") ?>" name="company[address]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                 <div class="form-outline form-white">
                 <label for="nameActivityRoute">Latitud (opcional)</label>
-                <input value="<?= (isset($FORM_DATA["company"]["latitude"]) ? $FORM_DATA["company"]["latitude"] : "") ?>" name="company[latitude]" placeholder="" type="number" id="form3Examplea4" class="form-control form-control-lg" />
+                <input step="any" value="<?= (isset($FORM_DATA["company"]["latitude"]) ? $FORM_DATA["company"]["latitude"] : "") ?>" name="company[latitude]" placeholder="" type="number" id="form3Examplea4" class="form-control form-control-lg" />
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12 mb-4 pb-2">
                 <div class="form-outline form-white">
                 <label for="nameActivityRoute">Longitud (opcional)</label>
-                <input value="<?= (isset($FORM_DATA["company"]["longitude"]) ? $FORM_DATA["company"]["longitude"] : "") ?>" name="company[longitude]" placeholder="" type="number" id="form3Examplea4" class="form-control form-control-lg" />
+                <input step="any" value="<?= (isset($FORM_DATA["company"]["longitude"]) ? $FORM_DATA["company"]["longitude"] : "") ?>" name="company[longitude]" placeholder="" type="number" id="form3Examplea4" class="form-control form-control-lg" />
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
@@ -74,8 +74,8 @@
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
                 <div class="form-outline form-white">
-                <label for="nameActivityRoute">Descripción corta (Maximo 50 letras)<b class="text-danger">*</b></label>
-                <input maxlength="50" value="<?= (isset($FORM_DATA["company"]["short_description"]) ? $FORM_DATA["company"]["short_description"] : "") ?>" name="company[short_description]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
+                <label for="nameActivityRoute">Descripción corta de la finca (Maximo 50 letras)<b class="text-danger">*</b></label>
+                <input required maxlength="50" value="<?= (isset($FORM_DATA["company"]["cus_company_short_description"]) ? $FORM_DATA["company"]["cus_company_short_description"] : "") ?>" name="company[cus_company_short_description]" placeholder="" type="text" id="form3Examplea4" class="form-control form-control-lg" />
                 </div>
             </div>
             <!-- <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">

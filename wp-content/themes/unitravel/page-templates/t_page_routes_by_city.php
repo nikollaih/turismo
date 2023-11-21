@@ -20,6 +20,7 @@ if (!empty($city_banner_img['img_city'])) {
     body.page .vc_custom_1693159376634 {
         background-image: url(' . esc_url($city_banner_img['img_city']) . ') !important;
         position: relative;
+        background-position: center !important;
     }
     body.page .vc_custom_1693159376634::before {
         content: "' . $name . '"; 
@@ -47,7 +48,7 @@ if (!empty($city_banner_img['img_city'])) {
                         <div class="col-md-12 col-sm-12">
                             <div class="row">
                             <?php
-                                    if(is_array($routes)){
+                                    if(is_array($routes) && count($routes) > 0){
                                         foreach ($routes as $route) {
                                 ?>
                                 <div class="col-md-4 col-sm-12">
@@ -103,6 +104,9 @@ if (!empty($city_banner_img['img_city'])) {
                                     </div>
                                 <?php
                                         }
+                                    }
+                                    else {
+                                        echo '<p>No se han encontrado registros.</p>';
                                     }
                                 ?>
                             </div>

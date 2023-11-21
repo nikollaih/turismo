@@ -56,7 +56,7 @@
                     <label for="nameActivityRoute">Contraseña <b class="text-danger">*</b></label>
                     <div class="password-container">
                         <input minlength="8" required placeholder="" name="user[pass]" type="password" id="pass" class="form-control form-control-lg input-password" value="<?= (isset($FORM_DATA["user"]["pass"]) ? $FORM_DATA["user"]["pass"] : "") ?>"/>
-                        <i class="fa-solid fa-eye show-password"></i>
+                        <i class="fa-solid fa-eye-slash show-password"></i>
                     </div>
                     <?php if(isset($RESPONSE_CREATE_USER_COMPANY["status"]) && $RESPONSE_CREATE_USER_COMPANY["status"] == false && $RESPONSE_CREATE_USER_COMPANY["field"] == "pass"){
                         echo "<span class='cus_error_field'>".$RESPONSE_CREATE_USER_COMPANY["message"]."<span/>";
@@ -69,7 +69,7 @@
                     <label for="nameActivityRoute">Repetir contraseña <b class="text-danger">*</b></label>
                     <div class="password-container">
                         <input required placeholder="" name="user[r_pass]" type="password" id="r_pass" class="form-control form-control-lg input-password" value="<?= (isset($FORM_DATA["user"]["r_pass"]) ? $FORM_DATA["user"]["r_pass"] : "") ?>"/>
-                        <i class="fa-solid fa-eye show-password"></i>
+                        <i class="fa-solid fa-eye-slash show-password"></i>
                     </div>
                 </div>
             </div>

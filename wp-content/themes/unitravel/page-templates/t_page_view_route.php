@@ -168,11 +168,17 @@ $mediosVideo = $mediaModel->get_by_type($route['id_route'], "video");
                                 }
                             ?>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?= (count($mediosFoto) <= 0 && count($mediosVideo) <= 0) ? "No se han encontrado elementos para la galeria" : "" ?>
+                            </div>
+                        </div>
                 </div>
             </section>
         </div>
     </div>
-    <a href='https://wa.me/57<?=$activity['cus_company_whatsapp'] ?>'target='_blank'>                                                 
+    <a href='https://wa.me/57<?=$route['route_whatsapp'] ?>'target='_blank'>                                                 
     <div id='float-whatsapp-route'>
     <span style="font-size:20px;">Reservar</span>  &nbsp;&nbsp;&nbsp;
          </span> <i style="color: #ffffff; font-size: 38px;" class="fa fa-whatsapp" aria-hidden="true"></i>

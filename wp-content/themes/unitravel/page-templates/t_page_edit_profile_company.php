@@ -14,6 +14,7 @@
       $FORM_DATA["user"]["fullname"] = $current_user->display_name;
       $FORM_DATA["user"]["email"] = $current_user->user_email;
       $FORM_DATA["user"]["biografia"] = $current_user->biografia;
+      $FORM_DATA["user"]["historia"] = $current_user->historia;
    }
 
    if(!isset($FORM_DATA["company"])){
@@ -25,9 +26,9 @@
       $FORM_DATA["company"]["address"] = $company["cus_company_address"];
       $FORM_DATA["company"]["latitude"] = $company["cus_company_latitude"];
       $FORM_DATA["company"]["longitude"] = $company["cus_company_longitude"];
-      $FORM_DATA["company"]["description"] = $company["cus_company_description"];
       $FORM_DATA["company"]["cus_company_logo"] = $company["cus_company_logo"];
-      $FORM_DATA["company"]["short_description"] = $company["cus_company_short_description"];
+      $FORM_DATA["company"]["cus_company_location"] = $company["cus_company_location"];
+      $FORM_DATA["company"]["cus_company_short_description"] = $company["cus_company_short_description"];
    }
 
    // Obtiene la session falsh en caso de que se haya creado una nueva colaboradora
@@ -44,8 +45,12 @@
                <dic class="row">
                   <div class="col-md-12">
                      <?php
-                           if (!empty($success_message)) {
+                           if (!empty($success_message) && (isset($RESPONSE_CREATE_USER_COMPANY["status"]) && $RESPONSE_CREATE_USER_COMPANY["status"] == true)) {
                               echo '<div class="alert alert-success" role="alert">' . esc_html($success_message) . '</div>';
+                           }
+                           
+                           if ((isset($RESPONSE_CREATE_USER_COMPANY["status"]) && $RESPONSE_CREATE_USER_COMPANY["status"] == false)) {
+                              echo '<div class="alert alert-danger" role="alert">' . esc_html($RESPONSE_CREATE_USER_COMPANY["message"]) . '</div>';
                            }
                      ?>
                   </div>

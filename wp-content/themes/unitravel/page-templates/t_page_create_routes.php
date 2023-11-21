@@ -16,8 +16,10 @@ Template Name: Create Routes
     if($id_route){
         $routeModel = new CUS_Route();
         $route = $routeModel->find($id_route);
-        if(!isset($FORM_DATA["route"]))
+
+        if(!isset($FORM_DATA["route"])){
             $FORM_DATA["route"] = $route;
+        }
     
         $FORM_DATA["route"]["route_image"] = $route["route_image"];
 
@@ -26,6 +28,9 @@ Template Name: Create Routes
             wp_redirect(site_url());
             exit;
         }
+    }
+    else {
+        $FORM_DATA["route"]["route_whatsapp"] = $company["cus_company_whatsapp"];
     }
 ?>
 <div id="custom-page">
@@ -66,9 +71,19 @@ Template Name: Create Routes
                                                     </label>
                                                     <input name="route_image" type="file" class="form-control-file" id="file-image" accept="image/*" style="display: none;">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="nameRoute">Nombre de la experiencia<b class="text-danger">*</b></label>
-                                                    <input required type="text" class="form-control" id="nameRoute" name="route[route_name]" value="<?= (isset($FORM_DATA["route"]["route_name"]) ? $FORM_DATA["route"]["route_name"] : "") ?>">
+                                                <div class="row">
+                                                    <dic class="col-md-6 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="nameRoute">Nombre de la experiencia<b class="text-danger">*</b></label>
+                                                            <input required type="text" class="form-control" id="nameRoute" name="route[route_name]" value="<?= (isset($FORM_DATA["route"]["route_name"]) ? $FORM_DATA["route"]["route_name"] : "") ?>">
+                                                        </div>
+                                                    </dic>
+                                                    <dic class="col-md-6 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="nameRoute">Whatsapp para reservas <b class="text-danger">*</b></label>
+                                                            <input required type="text" class="form-control" id="nameRoute" name="route[route_whatsapp]" value="<?= (isset($FORM_DATA["route"]["route_whatsapp"]) ? $FORM_DATA["route"]["route_whatsapp"] : "") ?>">
+                                                        </div>
+                                                    </dic>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6 col-sm-12">
@@ -83,6 +98,11 @@ Template Name: Create Routes
                                                             <input required type="time" class="form-control" id="nameRoute" name="route[route_end_time]" value="<?= (isset($FORM_DATA["route"]["route_end_time"]) ? $FORM_DATA["route"]["route_end_time"] : "") ?>">
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-12">
+                                                        <?php if(isset($RESPONSE_CREATE_ROUTE["status"]) && $RESPONSE_CREATE_ROUTE["status"] == false && $RESPONSE_CREATE_ROUTE["field"] == "time"){
+                                                            echo '<div class="alert alert-danger" role="alert">'.$RESPONSE_CREATE_ROUTE["message"].'</div>';
+                                                        }?>
+                                                    </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6 col-sm-12">
@@ -96,6 +116,11 @@ Template Name: Create Routes
                                                             <label for="nameRoute">Descuento (Sin puntos ni comas)</label>
                                                             <input placeholder="$" type="number" class="form-control" id="nameRoute" name="route[route_discount]" value="<?= (isset($FORM_DATA["route"]["route_discount"]) ? $FORM_DATA["route"]["route_discount"] : "") ?>">
                                                         </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <?php if(isset($RESPONSE_CREATE_ROUTE["status"]) && $RESPONSE_CREATE_ROUTE["status"] == false && $RESPONSE_CREATE_ROUTE["field"] == "price"){
+                                                            echo '<div class="alert alert-danger" role="alert">'.$RESPONSE_CREATE_ROUTE["message"].'</div>';
+                                                        }?>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

@@ -37,6 +37,9 @@ function registerUserMeta($user_id, $user, $company_id, $do_login = true){
     $data_add = array("user_id" => $user_id, "meta_key" => "biografia", "meta_value" => $user["biografia"]);
     $saved_user_meta = $user_meta->insert_usermeta($data_add);
 
+    $data_add = array("user_id" => $user_id, "meta_key" => "historia", "meta_value" => $user["historia"]);
+    $saved_user_meta = $user_meta->insert_usermeta($data_add);
+
     $data_add = array("user_id" => $user_id, "meta_key" => "user_company_id", "meta_value" => $company_id);
     $saved_user_meta = $user_meta->insert_usermeta($data_add);
 
@@ -48,7 +51,7 @@ function registerUserMeta($user_id, $user, $company_id, $do_login = true){
 }
 
 function createProfilePost($profile, $user_id){
-    /*if(isset($profile["profile_image"]) && !empty($profile["profile_image"])){
+    if(isset($profile["profile_image"]) && !empty($profile["profile_image"])){
         // Obtener información sobre el directorio de uploads
         $upload_dir = wp_upload_dir();
 
@@ -86,6 +89,7 @@ function createProfilePost($profile, $user_id){
 
     // Insertar el post en la base de datos
     $id_post = wp_insert_post($post_data);
+    update_post_meta($id_post, "trx_addons_options", array("subtitle" => ""));
 
     if(isset($profile["profile_image"])){
         // Asignar la imagen adjunta como miniatura del post
@@ -93,11 +97,11 @@ function createProfilePost($profile, $user_id){
     }
 
     // Check if the post was successfully created
-    return array("post_id" => $id_post, "attachment_id" => $id_adjunto); */
+    return array("post_id" => $id_post, "attachment_id" => $id_adjunto); 
 }
 
 function updateProfilePost($profile, $user_id){
-        /*// ID del autor que quieres modificar
+        // ID del autor que quieres modificar
 
         // Obtener posts del autor
         $args = array(
@@ -117,6 +121,7 @@ function updateProfilePost($profile, $user_id){
 
             // Actualizar el post
             wp_update_post($nuevos_datos_post);
+            update_post_meta($post[0]->ID, "trx_addons_options", array("subtitle" => ""));
 
             if(isset($profile["profile_image"]) && !empty($profile["profile_image"])){
                 // Obtener el ID de la imagen adjunta
@@ -131,6 +136,7 @@ function updateProfilePost($profile, $user_id){
                 // Ruta completa a tu imagen dentro del directorio de uploads
                 $ruta_imagen = $ruta_uploads . '/profiles/'.$user_id."/".$profile["profile_image"];
 
+
                 if(!$attachment_id){
                     // Preparar datos para la imagen adjunta
                     $datos_adjunto = array(
@@ -139,16 +145,19 @@ function updateProfilePost($profile, $user_id){
                         'post_title'     => $profile["display_name"],
                         'post_content'   => '',
                         'post_status'    => 'inherit',
+                        'post_parent'    => $post[0]->ID
                     );
 
                     // Insertar la imagen adjunta
                     $attachment_id = wp_insert_attachment($datos_adjunto, $ruta_imagen);
+                    update_post_meta($post[0]->ID, "_thumbnail_id", $attachment_id);
                 }
+
 
                 // Generar metadatos de la imagen y actualizar el registro en la base de datos
                 $metadatos_adjunto = wp_generate_attachment_metadata($attachment_id, $ruta_imagen);
                 wp_update_attachment_metadata($attachment_id, $metadatos_adjunto);
-
+                
                 if(!$attachment_id){
                     // Asignar la imagen adjunta como miniatura del post
                     set_post_thumbnail($id_post, $attachment_id);
@@ -157,5 +166,5 @@ function updateProfilePost($profile, $user_id){
         }
         else {
             createProfilePost($profile, $user_id);
-        } */
+        } 
 }

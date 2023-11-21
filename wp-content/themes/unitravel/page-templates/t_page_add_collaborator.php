@@ -28,7 +28,7 @@ include get_theme_file_path("includes/form-handlers/add_collaborator.php");
                                              <div class="form-group text-center">
                                                    <label for=""><i class="fa-regular fa-pen-to-square"></i> Seleccionar foto de perfil</label><br>
                                                    <label for="profile-image" style="cursor: pointer;">
-                                                      <img id="profile-preview" src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png" alt="Vista previa de la imagen" class="img-thumbnail custom-image-profile banner-image">
+                                                      <img id="profile-preview" src="https://dummyimage.com/700x700" alt="Vista previa de la imagen" class="img-thumbnail custom-image-profile">
                                                    </label>
                                                    <input name="profile" type="file" class="form-control-file" id="profile-image" accept="image/*" style="display: none;">
                                              </div>
@@ -68,7 +68,7 @@ include get_theme_file_path("includes/form-handlers/add_collaborator.php");
                                           </div>
                                           <div class="col-md-12 col-sm-12 col-xs-12 mb-4 pb-2">
                                              <div class="form-outline form-white">
-                                                <label for="nameActivityRoute">Biografía <b class="text-danger">*</b> (Máximo 250 letras)</label>
+                                                <label for="nameActivityRoute">Quien soy <b class="text-danger">*</b> (Máximo 250 letras)</label>
                                                 <textarea maxlength="250" name="user[biografia]" id="" cols="30" rows="5"><?= (isset($FORM_DATA["user"]["biografia"]) ? $FORM_DATA["user"]["biografia"] : "") ?></textarea>
                                              </div>
                                           </div>

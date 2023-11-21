@@ -57,6 +57,10 @@ function validateFieldRoutes($fields){
     if($fields["route_start_time"] > $fields["route_end_time"])
     return array('field' => 'time', 'message' => "<b>Error!</b> La hora de inicio no puede ser mayor a la de finalización.", "status" => false);
 
+    // Valida si el descuento es mayor al precio
+    if($fields["route_discount"] > $fields["route_price"])
+    return array('field' => 'price', 'message' => "<b>Error!</b> El descuento no puede ser mayor al precio.", "status" => false);
+
     return array("status" => true);
 }
 
