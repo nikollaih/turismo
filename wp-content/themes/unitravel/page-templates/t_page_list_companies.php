@@ -6,10 +6,13 @@ Template Name: List Companies
 <?php 
 include get_theme_file_path("page-templates/utilities.php");
 
-$companies_all = cus_get_companies_all($_GET['city']);
+
+$companies_all = cus_get_companies_all(1);
+// $companies_all = cus_get_companies_all($_GET['city']);
 
 //img banner companies 
-$city_banner_img =  find_city($_GET['city']);
+$city_banner_img =  find_city(1);
+// $city_banner_img =  find_city($_GET['city']);
 
 if (!empty($city_banner_img['img_city'])) {
     $name = $city_banner_img['city_name'];
@@ -53,12 +56,13 @@ if (!empty($city_banner_img['img_city'])) {
                                         <div class="wpb_wrapper" style="background-color: #f6f7e6; border-radius: 0px 0px 30px 30px;">
                                             <div class="wpb_single_image wpb_content_element vc_align_center">	
                                                 <figure class="wpb_wrapper vc_figure">
-                                                   
+                                                    <a href="<?= home_url().  '/view-companies/' . '?id=' . $companies['id_cus_company']?>" target="_blank">
                                                         <img style="height: 200px; width: auto;"
                                                         src="<?= get_company_logo($companies['id_cus_company'],$companies['cus_company_logo'])?>" 
                                                         class="vc_single_image-img attachment-large" alt="" decoding="async" loading="lazy" 
                                                         title="finca-hotel-el-palmar-23"
                                                         sizes="(max-width: 1024px) 100vw, 1024px">
+                                                    </a>
                                                 </figure>
                                             </div>
                                             <div id="text-ventures" class=" p-3 sc_title sc_title_default m ">
