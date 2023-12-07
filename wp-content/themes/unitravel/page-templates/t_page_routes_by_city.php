@@ -70,10 +70,10 @@ if (!empty($city_banner_img['img_city'])) {
                                                             <div class="room-plugin room-people">
                                                                 <?php
                                                                     if(trim($route["cus_company_location"]) != "") { ?>
-                                                                        <a target="_blank" href="<?= $route["cus_company_location"] ?>"><i class="fa-solid fa-map-location-dot"></i>&nbsp;&nbsp;&nbsp;<?= $route["city_name"] ?></a>
+                                                                        <a target="_blank" href="<?= $route["cus_company_location"] ?>"><i class="fa-solid fa-map-location-dot"></i>&nbsp;&nbsp;&nbsp;<?= $route["cus_company_name"] ?></a>
                                                                     <?php }
                                                                     else { ?>
-                                                                        <span style="color:#5d6673;"><i class="fa-solid fa-map-location-dot"></i>&nbsp;&nbsp;&nbsp;<?= $route["cus_company_name"] ?></span>
+                                                                        <a target="_blank" href="<?= home_url() ?>/view-companies/?id=<?=$route["company_id"] ?>"><i class="fa-solid fa-map-location-dot"></i>&nbsp;&nbsp;&nbsp;<?= $route["cus_company_name"] ?></a>
                                                                     <?php }
                                                                 ?>
                                                             </div>
