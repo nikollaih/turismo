@@ -12,6 +12,7 @@ if($_POST){
     registerMedia($_POST['media']);
 }
 
+// Registrar nuevo item de galeria
 function registerMedia($fields) {
     $media_controller = new CUS_Controller_MediaRoute();
     global $RESPONSE_CREATE_ROUTE;
@@ -36,6 +37,7 @@ function registerMedia($fields) {
     exit;
 }
 
+// Obtener el formato de archivo
 function getFileFormat($file, $index){
     return array(
         "name" => $file["name"][$index],
