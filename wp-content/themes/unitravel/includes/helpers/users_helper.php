@@ -22,7 +22,9 @@ function registerUserMeta($user_id, $user, $company_id, $do_login = true){
     $user_meta = new CUS_UserMeta();
     $user_meta_capabilities = $user_meta->get_usermeta_by_key($user_id, "wp_capabilities");
 
-    $data_update = array("user_id" => $user_id, "meta_key" => "wp_capabilities", "meta_value" => serialize([$user["rol"]]));
+    $current_capabilities[$user["rol"]] = true;
+
+    $data_update = array("user_id" => $user_id, "meta_key" => "wp_capabilities", "meta_value" => $current_capabilities);
     $updated_user_meta = $user_meta->update_usermeta($data_update);
 
     $data_update = array("user_id" => $user_id, "meta_key" => "wp_profile_image", "meta_value" => $user["profile_image"]);
