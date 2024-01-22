@@ -16,7 +16,7 @@ if($_POST){
 
 function registerUser($user, $company) {
     $user["profile_image"] = "";
-    $user["rol"] = "emprendedora";
+    $user["rol"] = "en_revision";
     $user["permissions"] = "admin";
     global $RESPONSE_CREATE_USER_COMPANY;
     // Crear una instancia de la clase

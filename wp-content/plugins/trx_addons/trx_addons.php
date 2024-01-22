@@ -64,7 +64,7 @@ require_once TRX_ADDONS_PLUGIN_DIR . 'includes/plugin.utils.php';
 require_once TRX_ADDONS_PLUGIN_DIR . 'includes/plugin.media.php';
 require_once TRX_ADDONS_PLUGIN_DIR . 'includes/plugin.wp.php';
 require_once TRX_ADDONS_PLUGIN_DIR . 'includes/plugin.html.php';
-require_once TRX_ADDONS_PLUGIN_DIR . 'includes/plugin.users.php';
+//require_once TRX_ADDONS_PLUGIN_DIR . 'includes/plugin.users.php';
 
 require_once TRX_ADDONS_PLUGIN_DIR . 'includes/plugin.options.customizer.php';
 
