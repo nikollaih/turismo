@@ -120,7 +120,19 @@ $mediosVideo = $mediaModel->get_by_type($route['id_route'], "video");
                                                         <div class=" col-md-3 d-flex justify-content-center align-items-center text-center">
                                                             <div>
                                                                 <p class="mb-0">Lugar</p>
-                                                                <a target="_blank" href="<?= home_url()?>/view-companies/?id=<?=$activity['id_cus_company']?>"><p class="route_short_description"><?= !empty($activity['activity_location_other']) ? $activity['activity_location_other'] : $activity['cus_company_name'] ?></p><a>
+                                                                <?php
+                                                                    if($activity['id_cus_company']){ ?>
+                                                                        <a target="_blank" href="<?= home_url()?>/view-companies/?id=<?=$activity['id_cus_company']?>">
+                                                                            <p class="route_short_description"><?= !empty($activity['activity_location_other']) ? $activity['activity_location_other'] : $activity['cus_company_name'] ?></p>
+                                                                        </a>
+                                                                <?php
+                                                                    }
+                                                                    else {
+                                                                        ?>
+                                                                        <p class="route_short_description"><?= !empty($activity['activity_location_other']) ? $activity['activity_location_other'] : $activity['cus_company_name'] ?></p>
+                                                                <?php
+                                                                    }
+                                                                ?>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-3 d-flex justify-content-center align-items-center text-center">
